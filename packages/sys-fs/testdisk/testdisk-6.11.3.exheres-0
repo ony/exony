@@ -1,7 +1,5 @@
-# Copyright 2010 Jonathan Dahan <jedahan@gmail.com>
+# Copyright 2010, 2011 Jonathan Dahan <jedahan@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
-
-# TODO: add static option
 
 SUMMARY="Checks and undeletes partitions + PhotoRec, signature based recovery tool"
 HOMEPAGE="http://www.cgsecurity.org/wiki/TestDisk"
@@ -13,17 +11,13 @@ PLATFORMS="~amd64"
 MYOPTIONS="ntfs jpeg"
 
 DEPENDENCIES="
-    build+run:
-        sys-libs/ncurses[>=5.2]
-		jpeg? ( media-libs/jpeg:0 )
-	  	ntfs? ( sys-fs/ntfsprogs[>=2] )
-	  	sys-fs/e2fsprogs[>=1.35]
-		sys-libs/zlib
+    sys-libs/ncurses[>=5.2]
+    jpeg? ( media-libs/jpeg:0 )
+    ntfs? ( sys-fs/ntfsprogs[>=2] )
+    sys-fs/e2fsprogs[>=1.35]
+    sys-libs/zlib
 "
-
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}"/${PNV}-exif_bound_checking-v2.patch )
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( --without-ewf --enable-sudo )
 
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( ntfs jpeg )
-
