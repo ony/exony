@@ -14,7 +14,6 @@ MYOPTIONS="gobject-introspection gtk-doc"
 DEPENDENCIES="
     build:
         dev-util/intltool[>=0.40.0]
-        sys-devel/gettext
         gobject-introspection? ( gnome-desktop/gobject-introspection:1[>=0.6.7] )
         gtk-doc? ( dev-doc/gtk-doc[>=1.4] )
     build+run:
