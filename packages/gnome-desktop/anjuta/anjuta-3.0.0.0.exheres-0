@@ -35,7 +35,6 @@ DEPENDENCIES="
         dev-util/intltool[>=0.40.1]
         dev-util/pkg-config[>=0.22]
         gnome-desktop/gnome-doc-utils[>=0.18]
-        sys-devel/autogen
         sys-devel/gettext[>=0.12]
         gtk-doc? ( dev-doc/gtk-doc[>=1.4] )
         gobject-introspection? ( gnome-desktop/gobject-introspection:1[>=0.9.5] )
@@ -47,6 +46,7 @@ DEPENDENCIES="
         dev-libs/vte:3.0[>=0.27.6]
         gnome-desktop/gdl:3.0[>=2.90]
         gnome-desktop/gtksourceview:3.0[>=2.91.8]
+        sys-devel/autogen
         x11-libs/gdk-pixbuf:2.0[>=2.0.0]
         x11-libs/gtk+:3[>=3.0.0][gobject-introspection?]
         x11-libs/libXrender
