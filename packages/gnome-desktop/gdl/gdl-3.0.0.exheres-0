@@ -8,7 +8,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENCES="LGPL-2"
 SLOT="3.0"
-PLATFORMS="~amd64"
+PLATFORMS="~amd64 ~x86"
 MYOPTIONS="gobject-introspection gtk-doc"
 
 DEPENDENCIES="
