@@ -1,0 +1,9 @@
+[Unit]
+Description=APC UPS monitoring daemon
+
+[Service]
+Type=simple
+ExecStart=/sbin/apcupsd -b
+
+[Install]
+WantedBy=multi-user.target

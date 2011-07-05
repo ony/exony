@@ -1,0 +1,70 @@
+# Copyright 2011 Dan Callaghan <djc@djc.id.au>
+# Distributed under the terms of the GNU General Public License v2
+# Based in part upon apcupsd-3.14.8-r1.ebuild, which is:
+#   Copyright 1999-2011 Gentoo Foundation
+#   Distributed under the terms of the GNU General Public License v2
+
+require sourceforge [ suffix=tar.gz ] systemd-service
+
+SUMMARY="Monitoring daemon for APC UPSes"
+DESCRIPTION="
+Apcupsd can be used for power mangement and controlling most of APC's UPS models. Apcupsd works with 
+most of APC's Smart-UPS models as well as most simple signalling models such a Back-UPS, and 
+BackUPS-Office. During a power failure, apcupsd will inform the users about the power failure and 
+that a shutdown may occur. If power is not restored, a system shutdown will follow when the battery 
+is exhausted, a timeout (seconds) expires, or runtime expires based on internal APC calculations 
+determined by power consumption rates.
+"
+HOMEPAGE="http://www.apcupsd.com/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+MYOPTIONS="usb"
+
+DEPENDENCIES="
+    build:
+        dev-util/pkg-config
+    run:
+        mail-client/mailx
+"
+
+BUGS_TO="djc@djc.id.au"
+
+src_configure() {
+    unset LD # build uses LD where it means CC, let's not confuse it
+    econf \
+        --hates=docdir \
+        $(option_enable usb) \
+        --sysconfdir=/etc/apcupsd \
+        --with-pwrfail-dir=/etc/apcupsd \
+        --with-pid-dir=/run \
+        --with-lock-dir=/run \
+        --with-log-dir=/var/log \
+        --enable-net \
+        --enable-snmp \
+        --enable-pcnet \
+        --enable-dumb \
+        --enable-apcsmart \
+        --with-distname=unknown \
+        APCUPSD_MAIL=/bin/mail
+}
+
+src_compile() {
+    export MANPAGER=$(type -p cat)
+    default
+}
+
+src_install() {
+    default
+    dodoc ReleaseNotes Developers
+
+    edo rm -r "${IMAGE}usr/share/hal"
+    edo rm "${IMAGE}sbin/smtp" # we use mailx instead
+
+    insinto /etc/apcupsd
+    newins examples/safe.apccontrol safe.apccontrol
+
+    install_systemd_files
+}
+
