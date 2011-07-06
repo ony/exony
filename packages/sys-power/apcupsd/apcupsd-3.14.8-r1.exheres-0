@@ -39,7 +39,7 @@ src_configure() {
         --sysconfdir=/etc/apcupsd \
         --with-pwrfail-dir=/etc/apcupsd \
         --with-pid-dir=/run \
-        --with-lock-dir=/run \
+        --with-lock-dir=/run/lock \
         --with-log-dir=/var/log \
         --enable-net \
         --enable-snmp \
@@ -66,5 +66,9 @@ src_install() {
     newins examples/safe.apccontrol safe.apccontrol
 
     install_systemd_files
+    insinto /lib/tmpfiles.d
+    hereins apcupsd.conf <<EOF
+d /run/lock 0755 root root -
+EOF
 }
 
