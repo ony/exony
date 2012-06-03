@@ -1,0 +1,63 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Notion is a tiling, tabbed window manager for the X window system"
+HOMEPAGE="http://notion.sourceforge.net"
+SCM_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/notion"
+SCM_EXTERNAL_REFS="mod_xinerama:mod_xinerama mod_xrandr:mod_xrandr mod_xkbevents:mod_xkbevents libextl:libextl libtu:libtu contrib:contrib mod_notionflux:mod_notionflux"
+SCM_SECONDARY_REPOSITORIES="mod_xinerama mod_xrandr mod_xkbevents libextl libtu contrib mod_notionflux"
+SCM_mod_xinerama_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/mod_xinerama"
+SCM_mod_xrandr_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/mod_xrandr"
+SCM_mod_xkbevents_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/mod_xkbevents"
+SCM_libextl_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/libextl"
+SCM_libtu_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/libtu"
+SCM_contrib_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/contrib"
+SCM_mod_notionflux_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/mod_notionflux"
+
+require scm-git
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+MYOPTIONS="no_locale"
+
+DEPENDENCIES="
+    build:
+        dev-lang/perl
+    test:
+        dev-lang/perl
+        dev-lua/luaposix
+    build+run:
+        dev-lang/lua
+        x11-libs/libX11
+        x11-libs/libXext
+        x11-libs/libXinerama
+        x11-libs/libXrandr
+"
+
+src_prepare() {
+    default
+
+    # fix sources
+    sed -i \
+        -e 's/$(INSTALL) -s/$(INSTALL)/g' \
+        -e 's/ $(BINDIR)/ $(DESTDIR)$(BINDIR)/g' \
+        "${WORK}/mod_notionflux/notionflux/Makefile"
+   
+    # kinda configure
+    sed -i \
+        -e '/^PREFIX\>/s@/usr/local@/usr@' \
+        -e "/^LIBDIR\>/s@\$(PREFIX)/lib@\$(PREFIX)/${LIBDIR:-}@" \
+        -e '/^X11_PREFIX\>/s@/usr/X11R6@/usr@' \
+        -e '/TEXTPROP_BUG/s/^/#/' \
+        -e "/^CC\>/s@\<gcc\>@$CC@" \
+        "${WORK}/system.mk"
+    
+    optionq no_locale && sed -i '/^#.*\<DEFINES\>.*+=.*LOCALE/s+^#++' "${WORK}/system.mk"
+
+
+}
+
+src_test() {
+    ewarn "TODO: allow integration test that starts X server"
+}
