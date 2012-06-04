@@ -61,3 +61,10 @@ src_prepare() {
 src_test() {
     ewarn "TODO: allow integration test that starts X server"
 }
+
+src_install() {
+    default
+
+    insinto /usr/share/xsessions
+    doins "${FILES}/${PN}.desktop"
+}
