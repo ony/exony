@@ -1,0 +1,27 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://git.sanityinc.com/${PN}.git"
+
+require scm-git
+
+SUMMARY=""
+HOMEPAGE="http://www.sanityinc.com/articles/converting-darcs-repositories-to-git"
+LICENCES="as-is"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+DEPENDENCIES="
+    run:
+        dev-lang/ruby
+"
+
+src_compile() {
+    # nothing to do
+    return 0
+}
+
+src_install() {
+    dobin darcs-to-git
+    dodoc README.markdown
+    dodoc LICENSE
+}
