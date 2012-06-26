@@ -16,18 +16,18 @@ require scm-git
 
 SUMMARY="Notion is a tiling, tabbed window manager for the X window system"
 HOMEPAGE="http://notion.sourceforge.net"
-DESCRIPTION="$SUMMARY"
 LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
-MYOPTIONS="no_locale"
+MYOPTIONS="nls"
 
 DEPENDENCIES="
     build:
-        dev-lang/perl
-    test:
-        dev-lang/perl
-        dev-lua/luaposix
+        || ( 
+            dev-lang/perl:5.10
+            dev-lang/perl:5.12
+            dev-lang/perl:5.14
+        )
     build+run:
         dev-lang/lua
         x11-libs/libX11
@@ -54,13 +54,12 @@ src_prepare() {
         -e "/^CC\>/s@\<gcc\>@$CC@" \
         "${WORK}/system.mk"
     
-    optionq no_locale && sed -i '/^#.*\<DEFINES\>.*+=.*LOCALE/s+^#++' "${WORK}/system.mk"
-
-
+    optionq nls || sed -i '/^#.*\<DEFINES\>.*+=.*LOCALE/s+^#++' "${WORK}/system.mk"
 }
 
 src_test() {
-    ewarn "TODO: allow integration test that starts X server"
+    # Ignore integration tests that requires fake X server
+    return 0
 }
 
 src_install() {
