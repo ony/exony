@@ -23,11 +23,7 @@ MYOPTIONS="nls"
 
 DEPENDENCIES="
     build:
-        || ( 
-            dev-lang/perl:5.10
-            dev-lang/perl:5.12
-            dev-lang/perl:5.14
-        )
+        dev-lang/perl:*[>=5.10&<6]
     build+run:
         dev-lang/lua
         x11-libs/libX11
