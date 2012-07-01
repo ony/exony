@@ -14,7 +14,7 @@ a large repository in steps.
 HOMEPAGE="http://www.sanityinc.com/articles/converting-darcs-repositories-to-git"
 LICENCES="MIT"
 SLOT="0"
-PLATFORMS="~amd64 ~x86"
+PLATFORMS="~amd64"
 DEPENDENCIES="
     run:
         dev-lang/ruby:1.8
