@@ -19,11 +19,11 @@ HOMEPAGE="http://notion.sourceforge.net"
 LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
-MYOPTIONS="nls"
 
 DEPENDENCIES="
     build:
         dev-lang/perl:*[>=5.10&<6]
+        sys-devel/gettext
     build+run:
         dev-lang/lua
         x11-libs/libX11
@@ -40,7 +40,7 @@ src_prepare() {
         -e 's/$(INSTALL) -s/$(INSTALL)/g' \
         -e 's/ $(BINDIR)/ $(DESTDIR)$(BINDIR)/g' \
         "${WORK}/mod_notionflux/notionflux/Makefile"
-   
+
     # kinda configure
     sed -i \
         -e '/^PREFIX\>/s@/usr/local@/usr@' \
@@ -49,8 +49,6 @@ src_prepare() {
         -e '/TEXTPROP_BUG/s/^/#/' \
         -e "/^CC\>/s@\<gcc\>@$CC@" \
         "${WORK}/system.mk"
-    
-    optionq nls || sed -i '/^#.*\<DEFINES\>.*+=.*LOCALE/s+^#++' "${WORK}/system.mk"
 }
 
 src_test() {
