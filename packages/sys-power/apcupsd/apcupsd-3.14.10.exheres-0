@@ -29,8 +29,6 @@ DEPENDENCIES="
         mail-client/mailx
 "
 
-BUGS_TO="djc@djc.id.au"
-
 src_configure() {
     unset LD # build uses LD where it means CC, let's not confuse it
     econf \
