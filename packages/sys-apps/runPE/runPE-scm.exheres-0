@@ -1,0 +1,37 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://github.com/ony/${PN}.git"
+
+require scm-git
+
+SUMMARY="Tool to automatically decide either run wine or mono for PE files"
+DESCRIPTION="
+This small utility allows you to have single entry in /etc/binfmt.d for .Net assemblies and Windows
+executables.
+"
+HOMEPAGE="https://github.com/ony/runPE"
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64"
+
+# note that we depend on libmagic from system set
+DEPENDENCIES="
+    build:
+        dev-lang/vala:*[>=0.17.1]
+    run:
+        dev-lang/mono
+        app-emulation/wine
+"
+
+BUGS_TO="virkony@gmail.com"
+
+src_install() {
+    # install executable
+    dobin runpe
+
+    # install binfmt handler
+    insinto /etc/binfmt.d
+    doins "${FILES}/runpe.conf"
+}
