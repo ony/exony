@@ -1,6 +1,8 @@
 # Copyright 2012 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
+require sourceforge
+
 SCM_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/notion"
 SCM_EXTERNAL_REFS="mod_xinerama:mod_xinerama mod_xrandr:mod_xrandr mod_xkbevents:mod_xkbevents libextl:libextl libtu:libtu contrib:contrib mod_notionflux:mod_notionflux"
 SCM_SECONDARY_REPOSITORIES="mod_xinerama mod_xrandr mod_xkbevents libextl libtu contrib mod_notionflux"
@@ -15,7 +17,6 @@ SCM_mod_notionflux_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/m
 require scm-git
 
 SUMMARY="Notion is a tiling, tabbed window manager for the X window system"
-HOMEPAGE="http://notion.sourceforge.net"
 LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64"

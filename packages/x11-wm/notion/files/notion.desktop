@@ -4,4 +4,4 @@ Comment=A lightweight tiling, tabbed window manager for the X window system
 Exec=notion
 TryExec=notion
 Icon=
-Type=ApplicationOA
+Type=Application
