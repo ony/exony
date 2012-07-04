@@ -33,6 +33,8 @@ DEPENDENCIES="
         x11-libs/libXrandr
 "
 
+RESTRICT="test"
+
 src_prepare() {
     default
 
@@ -50,11 +52,6 @@ src_prepare() {
         -e '/TEXTPROP_BUG/s/^/#/' \
         -e "/^CC\>/s@\<gcc\>@$CC@" \
         "${WORK}/system.mk"
-}
-
-src_test() {
-    # Ignore integration tests that requires fake X server
-    return 0
 }
 
 src_install() {
