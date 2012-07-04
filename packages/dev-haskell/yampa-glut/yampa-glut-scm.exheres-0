@@ -1,0 +1,31 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require cabal
+
+SCM_REPOSITORY="git://github.com/ony/${PN}.git"
+
+require scm-git
+
+SUMMARY="Connects Yampa and GLUT "
+DESCRIPTION="
+This package contains an adapter that connects OpenGL/GLUT to the FRP library Yampa.
+"
+HOMEPAGE="https://github.com/ony/yampa-glut"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/GLUT
+        dev-haskell/newtype
+        dev-haskell/OpenGL
+        dev-haskell/vector-space
+        dev-haskell/Yampa[>=0.9.3]
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
