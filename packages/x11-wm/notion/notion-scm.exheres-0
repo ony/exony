@@ -1,7 +1,7 @@
 # Copyright 2012 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-require sourceforge
+require notion
 
 SCM_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/notion"
 SCM_EXTERNAL_REFS="mod_xinerama:mod_xinerama mod_xrandr:mod_xrandr mod_xkbevents:mod_xkbevents libextl:libextl libtu:libtu contrib:contrib mod_notionflux:mod_notionflux"
@@ -16,47 +16,6 @@ SCM_mod_notionflux_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/m
 
 require scm-git
 
-SUMMARY="Notion is a tiling, tabbed window manager for the X window system"
-LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64"
 
-DEPENDENCIES="
-    build:
-        dev-lang/perl:*[>=5.10&<6]
-        sys-devel/gettext
-    build+run:
-        dev-lang/lua
-        x11-libs/libX11
-        x11-libs/libXext
-        x11-libs/libXinerama
-        x11-libs/libXrandr
-"
-
-RESTRICT="test"
-
-src_prepare() {
-    default
-
-    # fix sources
-    sed -i \
-        -e 's/$(INSTALL) -s/$(INSTALL)/g' \
-        -e 's/ $(BINDIR)/ $(DESTDIR)$(BINDIR)/g' \
-        "${WORK}/mod_notionflux/notionflux/Makefile"
-
-    # kinda configure
-    sed -i \
-        -e '/^PREFIX\>/s@/usr/local@/usr@' \
-        -e "/^LIBDIR\>/s@\$(PREFIX)/lib@\$(PREFIX)/${LIBDIR:-}@" \
-        -e '/^X11_PREFIX\>/s@/usr/X11R6@/usr@' \
-        -e '/TEXTPROP_BUG/s/^/#/' \
-        -e "/^CC\>/s@\<gcc\>@$CC@" \
-        "${WORK}/system.mk"
-}
-
-src_install() {
-    default
-
-    insinto /usr/share/xsessions
-    doins "${FILES}/${PN}.desktop"
-}
