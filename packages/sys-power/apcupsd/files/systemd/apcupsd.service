@@ -1,5 +1,6 @@
 [Unit]
 Description=APC UPS monitoring daemon
+After=syslog.target network.target
 
 [Service]
 Type=simple
