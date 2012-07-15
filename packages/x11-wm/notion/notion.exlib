@@ -1,11 +1,13 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
 require sourceforge [ project=${PN} ]
 
 SUMMARY="Notion is a tiling, tabbed window manager for the X window system"
 LICENCES="LGPL-2.1"
 
 DEPENDENCIES="
-    build+run:
-        dev-lang/perl:*[>=5.10&<6]
+    build:
         sys-devel/gettext
     build+run:
         dev-lang/lua
