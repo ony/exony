@@ -30,7 +30,8 @@ DEPENDENCIES="
 "
 
 src_configure() {
-    unset LD # build uses LD where it means CC, let's not confuse it
+    # build uses LD where it means CC, let's not confuse it
+    export LD="${CC}"
     econf \
         --hates=docdir \
         $(option_enable usb) \
