@@ -25,13 +25,13 @@ src_prepare() {
     default
 
     # fix sources
-    sed -i \
+    edo sed -i \
         -e 's/\$(INSTALL) -s/\$(INSTALL)/g' \
         -e 's/ \$(BINDIR)/ \$(DESTDIR)\$(BINDIR)/g' \
         "${WORK}/mod_notionflux/notionflux/Makefile"
 
     # kinda configure
-    sed -i \
+    edo sed -i \
         -e '/^PREFIX\>/s@/usr/local@/usr@' \
         -e "/^LIBDIR\>/s@\$(PREFIX)/lib@\$(PREFIX)/${LIBDIR:-}@" \
         -e '/^X11_PREFIX\>/s@/usr/X11R6@/usr@' \
