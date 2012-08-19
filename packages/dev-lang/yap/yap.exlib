@@ -1,0 +1,97 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge [ project=${PN} ]
+
+SUMMARY="YAP is a high-performance Prolog compiler"
+DESCRIPTION="
+YAP is a high-performance Prolog compiler developed at CRACS and LIACC/Universidade do Porto. Its
+Prolog engine is based in the WAM (Warren Abstract Machine), with several optimizations for better
+performance. YAP follows the Edinburgh tradition, and is largely compatible with the ISO-Prolog
+standard and with Quintus and SICStus Prolog.
+"
+HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
+
+if ! ever is_scm; then
+    DOWNLOADS="${HOMEPAGE}/${PNV}.tar.gz"
+fi
+
+# Note: YAP 4.0 and early versions of YAP 4.1 were distributed under different license
+LICENCES="Artistic"
+SLOT="0"
+MYOPTIONS="
+    threads static gmp
+    tabling [[ description = [ tabling support ] ]]
+    depth-limit [[ description = [ support depth-bound computation ] ]]
+    wam-profile [[ description = [ support low level profiling of abstract machine ] ]]
+    low-level-tracer [[ description = [ support support for procedure-call tracing ] ]]
+    bddlib [[ description = [ dynamic bdd library ] ]]
+    pthread-locking [[ description = [ use pthread locking primitives for internal locking (requires threads) ] ]]
+    max-performance [[ description = [ try using the best flags for specific architecture ] ]]
+    max-memory [[ description = [ try using the best flags for using the memory to the most ] ]]
+    debug-yap [[ description = [ enable C-debugging for YAP ] ]]
+    eam [[ description = [ enable EAM on YAP ] ]]
+    prism [[ description = [ use PRISM system in YAP ] ]]
+    dynamic-loading [[ description = [ compile YAP as a DLL ] ]]
+    condor [[ description = [ allows using the Condor system that support High Throughput Computing ] ]]
+    chr [[ description = [ install CHR ] ]]
+    clpqr [[ description = [ install CLPQR ] ]]
+    april [[ description = [ compile Yap to support April ILP system ] ]]
+    R [[ description = [ interface to R language ] ]]
+    minisat [[ description = [ use minisat interface ] ]]
+    cudd [[ description = [ use CUDD package in DIR ] ]]
+    myddas [[ description = [ enable the MYDDAS library ] ]]
+    myddas-stats [[ description = [ enable the MYDDAS library statistics support ] ]]
+    myddas-top-level [[ description = [ enable the MYDDAS top-level support to MySQL ] ]]
+    java [[ description = [ activates the Java Interface Library JPL ] ]]
+    readline
+
+    clpbn-bp [[ description = [ enable belief propagation solver in CLPBN ] ]]
+    gecode [[ description = [ install gecode (Generic Constraint Development Environment) library ] ]]
+
+    ( myddas-stats myddas-top-level ) [[ *requires = [ myddas ] ]]
+"
+
+DEPENDENCIES="
+    build+run:
+        gmp? ( dev-libs/gmp )
+        R? ( sci-lang/R )
+        minisat? ( sci-libs/minisat )
+        cudd? ( sci-libs/cudd )
+        myddas? ( dev-db/mysql )
+        java? ( virtual/jdk )
+        readline? ( sys-libs/readline )
+        gecode? ( sci-libs/gecode )
+        condor? ( sci-apps/condor )
+        april? ( sci-apps/april )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+REMOTE_IDS="sourceforge:${PN}"
+
+UPSTREAM_CHANGELOG=""
+UPSTREAM_DOCUMENTATION="
+    ${HOMEPAGE}/documentation.html  [[ lang = en description = [ User manual ] ]]
+"
+UPSTREAM_RELEASE_NOTES=""
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-or-parallelism --enable-use-malloc --enable-coroutining )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( R minisat cudd java readline )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
+    "static static-compilation"
+    threads gmp tabling depth-limit wam-profile low-level-tracer bddlib
+    pthread-locking max-performance max-memory debug-yap eam prism dynamic-loading condor
+    chr clpqr april clpbn-bp myddas myddas-stats myddas-top-level gecode
+)
+
+# TODO: add enable-or-parallelism selection
+# TODO: report all issues upstream rather be silent about them
+# TODO: check flags dependencies
+
+# exheres notes:
+# - compilation of C/heapgc.c failed if configured with --disable-use-malloc (hard-enable)
+# - looks like current development happens only with rational-trees and coroutining enabled
+# (hard-enable for scm, TODO: continue investigation)
+# - issues with tests (restrict, TODO: check if I can fix it)
+

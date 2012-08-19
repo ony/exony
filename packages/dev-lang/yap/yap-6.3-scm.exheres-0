@@ -1,0 +1,33 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_NO_AUTOMATIC_FINALISE=1
+require yap scm-git
+
+DEFAULT_SRC_CONFIGURE_PARAMS+=( --enable-rational-trees )
+
+# TODO: fix tests
+RESTRICT+=test
+
+MY_YAP_REPOSITORY_PREFIX="git://yap.git.sourceforge.net/gitroot/yap"
+MY_YAP_PACKAGES="chr clpqr jpl zlib http clib sgml RDF semweb plunit R pldoc"
+
+SCM_REPOSITORY="${MY_YAP_REPOSITORY_PREFIX}/${PNV%-scm}"
+SCM_SECONDARY_REPOSITORIES="real ${MY_YAP_PACKAGES}"
+
+# real is taken from SWI Prolog
+SCM_real_REPOSITORY="git://www.swi-prolog.org/home/pl/git/packages/real.git"
+SCM_EXTERNAL_REFS="packages/real:real"
+
+for SCM_THIS in ${MY_YAP_PACKAGES}; do
+    scm_set_var REPOSITORY "${MY_YAP_REPOSITORY_PREFIX}/${SCM_THIS}"
+    SCM_EXTERNAL_REFS+=" packages/${SCM_THIS}:${SCM_THIS}"
+done
+
+scm_finalise
+
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-fixed-makefiles-to-build-in-multilib-env.patch" )
+
