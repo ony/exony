@@ -29,5 +29,3 @@ scm_finalise
 SLOT="0"
 PLATFORMS="~amd64"
 
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-fixed-makefiles-to-build-in-multilib-env.patch" )
-

@@ -50,6 +50,7 @@ MYOPTIONS="
     gecode [[ description = [ install gecode (Generic Constraint Development Environment) library ] ]]
 
     ( myddas-stats myddas-top-level ) [[ *requires = [ myddas ] ]]
+    ( chr ) [[ *requires = [ clpqr ] ]]
 "
 
 DEPENDENCIES="
