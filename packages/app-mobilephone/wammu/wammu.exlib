@@ -1,0 +1,29 @@
+# Copyright 2012 Nikolay Orlyuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require distutils
+
+SUMMARY="Wx based GUI interface for gammu"
+DESCRIPTION="
+Wammu is mobile phone manager running on Linux, Windows and possibly other platforms, where libGammu
+and wxPython works. The communication is made by Gammu library.
+"
+HOMEPAGE="http://wammu.eu/wammu/"
+if ! ever is_scm; then
+    MY_PVM="$(ever major ${PV})"
+    DOWNLOADS="http://dl.cihar.com/wammu/v${MY_PVM}/${PNV}.tar.bz2"
+    UPSTREAM_RELEASE_NOTES="http://wammu.eu/download/wammu/${PV}/"
+fi
+
+LICENCES="GPL-2"
+SLOT="0"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        app-mobilephone/gammu
+        dev-python/wxPython
+"
+
+BUGS_TO="virkony@gmail.com"
+
