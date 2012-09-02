@@ -1,11 +1,7 @@
 # Copyright 2012 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-require cabal
-
-SCM_REPOSITORY="git://github.com/ony/${PN}.git"
-
-require scm-git
+require cabal github [ user=ony ]
 
 SUMMARY="Connects Yampa and GLUT "
 DESCRIPTION="
