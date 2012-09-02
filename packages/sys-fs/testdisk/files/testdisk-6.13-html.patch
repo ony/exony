@@ -1,0 +1,52 @@
+Upstream: patch from upstream repo
+
+From 8ec7ec9d921ec496f460d38b039b14d9782976ac Mon Sep 17 00:00:00 2001
+From: Christophe Grenier <grenier@cgsecurity.org>
+Date: Tue, 01 May 2012 15:28:30 +0000
+Subject: documentation.html: doc is online
+
+---
+diff --git a/Makefile.am b/Makefile.am
+index 5a4c33f..2d547da 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -4,7 +4,7 @@ SUBDIRS = src
+ EXTRA_DIST = AUTHORS COPYING ChangeLog INFO INSTALL NEWS README THANKS compile.sh \
+ 	progsreiserfs-journal.patch progsreiserfs-file-read.patch \
+ 	darwin/readme_mac_powerpc.txt darwin/readme_mac_intel.txt \
+-	doc_src/testdisk.8.in doc_src/photorec.8.in doc_src/fidentify.8.in doc/online.html \
++	doc_src/testdisk.8.in doc_src/photorec.8.in doc_src/fidentify.8.in documentation.html \
+ 	dos/readme.txt \
+ 	ico/photorec.ico ico/testdisk.ico \
+ 	linux/testdisk.spec.in \
+@@ -17,9 +17,7 @@ man_MANS		= doc_src/testdisk.8 doc_src/photorec.8 doc_src/fidentify.8
+ 
+ install-data-hook:
+ 	$(mkinstalldirs) $(DESTDIR)$(datadir)/doc/$(PACKAGE)-$(VERSION)
+-	$(mkinstalldirs) $(DESTDIR)$(datadir)/doc/$(PACKAGE)-$(VERSION)/html
+-	$(INSTALL_DATA) $(top_srcdir)/AUTHORS $(top_srcdir)/ChangeLog $(top_srcdir)/NEWS $(top_srcdir)/README $(top_srcdir)/THANKS $(DESTDIR)$(datadir)/doc/$(PACKAGE)-$(VERSION)/
+-#	$(INSTALL_DATA) $(top_srcdir)/doc/* $(DESTDIR)$(datadir)/doc/$(PACKAGE)-$(VERSION)/html
++	$(INSTALL_DATA) $(top_srcdir)/AUTHORS $(top_srcdir)/ChangeLog $(top_srcdir)/NEWS $(top_srcdir)/README $(top_srcdir)/THANKS $(top_srcdir)/documentation.html $(DESTDIR)$(datadir)/doc/$(PACKAGE)-$(VERSION)/
+ 
+ uninstall-hook:
+ 	rm -rf $(DESTDIR)$(datadir)/doc/$(PACKAGE)-$(VERSION)
+diff --git a/documentation.html b/documentation.html
+new file mode 100644
+index 0000000..e4f0877
+--- a/dev/null
++++ b/documentation.html
+@@ -0,0 +1,12 @@
++<html>
++<head>
++<title>TestDisk &amp; PhotoRec documentation</title>
++</head>
++<body>
++TestDisk &amp; PhotoRec documentation can be found online:
++<ul>
++<li><a href="http://www.cgsecurity.org/wiki/TestDisk">TestDisk</a></li>
++<li><a href="http://www.cgsecurity.org/wiki/PhotoRec">PhotoRec</a></li>
++</ul>
++</body>
++</html>
+--
+cgit v0.9.0.2

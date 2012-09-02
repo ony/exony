@@ -1,12 +1,9 @@
-# Copyright 2010, 2011 Jonathan Dahan <jedahan@gmail.com>
 # Copyright 2012 Nikolay Orlyuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-MY_PV="${PV}"
-MY_PVM="$(ever range 1-2 ${PV})"
-MY_PNV="${PNV}"
+SCM_REPOSITORY="http://git.cgsecurity.org/${PN}.git"
 
-require testdisk
+require testdisk scm-git autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.12 ] ]
 
 SLOT="0"
 PLATFORMS="~amd64"
