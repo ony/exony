@@ -1,0 +1,12 @@
+# Copyright 2012 Nikolay Orlyuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="http://svn.apache.org/repos/asf/logging/log4net"
+
+require log4net scm-svn
+
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEFAULT_SRC_PREPARE_PATCHES=( -p0 ${FILES}/${PN}-r1380006-cref.patch )
+

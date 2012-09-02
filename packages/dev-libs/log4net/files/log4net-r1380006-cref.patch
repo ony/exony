@@ -1,0 +1,3148 @@
+Upstream: https://issues.apache.org/jira/browse/LOG4NET-352
+
+Index: extensions/net/1.0/log4net.Ext.EventID/cs/src/EventIDLogManager.cs
+===================================================================
+--- extensions/net/1.0/log4net.Ext.EventID/cs/src/EventIDLogManager.cs	(revision 1380006)
++++ extensions/net/1.0/log4net.Ext.EventID/cs/src/EventIDLogManager.cs	(working copy)
+@@ -201,7 +201,7 @@
+ 		}	
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+@@ -215,7 +215,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+@@ -230,7 +230,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+Index: extensions/net/1.0/log4net.Ext.MarshalByRef/cs/src/MarshalByRefLogManager.cs
+===================================================================
+--- extensions/net/1.0/log4net.Ext.MarshalByRef/cs/src/MarshalByRefLogManager.cs	(revision 1380006)
++++ extensions/net/1.0/log4net.Ext.MarshalByRef/cs/src/MarshalByRefLogManager.cs	(working copy)
+@@ -204,7 +204,7 @@
+ 		}	
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+@@ -218,7 +218,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+@@ -233,7 +233,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+Index: extensions/net/1.0/log4net.Ext.Trace/cs/src/TraceLogManager.cs
+===================================================================
+--- extensions/net/1.0/log4net.Ext.Trace/cs/src/TraceLogManager.cs	(revision 1380006)
++++ extensions/net/1.0/log4net.Ext.Trace/cs/src/TraceLogManager.cs	(working copy)
+@@ -201,7 +201,7 @@
+ 		}	
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+@@ -215,7 +215,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+@@ -230,7 +230,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+Index: src/Appender/AnsiColorTerminalAppender.cs
+===================================================================
+--- src/Appender/AnsiColorTerminalAppender.cs	(revision 1380006)
++++ src/Appender/AnsiColorTerminalAppender.cs	(working copy)
+@@ -285,7 +285,7 @@
+ 		#region Override implementation of AppenderSkeleton
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+Index: src/Appender/AppenderSkeleton.cs
+===================================================================
+--- src/Appender/AppenderSkeleton.cs	(revision 1380006)
++++ src/Appender/AppenderSkeleton.cs	(working copy)
+@@ -38,7 +38,7 @@
+ 	/// </para>
+ 	/// <para>
+ 	/// Appenders can also implement the <see cref="IOptionHandler"/> interface. Therefore
+-	/// they would require that the <see cref="IOptionHandler.ActivateOptions()"/> method
++	/// they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
+ 	/// be called after the appenders properties have been configured.
+ 	/// </para>
+ 	/// </remarks>
+@@ -249,13 +249,13 @@
+ 		/// <summary>
+ 		/// Performs threshold checks and invokes filters before 
+ 		/// delegating actual logging to the subclasses specific 
+-		/// <see cref="Append(LoggingEvent)"/> method.
++		/// <see cref="M:Append(LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This method cannot be overridden by derived classes. A
+-		/// derived class should override the <see cref="Append(LoggingEvent)"/> method
++		/// derived class should override the <see cref="M:Append(LoggingEvent)"/> method
+ 		/// which is called by this method.
+ 		/// </para>
+ 		/// <para>
+@@ -277,14 +277,14 @@
+ 		///		</item>
+ 		///		<item>
+ 		///			<description>
+-		///			Calls <see cref="PreAppendCheck()"/> and checks that 
++		///			Calls <see cref="M:PreAppendCheck()"/> and checks that 
+ 		///			it returns <c>true</c>.</description>
+ 		///		</item>
+ 		/// </list>
+ 		/// </para>
+ 		/// <para>
+ 		/// If all of the above steps succeed then the <paramref name="loggingEvent"/>
+-		/// will be passed to the abstract <see cref="Append(LoggingEvent)"/> method.
++		/// will be passed to the abstract <see cref="M:Append(LoggingEvent)"/> method.
+ 		/// </para>
+ 		/// </remarks>
+ 		public void DoAppend(LoggingEvent loggingEvent) 
+@@ -346,13 +346,13 @@
+ 		/// <summary>
+ 		/// Performs threshold checks and invokes filters before 
+ 		/// delegating actual logging to the subclasses specific 
+-		/// <see cref="Append(LoggingEvent[])"/> method.
++		/// <see cref="M:Append(LoggingEvent[])"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvents">The array of events to log.</param>
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This method cannot be overridden by derived classes. A
+-		/// derived class should override the <see cref="Append(LoggingEvent[])"/> method
++		/// derived class should override the <see cref="M:Append(LoggingEvent[])"/> method
+ 		/// which is called by this method.
+ 		/// </para>
+ 		/// <para>
+@@ -374,14 +374,14 @@
+ 		///		</item>
+ 		///		<item>
+ 		///			<description>
+-		///			Calls <see cref="PreAppendCheck()"/> and checks that 
++		///			Calls <see cref="M:PreAppendCheck()"/> and checks that 
+ 		///			it returns <c>true</c>.</description>
+ 		///		</item>
+ 		/// </list>
+ 		/// </para>
+ 		/// <para>
+ 		/// If all of the above steps succeed then the <paramref name="loggingEvents"/>
+-		/// will be passed to the <see cref="Append(LoggingEvent[])"/> method.
++		/// will be passed to the <see cref="M:Append(LoggingEvent[])"/> method.
+ 		/// </para>
+ 		/// </remarks>
+ 		public void DoAppend(LoggingEvent[] loggingEvents) 
+@@ -604,12 +604,12 @@
+ 		/// A subclass must implement this method to perform
+ 		/// logging of the <paramref name="loggingEvent"/>.
+ 		/// </para>
+-		/// <para>This method will be called by <see cref="DoAppend(LoggingEvent)"/>
++		/// <para>This method will be called by <see cref="M:DoAppend(LoggingEvent)"/>
+ 		/// if all the conditions listed for that method are met.
+ 		/// </para>
+ 		/// <para>
+ 		/// To restrict the logging of events in the appender
+-		/// override the <see cref="PreAppendCheck()"/> method.
++		/// override the <see cref="M:PreAppendCheck()"/> method.
+ 		/// </para>
+ 		/// </remarks>
+ 		abstract protected void Append(LoggingEvent loggingEvent);
+@@ -620,12 +620,12 @@
+ 		/// <param name="loggingEvents">the array of logging events</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// This base class implementation calls the <see cref="Append(LoggingEvent)"/>
++		/// This base class implementation calls the <see cref="M:Append(LoggingEvent)"/>
+ 		/// method for each element in the bulk array.
+ 		/// </para>
+ 		/// <para>
+ 		/// A sub class that can better process a bulk array of events should
+-		/// override this method in addition to <see cref="Append(LoggingEvent)"/>.
++		/// override this method in addition to <see cref="M:Append(LoggingEvent)"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		virtual protected void Append(LoggingEvent[] loggingEvents)
+@@ -637,23 +637,23 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Called before <see cref="Append(LoggingEvent)"/> as a precondition.
++		/// Called before <see cref="M:Append(LoggingEvent)"/> as a precondition.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// <para>
+-		/// This method is called by <see cref="DoAppend(LoggingEvent)"/>
+-		/// before the call to the abstract <see cref="Append(LoggingEvent)"/> method.
++		/// This method is called by <see cref="M:DoAppend(LoggingEvent)"/>
++		/// before the call to the abstract <see cref="M:Append(LoggingEvent)"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method can be overridden in a subclass to extend the checks 
+-		/// made before the event is passed to the <see cref="Append(LoggingEvent)"/> method.
++		/// made before the event is passed to the <see cref="M:Append(LoggingEvent)"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// A subclass should ensure that they delegate this call to
+ 		/// this base class if it is overridden.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <returns><c>true</c> if the call to <see cref="Append(LoggingEvent)"/> should proceed.</returns>
++		/// <returns><c>true</c> if the call to <see cref="M:Append(LoggingEvent)"/> should proceed.</returns>
+ 		virtual protected bool PreAppendCheck()
+ 		{
+ 			if ((m_layout == null) && RequiresLayout)
+@@ -683,7 +683,7 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// Where possible use the alternative version of this method
+-		/// <see cref="RenderLoggingEvent(TextWriter,LoggingEvent)"/>.
++		/// <see cref="M:RenderLoggingEvent(TextWriter,LoggingEvent)"/>.
+ 		/// That method streams the rendering onto an existing Writer
+ 		/// which can give better performance if the caller already has
+ 		/// a <see cref="TextWriter"/> open and ready for writing.
+@@ -724,9 +724,9 @@
+ 		/// will append the exception text to the rendered string.
+ 		/// </para>
+ 		/// <para>
+-		/// Use this method in preference to <see cref="RenderLoggingEvent(LoggingEvent)"/>
++		/// Use this method in preference to <see cref="M:RenderLoggingEvent(LoggingEvent)"/>
+ 		/// where possible. If, however, the caller needs to render the event
+-		/// to a string then <see cref="RenderLoggingEvent(LoggingEvent)"/> does
++		/// to a string then <see cref="M:RenderLoggingEvent(LoggingEvent)"/> does
+ 		/// provide an efficient mechanism for doing so.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Appender/AspNetTraceAppender.cs
+===================================================================
+--- src/Appender/AspNetTraceAppender.cs	(revision 1380006)
++++ src/Appender/AspNetTraceAppender.cs	(working copy)
+@@ -45,8 +45,8 @@
+ 	/// whether tracing is displayed to a page, to the trace viewer, or both.
+ 	/// </para>
+ 	/// <para>
+-	/// The logging event is passed to the <see cref="TraceContext.Write(string)"/> or 
+-	/// <see cref="TraceContext.Warn(string)"/> method depending on the level of the logging event.
++	/// The logging event is passed to the <see cref="M:TraceContext.Write(string)"/> or 
++	/// <see cref="M:TraceContext.Warn(string)"/> method depending on the level of the logging event.
+     /// The event's logger name is the default value for the category parameter of the Write/Warn method. 
+ 	/// </para>
+ 	/// </remarks>
+Index: src/Appender/BufferingAppenderSkeleton.cs
+===================================================================
+--- src/Appender/BufferingAppenderSkeleton.cs	(revision 1380006)
++++ src/Appender/BufferingAppenderSkeleton.cs	(working copy)
+@@ -37,7 +37,7 @@
+ 	/// the underlying database in one go.
+ 	/// </para>
+ 	/// <para>
+-	/// Subclasses should override the <see cref="SendBuffer(LoggingEvent[])"/>
++	/// Subclasses should override the <see cref="M:SendBuffer(LoggingEvent[])"/>
+ 	/// method to deliver the buffered events.
+ 	/// </para>
+ 	/// <para>The BufferingAppenderSkeleton maintains a fixed size cyclic 
+@@ -47,14 +47,14 @@
+ 	/// <para>A <see cref="ITriggeringEventEvaluator"/> is used to inspect 
+ 	/// each event as it arrives in the appender. If the <see cref="Evaluator"/> 
+ 	/// triggers, then the current buffer is sent immediately 
+-	/// (see <see cref="SendBuffer(LoggingEvent[])"/>). Otherwise the event 
++	/// (see <see cref="M:SendBuffer(LoggingEvent[])"/>). Otherwise the event 
+ 	/// is stored in the buffer. For example, an evaluator can be used to 
+ 	/// deliver the events immediately when an ERROR event arrives.
+ 	/// </para>
+ 	/// <para>
+ 	/// The buffering appender can be configured in a <see cref="Lossy"/> mode. 
+ 	/// By default the appender is NOT lossy. When the buffer is full all 
+-	/// the buffered events are sent with <see cref="SendBuffer(LoggingEvent[])"/>.
++	/// the buffered events are sent with <see cref="M:SendBuffer(LoggingEvent[])"/>.
+ 	/// If the <see cref="Lossy"/> property is set to <c>true</c> then the 
+ 	/// buffer will not be sent when it is full, and new events arriving 
+ 	/// in the appender will overwrite the oldest event in the buffer. 
+@@ -173,7 +173,7 @@
+ 		/// <para>
+ 		/// The evaluator will be called for each event that is appended to this 
+ 		/// appender. If the evaluator triggers then the current buffer will 
+-		/// immediately be sent (see <see cref="SendBuffer(LoggingEvent[])"/>).
++		/// immediately be sent (see <see cref="M:SendBuffer(LoggingEvent[])"/>).
+ 		/// </para>
+ 		/// <para>If <see cref="Lossy"/> is set to <c>true</c> then an
+ 		/// <see cref="Evaluator"/> must be specified.</para>
+@@ -194,7 +194,7 @@
+ 		/// <para>
+ 		/// The evaluator will be called for each event that is discarded from this 
+ 		/// appender. If the evaluator triggers then the current buffer will immediately 
+-		/// be sent (see <see cref="SendBuffer(LoggingEvent[])"/>).
++		/// be sent (see <see cref="M:SendBuffer(LoggingEvent[])"/>).
+ 		/// </para>
+ 		/// </remarks>
+ 		public ITriggeringEventEvaluator LossyEvaluator
+@@ -217,7 +217,7 @@
+ 		/// event data to be fixed and serialized. This will improve performance.
+ 		/// </para>
+ 		/// <para>
+-		/// See <see cref="LoggingEvent.FixVolatileData(FixFlags)"/> for more information.
++		/// See <see cref="M:LoggingEvent.FixVolatileData(FixFlags)"/> for more information.
+ 		/// </para>
+ 		/// </remarks>
+ 		[Obsolete("Use Fix property")]
+@@ -412,7 +412,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/> method. 
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/> method. 
+ 		/// </summary>
+ 		/// <param name="loggingEvent">the event to log</param>
+ 		/// <remarks>
+@@ -436,7 +436,7 @@
+ 		/// </list>
+ 		/// <para>
+ 		/// Before the event is stored in the buffer it is fixed
+-		/// (see <see cref="LoggingEvent.FixVolatileData(FixFlags)"/>) to ensure that
++		/// (see <see cref="M:LoggingEvent.FixVolatileData(FixFlags)"/>) to ensure that
+ 		/// any data referenced by the event will be valid when the buffer
+ 		/// is processed.
+ 		/// </para>
+@@ -527,7 +527,7 @@
+ 		/// <param name="buffer">The buffer containing the events that need to be send.</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The subclass must override <see cref="SendBuffer(LoggingEvent[])"/>.
++		/// The subclass must override <see cref="M:SendBuffer(LoggingEvent[])"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		virtual protected void SendFromBuffer(LoggingEvent firstLoggingEvent, CyclicBuffer buffer)
+Index: src/Appender/ColoredConsoleAppender.cs
+===================================================================
+--- src/Appender/ColoredConsoleAppender.cs	(revision 1380006)
++++ src/Appender/ColoredConsoleAppender.cs	(working copy)
+@@ -254,7 +254,7 @@
+ 		#region Override implementation of AppenderSkeleton
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(log4net.Core.LoggingEvent)"/> method.
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(log4net.Core.LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+Index: src/Appender/ConsoleAppender.cs
+===================================================================
+--- src/Appender/ConsoleAppender.cs	(revision 1380006)
++++ src/Appender/ConsoleAppender.cs	(working copy)
+@@ -137,7 +137,7 @@
+ 		#region Override implementation of AppenderSkeleton
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+Index: src/Appender/DebugAppender.cs
+===================================================================
+--- src/Appender/DebugAppender.cs	(revision 1380006)
++++ src/Appender/DebugAppender.cs	(working copy)
+@@ -35,7 +35,7 @@
+ 	/// debug system.
+ 	/// </para>
+ 	/// <para>
+-	/// Events are written using the <see cref="System.Diagnostics.Debug.Write(string,string)"/>
++	/// Events are written using the <see cref="M:System.Diagnostics.Debug.Write(string,string)"/>
+ 	/// method. The event's logger name is passed as the value for the category name to the Write method.
+ 	/// </para>
+ 	/// </remarks>
+Index: src/Appender/EventLogAppender.cs
+===================================================================
+--- src/Appender/EventLogAppender.cs	(revision 1380006)
++++ src/Appender/EventLogAppender.cs	(working copy)
+@@ -364,7 +364,7 @@
+ 		#region Override implementation of AppenderSkeleton
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/>
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/>
+ 		/// method. 
+ 		/// </summary>
+ 		/// <param name="loggingEvent">the event to log</param>
+Index: src/Appender/FileAppender.cs
+===================================================================
+--- src/Appender/FileAppender.cs	(revision 1380006)
++++ src/Appender/FileAppender.cs	(working copy)
+@@ -1013,7 +1013,7 @@
+  		}
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/>
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/>
+ 		/// method. 
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+@@ -1042,7 +1042,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent[])"/>
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent[])"/>
+ 		/// method. 
+ 		/// </summary>
+ 		/// <param name="loggingEvents">The array of events to log.</param>
+@@ -1255,9 +1255,9 @@
+ 		/// <param name="fileStream">the file stream that has been opened for writing</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// This implementation of <see cref="SetQWForFiles(Stream)"/> creates a <see cref="StreamWriter"/>
++		/// This implementation of <see cref="M:SetQWForFiles(Stream)"/> creates a <see cref="StreamWriter"/>
+ 		/// over the <paramref name="fileStream"/> and passes it to the 
+-		/// <see cref="SetQWForFiles(TextWriter)"/> method.
++		/// <see cref="M:SetQWForFiles(TextWriter)"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method can be overridden by sub classes that want to wrap the
+Index: src/Appender/IAppender.cs
+===================================================================
+--- src/Appender/IAppender.cs	(revision 1380006)
++++ src/Appender/IAppender.cs	(working copy)
+@@ -33,7 +33,7 @@
+ 	/// </para>
+ 	/// <para>
+ 	/// Appenders can also implement the <see cref="IOptionHandler"/> interface. Therefore
+-	/// they would require that the <see cref="IOptionHandler.ActivateOptions()"/> method
++	/// they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
+ 	/// be called after the appenders properties have been configured.
+ 	/// </para>
+ 	/// </remarks>
+Index: src/Appender/LocalSyslogAppender.cs
+===================================================================
+--- src/Appender/LocalSyslogAppender.cs	(revision 1380006)
++++ src/Appender/LocalSyslogAppender.cs	(working copy)
+@@ -367,7 +367,7 @@
+ 		#region AppenderSkeleton Implementation
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+Index: src/Appender/ManagedColoredConsoleAppender.cs
+===================================================================
+--- src/Appender/ManagedColoredConsoleAppender.cs	(revision 1380006)
++++ src/Appender/ManagedColoredConsoleAppender.cs	(working copy)
+@@ -165,7 +165,7 @@
+ 
+ 		#region Override implementation of AppenderSkeleton
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(log4net.Core.LoggingEvent)"/> method.
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(log4net.Core.LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+Index: src/Appender/MemoryAppender.cs
+===================================================================
+--- src/Appender/MemoryAppender.cs	(revision 1380006)
++++ src/Appender/MemoryAppender.cs	(working copy)
+@@ -37,7 +37,7 @@
+ 	/// the current list of events that have been appended.
+ 	/// </para>
+ 	/// <para>
+-	/// Use the <see cref="Clear()"/> method to clear the
++	/// Use the <see cref="M:Clear()"/> method to clear the
+ 	/// current list of events.
+ 	/// </para>
+ 	/// </remarks>
+@@ -96,7 +96,7 @@
+ 		/// data to be fixed and stored in the appender, hereby improving performance. 
+ 		/// </para>
+ 		/// <para>
+-		/// See <see cref="LoggingEvent.FixVolatileData(bool)"/> for more information.
++		/// See <see cref="M:LoggingEvent.FixVolatileData(bool)"/> for more information.
+ 		/// </para>
+ 		/// </remarks>
+ 		[Obsolete("Use Fix property")]
+@@ -137,7 +137,7 @@
+ 		#region Override implementation of AppenderSkeleton
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/> method. 
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/> method. 
+ 		/// </summary>
+ 		/// <param name="loggingEvent">the event to log</param>
+ 		/// <remarks>
+Index: src/Appender/NetSendAppender.cs
+===================================================================
+--- src/Appender/NetSendAppender.cs	(revision 1380006)
++++ src/Appender/NetSendAppender.cs	(working copy)
+@@ -296,7 +296,7 @@
+ 		#region Override implementation of AppenderSkeleton
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+Index: src/Appender/RemoteSyslogAppender.cs
+===================================================================
+--- src/Appender/RemoteSyslogAppender.cs	(revision 1380006)
++++ src/Appender/RemoteSyslogAppender.cs	(working copy)
+@@ -330,7 +330,7 @@
+ 		#region AppenderSkeleton Implementation
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+Index: src/Appender/TextWriterAppender.cs
+===================================================================
+--- src/Appender/TextWriterAppender.cs	(revision 1380006)
++++ src/Appender/TextWriterAppender.cs	(working copy)
+@@ -203,7 +203,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/>
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/>
+ 		/// method. 
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+@@ -227,7 +227,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent[])"/>
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent[])"/>
+ 		/// method. 
+ 		/// </summary>
+ 		/// <param name="loggingEvents">The array of events to log.</param>
+Index: src/Appender/UdpAppender.cs
+===================================================================
+--- src/Appender/UdpAppender.cs	(revision 1380006)
++++ src/Appender/UdpAppender.cs	(working copy)
+@@ -387,7 +387,7 @@
+ 		#region Override implementation of AppenderSkeleton
+ 
+ 		/// <summary>
+-		/// This method is called by the <see cref="AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
++		/// This method is called by the <see cref="M:AppenderSkeleton.DoAppend(LoggingEvent)"/> method.
+ 		/// </summary>
+ 		/// <param name="loggingEvent">The event to log.</param>
+ 		/// <remarks>
+Index: src/Config/BasicConfigurator.cs
+===================================================================
+--- src/Config/BasicConfigurator.cs	(revision 1380006)
++++ src/Config/BasicConfigurator.cs	(working copy)
+@@ -43,7 +43,7 @@
+ 	/// </para>
+ 	/// <para>
+ 	/// Appenders can also implement the <see cref="log4net.Core.IOptionHandler"/> interface. Therefore
+-	/// they would require that the <see cref="log4net.Core.IOptionHandler.ActivateOptions()"/> method
++	/// they would require that the <see cref="M:log4net.Core.IOptionHandler.ActivateOptions()"/> method
+ 	/// be called after the appenders properties have been configured.
+ 	/// </para>
+ 	/// </remarks>
+Index: src/Config/DOMConfigurator.cs
+===================================================================
+--- src/Config/DOMConfigurator.cs	(revision 1380006)
++++ src/Config/DOMConfigurator.cs	(working copy)
+@@ -309,10 +309,10 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// For more information on how to configure log4net using
+-		/// a separate configuration file, see <see cref="Configure(FileInfo)"/>.
++		/// a separate configuration file, see <see cref="M:Configure(FileInfo)"/>.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Configure(FileInfo)"/>
++		/// <seealso cref="M:Configure(FileInfo)"/>
+ 		[Obsolete("Use XmlConfigurator.ConfigureAndWatch instead of DOMConfigurator.ConfigureAndWatch")]
+ 		static public void ConfigureAndWatch(FileInfo configFile)
+ 		{
+@@ -341,10 +341,10 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// For more information on how to configure log4net using
+-		/// a separate configuration file, see <see cref="Configure(FileInfo)"/>.
++		/// a separate configuration file, see <see cref="M:Configure(FileInfo)"/>.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Configure(FileInfo)"/>
++		/// <seealso cref="M:Configure(FileInfo)"/>
+ 		[Obsolete("Use XmlConfigurator.ConfigureAndWatch instead of DOMConfigurator.ConfigureAndWatch")]
+ 		static public void ConfigureAndWatch(ILoggerRepository repository, FileInfo configFile)
+ 		{
+Index: src/Config/DOMConfiguratorAttribute.cs
+===================================================================
+--- src/Config/DOMConfiguratorAttribute.cs	(revision 1380006)
++++ src/Config/DOMConfiguratorAttribute.cs	(working copy)
+@@ -43,7 +43,7 @@
+ 	/// </para>
+ 	/// <para>
+ 	/// Use this attribute to configure the <see cref="XmlConfigurator"/>
+-	/// without calling one of the <see cref="XmlConfigurator.Configure()"/>
++	/// without calling one of the <see cref="M:XmlConfigurator.Configure()"/>
+ 	/// methods.
+ 	/// </para>
+ 	/// </remarks>
+Index: src/Config/PluginAttribute.cs
+===================================================================
+--- src/Config/PluginAttribute.cs	(revision 1380006)
++++ src/Config/PluginAttribute.cs	(working copy)
+@@ -167,7 +167,7 @@
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// <para>
+-		/// Overrides base class <see cref="Object.ToString()" /> method to 
++		/// Overrides base class <see cref="M:Object.ToString()" /> method to 
+ 		/// return a representation of the properties of this object.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Config/SecurityContextProviderAttribute.cs
+===================================================================
+--- src/Config/SecurityContextProviderAttribute.cs	(revision 1380006)
++++ src/Config/SecurityContextProviderAttribute.cs	(working copy)
+@@ -39,7 +39,7 @@
+ 	/// </para>
+ 	/// <para>
+ 	/// Use this attribute to configure the <see cref="XmlConfigurator"/>
+-	/// without calling one of the <see cref="XmlConfigurator.Configure()"/>
++	/// without calling one of the <see cref="M:XmlConfigurator.Configure()"/>
+ 	/// methods.
+ 	/// </para>
+ 	/// </remarks>
+Index: src/Config/XmlConfigurator.cs
+===================================================================
+--- src/Config/XmlConfigurator.cs	(revision 1380006)
++++ src/Config/XmlConfigurator.cs	(working copy)
+@@ -804,10 +804,10 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// For more information on how to configure log4net using
+-		/// a separate configuration file, see <see cref="Configure(FileInfo)"/>.
++		/// a separate configuration file, see <see cref="M:Configure(FileInfo)"/>.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Configure(FileInfo)"/>
++		/// <seealso cref="M:Configure(FileInfo)"/>
+ 		static public ICollection ConfigureAndWatch(FileInfo configFile)
+ 		{
+             ArrayList configurationMessages = new ArrayList();
+@@ -843,10 +843,10 @@
+         /// </para>
+         /// <para>
+         /// For more information on how to configure log4net using
+-        /// a separate configuration file, see <see cref="Configure(FileInfo)"/>.
++        /// a separate configuration file, see <see cref="M:Configure(FileInfo)"/>.
+         /// </para>
+         /// </remarks>
+-        /// <seealso cref="Configure(FileInfo)"/>
++        /// <seealso cref="M:Configure(FileInfo)"/>
+         static public ICollection ConfigureAndWatch(ILoggerRepository repository, FileInfo configFile)
+         {
+             ArrayList configurationMessages = new ArrayList();
+Index: src/Config/XmlConfiguratorAttribute.cs
+===================================================================
+--- src/Config/XmlConfiguratorAttribute.cs	(revision 1380006)
++++ src/Config/XmlConfiguratorAttribute.cs	(working copy)
+@@ -41,7 +41,7 @@
+ 	/// </para>
+ 	/// <para>
+ 	/// Use this attribute to configure the <see cref="XmlConfigurator"/>
+-	/// without calling one of the <see cref="XmlConfigurator.Configure()"/>
++	/// without calling one of the <see cref="M:XmlConfigurator.Configure()"/>
+ 	/// methods.
+ 	/// </para>
+ 	/// <para>
+@@ -72,7 +72,7 @@
+ 	/// <para>
+ 	/// If you cannot guarantee the order in which log4net calls will be made from 
+ 	/// different assemblies you must use programmatic configuration instead, i.e.
+-	/// call the <see cref="XmlConfigurator.Configure()"/> method directly.
++	/// call the <see cref="M:XmlConfigurator.Configure()"/> method directly.
+ 	/// </para>
+ 	/// </note>
+ 	/// </remarks>
+Index: src/Core/CompactRepositorySelector.cs
+===================================================================
+--- src/Core/CompactRepositorySelector.cs	(revision 1380006)
++++ src/Core/CompactRepositorySelector.cs	(working copy)
+@@ -124,7 +124,7 @@
+ 		/// <para>
+ 		/// Get the named <see cref="ILoggerRepository"/>. The default 
+ 		/// repository is <c>log4net-default-repository</c>. Other repositories 
+-		/// must be created using the <see cref="CreateRepository(string, Type)"/>.
++		/// must be created using the <see cref="M:CreateRepository(string, Type)"/>.
+ 		/// If the named repository does not exist an exception is thrown.
+ 		/// </para>
+ 		/// </remarks>
+@@ -203,7 +203,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository(string)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(string)"/> with the
+ 		/// same repository specified will return the same repository instance.
+ 		/// </para>
+ 		/// <para>
+@@ -267,8 +267,8 @@
+ 		/// <returns><c>true</c> if the repository exists</returns>
+ 		/// <remarks>
+ 		/// <para>
+-		/// Test if a named repository exists. Use <see cref="CreateRepository(string, Type)"/>
+-		/// to create a new repository and <see cref="GetRepository(string)"/> to retrieve 
++		/// Test if a named repository exists. Use <see cref="M:CreateRepository(string, Type)"/>
++		/// to create a new repository and <see cref="M:GetRepository(string)"/> to retrieve 
+ 		/// a repository.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Core/DefaultRepositorySelector.cs
+===================================================================
+--- src/Core/DefaultRepositorySelector.cs	(revision 1380006)
++++ src/Core/DefaultRepositorySelector.cs	(working copy)
+@@ -151,7 +151,7 @@
+ 		/// does not exist a <see cref="LogException"/> is thrown.
+ 		/// </para>
+ 		/// <para>
+-		/// Use <see cref="CreateRepository(string, Type)"/> to create a repository.
++		/// Use <see cref="M:CreateRepository(string, Type)"/> to create a repository.
+ 		/// </para>
+ 		/// </remarks>
+ 		/// <exception cref="ArgumentNullException"><paramref name="repositoryName"/> is <see langword="null" />.</exception>
+@@ -184,7 +184,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository(Assembly)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(Assembly)"/> with the
+ 		/// same assembly specified will return the same repository instance.
+ 		/// </para>
+ 		/// <para>
+@@ -227,7 +227,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository(Assembly)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(Assembly)"/> with the
+ 		/// same assembly specified will return the same repository instance.
+ 		/// </para>
+ 		/// <para>
+@@ -347,7 +347,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository(string)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(string)"/> with the
+ 		/// same repository specified will return the same repository instance.
+ 		/// </para>
+ 		/// </remarks>
+@@ -433,8 +433,8 @@
+ 		/// <returns><c>true</c> if the repository exists</returns>
+ 		/// <remarks>
+ 		/// <para>
+-		/// Test if a named repository exists. Use <see cref="CreateRepository(string, Type)"/>
+-		/// to create a new repository and <see cref="GetRepository(string)"/> to retrieve 
++		/// Test if a named repository exists. Use <see cref="M:CreateRepository(string, Type)"/>
++		/// to create a new repository and <see cref="M:GetRepository(string)"/> to retrieve 
+ 		/// a repository.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Core/ErrorCode.cs
+===================================================================
+--- src/Core/ErrorCode.cs	(revision 1380006)
++++ src/Core/ErrorCode.cs	(working copy)
+@@ -22,11 +22,11 @@
+ namespace log4net.Core
+ {
+ 	/// <summary>
+-	/// Defined error codes that can be passed to the <see cref="IErrorHandler.Error(string, Exception, ErrorCode)"/> method.
++	/// Defined error codes that can be passed to the <see cref="M:IErrorHandler.Error(string, Exception, ErrorCode)"/> method.
+ 	/// </summary>
+ 	/// <remarks>
+ 	/// <para>
+-	/// Values passed to the <see cref="IErrorHandler.Error(string, Exception, ErrorCode)"/> method.
++	/// Values passed to the <see cref="M:IErrorHandler.Error(string, Exception, ErrorCode)"/> method.
+ 	/// </para>
+ 	/// </remarks>
+ 	/// <author>Nicko Cadell</author>
+Index: src/Core/ExceptionEvaluator.cs
+===================================================================
+--- src/Core/ExceptionEvaluator.cs	(revision 1380006)
++++ src/Core/ExceptionEvaluator.cs	(working copy)
+@@ -27,7 +27,7 @@
+ 	/// <remarks>
+ 	/// <para>
+ 	/// This evaluator will trigger if the type of the Exception
+-	/// passed to <see cref="IsTriggeringEvent(LoggingEvent)"/>
++	/// passed to <see cref="M:IsTriggeringEvent(LoggingEvent)"/>
+ 	/// is equal to a Type in <see cref="ExceptionType"/>.    /// 
+ 	/// </para>
+ 	/// </remarks>
+@@ -98,7 +98,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This evaluator will trigger if the Exception Type of the event
+-		/// passed to <see cref="IsTriggeringEvent(LoggingEvent)"/>
++		/// passed to <see cref="M:IsTriggeringEvent(LoggingEvent)"/>
+ 		/// is <see cref="ExceptionType"/>.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Core/IErrorHandler.cs
+===================================================================
+--- src/Core/IErrorHandler.cs	(revision 1380006)
++++ src/Core/IErrorHandler.cs	(working copy)
+@@ -56,7 +56,7 @@
+ 		/// <param name="e">The <see cref="Exception" /> that was thrown when the error occurred.</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// See <see cref="Error(string,Exception,ErrorCode)"/>.
++		/// See <see cref="M:Error(string,Exception,ErrorCode)"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		void Error(string message, Exception e);
+@@ -67,7 +67,7 @@
+ 		/// <param name="message">The message associated with the error.</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// See <see cref="Error(string,Exception,ErrorCode)"/>.
++		/// See <see cref="M:Error(string,Exception,ErrorCode)"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		void Error(string message);
+Index: src/Core/IRepositorySelector.cs
+===================================================================
+--- src/Core/IRepositorySelector.cs	(revision 1380006)
++++ src/Core/IRepositorySelector.cs	(working copy)
+@@ -128,7 +128,7 @@
+ 		/// <returns>The named <see cref="ILoggerRepository"/></returns>
+ 		/// <remarks>
+ 		/// Lookup a named <see cref="ILoggerRepository"/>. This is the repository created by
+-		/// calling <see cref="CreateRepository(string,Type)"/>.
++		/// calling <see cref="M:CreateRepository(string,Type)"/>.
+ 		/// </remarks>
+ 		ILoggerRepository GetRepository(string repositoryName);
+ 
+@@ -141,7 +141,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the domain
+-		/// specified such that a call to <see cref="GetRepository(Assembly)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(Assembly)"/> with the
+ 		/// same assembly specified will return the same repository instance.
+ 		/// </para>
+ 		/// <para>
+@@ -161,7 +161,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the name
+-		/// specified such that a call to <see cref="GetRepository(string)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(string)"/> with the
+ 		/// same name will return the same repository instance.
+ 		/// </para>
+ 		/// </remarks>
+@@ -174,8 +174,8 @@
+ 		/// <returns><c>true</c> if the repository exists</returns>
+ 		/// <remarks>
+ 		/// <para>
+-		/// Test if a named repository exists. Use <see cref="CreateRepository(Assembly, Type)"/>
+-		/// to create a new repository and <see cref="GetRepository(Assembly)"/> to retrieve 
++		/// Test if a named repository exists. Use <see cref="M:CreateRepository(Assembly, Type)"/>
++		/// to create a new repository and <see cref="M:GetRepository(Assembly)"/> to retrieve 
+ 		/// a repository.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Core/LevelEvaluator.cs
+===================================================================
+--- src/Core/LevelEvaluator.cs	(revision 1380006)
++++ src/Core/LevelEvaluator.cs	(working copy)
+@@ -29,7 +29,7 @@
+ 	/// <remarks>
+ 	/// <para>
+ 	/// This evaluator will trigger if the level of the event
+-	/// passed to <see cref="IsTriggeringEvent(LoggingEvent)"/>
++	/// passed to <see cref="M:IsTriggeringEvent(LoggingEvent)"/>
+ 	/// is equal to or greater than the <see cref="Threshold"/>
+ 	/// level.
+ 	/// </para>
+@@ -51,7 +51,7 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// This evaluator will trigger if the level of the event
+-		/// passed to <see cref="IsTriggeringEvent(LoggingEvent)"/>
++		/// passed to <see cref="M:IsTriggeringEvent(LoggingEvent)"/>
+ 		/// is equal to or greater than the <see cref="Threshold"/>
+ 		/// level.
+ 		/// </para>
+@@ -70,7 +70,7 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// This evaluator will trigger if the level of the event
+-		/// passed to <see cref="IsTriggeringEvent(LoggingEvent)"/>
++		/// passed to <see cref="M:IsTriggeringEvent(LoggingEvent)"/>
+ 		/// is equal to or greater than the <see cref="Threshold"/>
+ 		/// level.
+ 		/// </para>
+@@ -94,7 +94,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This evaluator will trigger if the level of the event
+-		/// passed to <see cref="IsTriggeringEvent(LoggingEvent)"/>
++		/// passed to <see cref="M:IsTriggeringEvent(LoggingEvent)"/>
+ 		/// is equal to or greater than the <see cref="Threshold"/>
+ 		/// level.
+ 		/// </para>
+@@ -115,7 +115,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This evaluator will trigger if the level of the event
+-		/// passed to <see cref="IsTriggeringEvent(LoggingEvent)"/>
++		/// passed to <see cref="M:IsTriggeringEvent(LoggingEvent)"/>
+ 		/// is equal to or greater than the <see cref="Threshold"/>
+ 		/// level.
+ 		/// </para>
+Index: src/Core/LevelMap.cs
+===================================================================
+--- src/Core/LevelMap.cs	(revision 1380006)
++++ src/Core/LevelMap.cs	(working copy)
+@@ -112,7 +112,7 @@
+ 		/// Create a new Level and add it to the map
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Add(string,int,string)"/>
++		/// <seealso cref="M:Add(string,int,string)"/>
+ 		public void Add(string name, int value)
+ 		{
+ 			Add(name, value, null);
+Index: src/Core/LogImpl.cs
+===================================================================
+--- src/Core/LogImpl.cs	(revision 1380006)
++++ src/Core/LogImpl.cs	(working copy)
+@@ -41,7 +41,7 @@
+ 	///   <item>
+ 	///     <term>DEBUG</term>
+ 	///     <description>
+-	///     The <see cref="Debug(object)"/> and <see cref="DebugFormat(string, object[])"/> methods log messages
++	///     The <see cref="M:Debug(object)"/> and <see cref="M:DebugFormat(string, object[])"/> methods log messages
+ 	///     at the <c>DEBUG</c> level. That is the level with that name defined in the
+ 	///     repositories <see cref="ILoggerRepository.LevelMap"/>. The default value
+ 	///     for this level is <see cref="Level.Debug"/>. The <see cref="IsDebugEnabled"/>
+@@ -51,7 +51,7 @@
+ 	///   <item>
+ 	///     <term>INFO</term>
+ 	///     <description>
+-	///     The <see cref="Info(object)"/> and <see cref="InfoFormat(string, object[])"/> methods log messages
++	///     The <see cref="M:Info(object)"/> and <see cref="M:InfoFormat(string, object[])"/> methods log messages
+ 	///     at the <c>INFO</c> level. That is the level with that name defined in the
+ 	///     repositories <see cref="ILoggerRepository.LevelMap"/>. The default value
+ 	///     for this level is <see cref="Level.Info"/>. The <see cref="IsInfoEnabled"/>
+@@ -61,7 +61,7 @@
+ 	///   <item>
+ 	///     <term>WARN</term>
+ 	///     <description>
+-	///     The <see cref="Warn(object)"/> and <see cref="WarnFormat(string, object[])"/> methods log messages
++	///     The <see cref="M:Warn(object)"/> and <see cref="M:WarnFormat(string, object[])"/> methods log messages
+ 	///     at the <c>WARN</c> level. That is the level with that name defined in the
+ 	///     repositories <see cref="ILoggerRepository.LevelMap"/>. The default value
+ 	///     for this level is <see cref="Level.Warn"/>. The <see cref="IsWarnEnabled"/>
+@@ -71,7 +71,7 @@
+ 	///   <item>
+ 	///     <term>ERROR</term>
+ 	///     <description>
+-	///     The <see cref="Error(object)"/> and <see cref="ErrorFormat(string, object[])"/> methods log messages
++	///     The <see cref="M:Error(object)"/> and <see cref="M:ErrorFormat(string, object[])"/> methods log messages
+ 	///     at the <c>ERROR</c> level. That is the level with that name defined in the
+ 	///     repositories <see cref="ILoggerRepository.LevelMap"/>. The default value
+ 	///     for this level is <see cref="Level.Error"/>. The <see cref="IsErrorEnabled"/>
+@@ -81,7 +81,7 @@
+ 	///   <item>
+ 	///     <term>FATAL</term>
+ 	///     <description>
+-	///     The <see cref="Fatal(object)"/> and <see cref="FatalFormat(string, object[])"/> methods log messages
++	///     The <see cref="M:Fatal(object)"/> and <see cref="M:FatalFormat(string, object[])"/> methods log messages
+ 	///     at the <c>FATAL</c> level. That is the level with that name defined in the
+ 	///     repositories <see cref="ILoggerRepository.LevelMap"/>. The default value
+ 	///     for this level is <see cref="Level.Fatal"/>. The <see cref="IsFatalEnabled"/>
+@@ -162,7 +162,7 @@
+ 		/// <b>WARNING</b> Note that passing an <see cref="Exception"/> 
+ 		/// to this method will print the name of the <see cref="Exception"/> 
+ 		/// but no stack trace. To print a stack trace use the 
+-		/// <see cref="Debug(object,Exception)"/> form instead.
++		/// <see cref="M:Debug(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+ 		virtual public void Debug(object message) 
+@@ -182,10 +182,10 @@
+ 		/// as a parameter.
+ 		/// </para>
+ 		/// <para>
+-		/// See the <see cref="Debug(object)"/> form for more detailed information.
++		/// See the <see cref="M:Debug(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object)"/>
++		/// <seealso cref="M:Debug(object)"/>
+ 		virtual public void Debug(object message, Exception exception) 
+ 		{
+ 			Logger.Log(ThisDeclaringType, m_levelDebug, message, exception);
+@@ -198,18 +198,18 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="DebugFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:DebugFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -228,18 +228,18 @@
+ 		/// <param name="arg0">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="DebugFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:DebugFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -259,18 +259,18 @@
+ 		/// <param name="arg1">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="DebugFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:DebugFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -291,18 +291,18 @@
+ 		/// <param name="arg2">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="DebugFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:DebugFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -322,13 +322,13 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -360,7 +360,7 @@
+ 		/// <b>WARNING</b> Note that passing an <see cref="Exception"/> 
+ 		/// to this method will print the name of the <see cref="Exception"/> 
+ 		/// but no stack trace. To print a stack trace use the 
+-		/// <see cref="Info(object,Exception)"/> form instead.
++		/// <see cref="M:Info(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+ 		virtual public void Info(object message) 
+@@ -380,10 +380,10 @@
+ 		/// passed as a parameter.
+ 		/// </para>
+ 		/// <para>
+-		/// See the <see cref="Info(object)"/> form for more detailed information.
++		/// See the <see cref="M:Info(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Info(object)"/>
++		/// <seealso cref="M:Info(object)"/>
+ 		virtual public void Info(object message, Exception exception) 
+ 		{
+ 			Logger.Log(ThisDeclaringType, m_levelInfo, message, exception);
+@@ -396,18 +396,18 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="InfoFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:InfoFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -426,18 +426,18 @@
+ 		/// <param name="arg0">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="InfoFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:InfoFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -457,18 +457,18 @@
+ 		/// <param name="arg1">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="InfoFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:InfoFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -489,18 +489,18 @@
+ 		/// <param name="arg2">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="InfoFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:InfoFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -520,13 +520,13 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -558,7 +558,7 @@
+ 		/// <b>WARNING</b> Note that passing an <see cref="Exception"/> to this
+ 		/// method will print the name of the <see cref="Exception"/> but no
+ 		/// stack trace. To print a stack trace use the 
+-		/// <see cref="Warn(object,Exception)"/> form instead.
++		/// <see cref="M:Warn(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+ 		virtual public void Warn(object message) 
+@@ -578,10 +578,10 @@
+ 		/// passed as a parameter.
+ 		/// </para>
+ 		/// <para>
+-		/// See the <see cref="Warn(object)"/> form for more detailed information.
++		/// See the <see cref="M:Warn(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Warn(object)"/>
++		/// <seealso cref="M:Warn(object)"/>
+ 		virtual public void Warn(object message, Exception exception) 
+ 		{
+ 			Logger.Log(ThisDeclaringType, m_levelWarn, message, exception);
+@@ -594,18 +594,18 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="WarnFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:WarnFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -624,18 +624,18 @@
+ 		/// <param name="arg0">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="WarnFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:WarnFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -655,18 +655,18 @@
+ 		/// <param name="arg1">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="WarnFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:WarnFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -687,18 +687,18 @@
+ 		/// <param name="arg2">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="WarnFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:WarnFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -718,13 +718,13 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -756,7 +756,7 @@
+ 		/// <b>WARNING</b> Note that passing an <see cref="Exception"/> to this
+ 		/// method will print the name of the <see cref="Exception"/> but no
+ 		/// stack trace. To print a stack trace use the 
+-		/// <see cref="Error(object,Exception)"/> form instead.
++		/// <see cref="M:Error(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+ 		virtual public void Error(object message) 
+@@ -776,10 +776,10 @@
+ 		/// passed as a parameter.
+ 		/// </para>
+ 		/// <para>
+-		/// See the <see cref="Error(object)"/> form for more detailed information.
++		/// See the <see cref="M:Error(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Error(object)"/>
++		/// <seealso cref="M:Error(object)"/>
+ 		virtual public void Error(object message, Exception exception) 
+ 		{
+ 			Logger.Log(ThisDeclaringType, m_levelError, message, exception);
+@@ -792,18 +792,18 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="ErrorFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:ErrorFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -822,18 +822,18 @@
+ 		/// <param name="arg0">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="ErrorFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:ErrorFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -853,18 +853,18 @@
+ 		/// <param name="arg1">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="ErrorFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:ErrorFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -885,18 +885,18 @@
+ 		/// <param name="arg2">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="ErrorFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:ErrorFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -916,13 +916,13 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -954,7 +954,7 @@
+ 		/// <b>WARNING</b> Note that passing an <see cref="Exception"/> to this
+ 		/// method will print the name of the <see cref="Exception"/> but no
+ 		/// stack trace. To print a stack trace use the 
+-		/// <see cref="Fatal(object,Exception)"/> form instead.
++		/// <see cref="M:Fatal(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+ 		virtual public void Fatal(object message) 
+@@ -974,10 +974,10 @@
+ 		/// passed as a parameter.
+ 		/// </para>
+ 		/// <para>
+-		/// See the <see cref="Fatal(object)"/> form for more detailed information.
++		/// See the <see cref="M:Fatal(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Fatal(object)"/>
++		/// <seealso cref="M:Fatal(object)"/>
+ 		virtual public void Fatal(object message, Exception exception) 
+ 		{
+ 			Logger.Log(ThisDeclaringType, m_levelFatal, message, exception);
+@@ -990,18 +990,18 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="FatalFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:FatalFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -1020,18 +1020,18 @@
+ 		/// <param name="arg0">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="FatalFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:FatalFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -1051,18 +1051,18 @@
+ 		/// <param name="arg1">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="FatalFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:FatalFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -1083,18 +1083,18 @@
+ 		/// <param name="arg2">An Object to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// The string is formatted using the <see cref="CultureInfo.InvariantCulture"/>
+ 		/// format provider. To specify a localized provider use the
+-		/// <see cref="FatalFormat(IFormatProvider,string,object[])"/> method.
++		/// <see cref="M:FatalFormat(IFormatProvider,string,object[])"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+@@ -1114,13 +1114,13 @@
+ 		/// <param name="args">An Object array containing zero or more objects to format</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// The message is formatted using the <see cref="String.Format(IFormatProvider, string, object[])"/> method. See
++		/// The message is formatted using the <see cref="M:String.Format(IFormatProvider, string, object[])"/> method. See
+ 		/// <c>String.Format</c> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Core/LoggerManager.cs
+===================================================================
+--- src/Core/LoggerManager.cs	(revision 1380006)
++++ src/Core/LoggerManager.cs	(working copy)
+@@ -404,7 +404,7 @@
+ 		}	
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <param name="repository">The repository to lookup in.</param>
+ 		/// <param name="type">The <paramref name="type"/> of which the fullname will be used as the name of the logger to retrieve.</param>
+@@ -428,7 +428,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <param name="repositoryAssembly">the assembly to use to lookup the repository</param>
+ 		/// <param name="type">The <paramref name="type"/> of which the fullname will be used as the name of the logger to retrieve.</param>
+@@ -702,7 +702,7 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository(Assembly)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(Assembly)"/> with the
+ 		/// same assembly specified will return the same repository instance.
+ 		/// </para>
+ 		/// </remarks>
+@@ -723,7 +723,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository(Assembly)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(Assembly)"/> with the
+ 		/// same assembly specified will return the same repository instance.
+ 		/// </para>
+ 		/// </remarks>
+@@ -769,7 +769,7 @@
+ 		/// <para>
+ 		/// The caller to <see cref="LogManager"/> supplies either a string name 
+ 		/// or an assembly (if not supplied the assembly is inferred using 
+-		/// <see cref="Assembly.GetCallingAssembly()"/>).
++		/// <see cref="M:Assembly.GetCallingAssembly()"/>).
+ 		/// </para>
+ 		/// <para>
+ 		/// This context is used by the selector to lookup a specific repository.
+@@ -823,7 +823,7 @@
+ 		/// Called when the <see cref="AppDomain.DomainUnload"/> event fires.
+ 		/// </para>
+ 		/// <para>
+-		/// When the event is triggered the log4net system is <see cref="Shutdown()"/>.
++		/// When the event is triggered the log4net system is <see cref="M:Shutdown()"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		private static void OnDomainUnload(object sender, EventArgs e)
+@@ -841,7 +841,7 @@
+ 		/// Called when the <see cref="AppDomain.ProcessExit"/> event fires.
+ 		/// </para>
+ 		/// <para>
+-		/// When the event is triggered the log4net system is <see cref="Shutdown()"/>.
++		/// When the event is triggered the log4net system is <see cref="M:Shutdown()"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		private static void OnProcessExit(object sender, EventArgs e)
+Index: src/Core/LoggingEvent.cs
+===================================================================
+--- src/Core/LoggingEvent.cs	(revision 1380006)
++++ src/Core/LoggingEvent.cs	(working copy)
+@@ -278,8 +278,8 @@
+ 	/// time the event is delivered to appenders, but will not be consistent
+ 	/// at any time afterwards. If an event is to be stored and then processed
+ 	/// at a later time these volatile values must be fixed by calling
+-	/// <see cref="FixVolatileData()"/>. There is a performance penalty
+-	/// for incurred by calling <see cref="FixVolatileData()"/> but it
++	/// <see cref="M:FixVolatileData()"/>. There is a performance penalty
++	/// for incurred by calling <see cref="M:FixVolatileData()"/> but it
+ 	/// is essential to maintaining data consistency.
+ 	/// </para>
+ 	/// </remarks>
+@@ -314,7 +314,7 @@
+ 		/// <para>
+ 		/// Except <see cref="TimeStamp"/>, <see cref="Level"/> and <see cref="LoggerName"/>, 
+ 		/// all fields of <c>LoggingEvent</c> are filled when actually needed. Call
+-		/// <see cref="FixVolatileData()"/> to cache all data locally
++		/// <see cref="M:FixVolatileData()"/> to cache all data locally
+ 		/// to prevent inconsistencies.
+ 		/// </para>
+ 		/// <para>This method is called by the log4net framework
+@@ -351,7 +351,7 @@
+ 		/// be useful if you require a custom serialization scheme.
+ 		/// </para>
+ 		/// <para>
+-		/// Use the <see cref="GetLoggingEventData(FixFlags)"/> method to obtain an 
++		/// Use the <see cref="M:GetLoggingEventData(FixFlags)"/> method to obtain an 
+ 		/// instance of the <see cref="LoggingEventData"/> class.
+ 		/// </para>
+ 		/// <para>
+@@ -384,7 +384,7 @@
+ 		/// be useful if you require a custom serialization scheme.
+ 		/// </para>
+ 		/// <para>
+-		/// Use the <see cref="GetLoggingEventData(FixFlags)"/> method to obtain an 
++		/// Use the <see cref="M:GetLoggingEventData(FixFlags)"/> method to obtain an 
+ 		/// instance of the <see cref="LoggingEventData"/> class.
+ 		/// </para>
+ 		/// <para>
+@@ -409,7 +409,7 @@
+ 		/// be useful if you require a custom serialization scheme.
+ 		/// </para>
+ 		/// <para>
+-		/// Use the <see cref="GetLoggingEventData(FixFlags)"/> method to obtain an 
++		/// Use the <see cref="M:GetLoggingEventData(FixFlags)"/> method to obtain an 
+ 		/// instance of the <see cref="LoggingEventData"/> class.
+ 		/// </para>
+ 		/// <para>
+@@ -1008,7 +1008,7 @@
+ 		/// The data in this event must be fixed before it can be serialized.
+ 		/// </para>
+ 		/// <para>
+-		/// The <see cref="FixVolatileData()"/> method must be called during the
++		/// The <see cref="M:FixVolatileData()"/> method must be called during the
+ 		/// <see cref="log4net.Appender.IAppender.DoAppend"/> method call if this event 
+ 		/// is to be used outside that method.
+ 		/// </para>
+@@ -1144,17 +1144,17 @@
+ 		/// time the event is delivered to appenders, but will not be consistent
+ 		/// at any time afterwards. If an event is to be stored and then processed
+ 		/// at a later time these volatile values must be fixed by calling
+-		/// <see cref="FixVolatileData()"/>. There is a performance penalty
+-		/// incurred by calling <see cref="FixVolatileData()"/> but it
++		/// <see cref="M:FixVolatileData()"/>. There is a performance penalty
++		/// incurred by calling <see cref="M:FixVolatileData()"/> but it
+ 		/// is essential to maintaining data consistency.
+ 		/// </para>
+ 		/// <para>
+-		/// Calling <see cref="FixVolatileData()"/> is equivalent to
+-		/// calling <see cref="FixVolatileData(bool)"/> passing the parameter
++		/// Calling <see cref="M:FixVolatileData()"/> is equivalent to
++		/// calling <see cref="M:FixVolatileData(bool)"/> passing the parameter
+ 		/// <c>false</c>.
+ 		/// </para>
+ 		/// <para>
+-		/// See <see cref="FixVolatileData(bool)"/> for more
++		/// See <see cref="M:FixVolatileData(bool)"/> for more
+ 		/// information.
+ 		/// </para>
+ 		/// </remarks>
+@@ -1175,8 +1175,8 @@
+ 		/// time the event is delivered to appenders, but will not be consistent
+ 		/// at any time afterwards. If an event is to be stored and then processed
+ 		/// at a later time these volatile values must be fixed by calling
+-		/// <see cref="FixVolatileData()"/>. There is a performance penalty
+-		/// for incurred by calling <see cref="FixVolatileData()"/> but it
++		/// <see cref="M:FixVolatileData()"/>. There is a performance penalty
++		/// for incurred by calling <see cref="M:FixVolatileData()"/> but it
+ 		/// is essential to maintaining data consistency.
+ 		/// </para>
+ 		/// <para>
+Index: src/DateFormatter/SimpleDateFormatter.cs
+===================================================================
+--- src/DateFormatter/SimpleDateFormatter.cs	(revision 1380006)
++++ src/DateFormatter/SimpleDateFormatter.cs	(working copy)
+@@ -23,11 +23,11 @@
+ namespace log4net.DateFormatter
+ {
+ 	/// <summary>
+-	/// Formats the <see cref="DateTime"/> using the <see cref="DateTime.ToString(string, IFormatProvider)"/> method.
++	/// Formats the <see cref="DateTime"/> using the <see cref="M:DateTime.ToString(string, IFormatProvider)"/> method.
+ 	/// </summary>
+ 	/// <remarks>
+ 	/// <para>
+-	/// Formats the <see cref="DateTime"/> using the <see cref="DateTime"/> <see cref="DateTime.ToString(string, IFormatProvider)"/> method.
++	/// Formats the <see cref="DateTime"/> using the <see cref="DateTime"/> <see cref="M:DateTime.ToString(string, IFormatProvider)"/> method.
+ 	/// </para>
+ 	/// </remarks>
+ 	/// <author>Nicko Cadell</author>
+@@ -47,7 +47,7 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// The format string must be compatible with the options
+-		/// that can be supplied to <see cref="DateTime.ToString(string, IFormatProvider)"/>.
++		/// that can be supplied to <see cref="M:DateTime.ToString(string, IFormatProvider)"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		public SimpleDateFormatter(string format)
+@@ -60,14 +60,14 @@
+ 		#region Implementation of IDateFormatter
+ 
+ 		/// <summary>
+-		/// Formats the date using <see cref="DateTime.ToString(string, IFormatProvider)"/>.
++		/// Formats the date using <see cref="M:DateTime.ToString(string, IFormatProvider)"/>.
+ 		/// </summary>
+ 		/// <param name="dateToFormat">The date to convert to a string.</param>
+ 		/// <param name="writer">The writer to write to.</param>
+ 		/// <remarks>
+ 		/// <para>
+ 		/// Uses the date format string supplied to the constructor to call
+-		/// the <see cref="DateTime.ToString(string, IFormatProvider)"/> method to format the date.
++		/// the <see cref="M:DateTime.ToString(string, IFormatProvider)"/> method to format the date.
+ 		/// </para>
+ 		/// </remarks>
+ 		virtual public void FormatDate(DateTime dateToFormat, TextWriter writer)
+@@ -85,7 +85,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The format string must be compatible with the options
+-		/// that can be supplied to <see cref="DateTime.ToString(string, IFormatProvider)"/>.
++		/// that can be supplied to <see cref="M:DateTime.ToString(string, IFormatProvider)"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		private readonly string m_formatString;
+Index: src/Filter/LoggerMatchFilter.cs
+===================================================================
+--- src/Filter/LoggerMatchFilter.cs	(revision 1380006)
++++ src/Filter/LoggerMatchFilter.cs	(working copy)
+@@ -96,7 +96,7 @@
+ 		/// <para>
+ 		/// This filter will attempt to match this value against logger name in
+ 		/// the following way. The match will be done against the beginning of the
+-		/// logger name (using <see cref="String.StartsWith(string)"/>). The match is
++		/// logger name (using <see cref="M:String.StartsWith(string)"/>). The match is
+ 		/// case sensitive. If a match is found then
+ 		/// the result depends on the value of <see cref="AcceptOnMatch"/>.
+ 		/// </para>
+@@ -120,7 +120,7 @@
+ 		/// <para>
+ 		/// The rendered message is matched against the <see cref="LoggerToMatch"/>.
+ 		/// If the <see cref="LoggerToMatch"/> equals the beginning of 
+-		/// the incoming <see cref="LoggingEvent.LoggerName"/> (<see cref="String.StartsWith(string)"/>)
++		/// the incoming <see cref="LoggingEvent.LoggerName"/> (<see cref="M:String.StartsWith(string)"/>)
+ 		/// then a match will have occurred. If no match occurs
+ 		/// this function will return <see cref="FilterDecision.Neutral"/>
+ 		/// allowing other filters to check the event. If a match occurs then
+Index: src/ILog.cs
+===================================================================
+--- src/ILog.cs	(revision 1380006)
++++ src/ILog.cs	(working copy)
+@@ -31,7 +31,7 @@
+ 	/// <remarks>
+ 	/// <para>
+ 	/// Use the <see cref="LogManager"/> to obtain logger instances
+-	/// that implement this interface. The <see cref="LogManager.GetLogger(Assembly,Type)"/>
++	/// that implement this interface. The <see cref="M:LogManager.GetLogger(Assembly,Type)"/>
+ 	/// static method is used to get logger instances.
+ 	/// </para>
+ 	/// <para>
+@@ -60,7 +60,7 @@
+ 	/// </code>
+ 	/// </example>
+ 	/// <seealso cref="LogManager"/>
+-	/// <seealso cref="LogManager.GetLogger(Assembly, Type)"/>
++	/// <seealso cref="M:LogManager.GetLogger(Assembly, Type)"/>
+ 	/// <author>Nicko Cadell</author>
+ 	/// <author>Gert Driesen</author>
+ 	public interface ILog : ILoggerWrapper
+@@ -85,10 +85,10 @@
+ 		/// <para><b>WARNING</b> Note that passing an <see cref="Exception"/> 
+ 		/// to this method will print the name of the <see cref="Exception"/> 
+ 		/// but no stack trace. To print a stack trace use the 
+-		/// <see cref="Debug(object,Exception)"/> form instead.
++		/// <see cref="M:Debug(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object,Exception)"/>
++		/// <seealso cref="M:Debug(object,Exception)"/>
+ 		/// <seealso cref="IsDebugEnabled"/>
+ 		void Debug(object message);
+   
+@@ -101,10 +101,10 @@
+ 		/// <param name="exception">The exception to log, including its stack trace.</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// See the <see cref="Debug(object)"/> form for more detailed information.
++		/// See the <see cref="M:Debug(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object)"/>
++		/// <seealso cref="M:Debug(object)"/>
+ 		/// <seealso cref="IsDebugEnabled"/>
+ 		void Debug(object message, Exception exception);
+ 
+@@ -117,16 +117,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object)"/>
++		/// <seealso cref="M:Debug(object)"/>
+ 		/// <seealso cref="IsDebugEnabled"/>
+ 		void DebugFormat(string format, params object[] args); 
+ 
+@@ -138,16 +138,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object)"/>
++		/// <seealso cref="M:Debug(object)"/>
+ 		/// <seealso cref="IsDebugEnabled"/>
+ 		void DebugFormat(string format, object arg0); 
+ 
+@@ -160,16 +160,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object)"/>
++		/// <seealso cref="M:Debug(object)"/>
+ 		/// <seealso cref="IsDebugEnabled"/>
+ 		void DebugFormat(string format, object arg0, object arg1); 
+ 
+@@ -183,16 +183,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object)"/>
++		/// <seealso cref="M:Debug(object)"/>
+ 		/// <seealso cref="IsDebugEnabled"/>
+ 		void DebugFormat(string format, object arg0, object arg1, object arg2); 
+ 
+@@ -205,16 +205,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Debug(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Debug(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object)"/>
++		/// <seealso cref="M:Debug(object)"/>
+ 		/// <seealso cref="IsDebugEnabled"/>
+ 		void DebugFormat(IFormatProvider provider, string format, params object[] args);
+ 
+@@ -237,11 +237,11 @@
+ 		/// <para><b>WARNING</b> Note that passing an <see cref="Exception"/> 
+ 		/// to this method will print the name of the <see cref="Exception"/> 
+ 		/// but no stack trace. To print a stack trace use the 
+-		/// <see cref="Info(object,Exception)"/> form instead.
++		/// <see cref="M:Info(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+ 		/// <param name="message">The message object to log.</param>
+-		/// <seealso cref="Info(object,Exception)"/>
++		/// <seealso cref="M:Info(object,Exception)"/>
+ 		/// <seealso cref="IsInfoEnabled"/>
+ 		void Info(object message);
+   
+@@ -254,10 +254,10 @@
+ 		/// <param name="exception">The exception to log, including its stack trace.</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// See the <see cref="Info(object)"/> form for more detailed information.
++		/// See the <see cref="M:Info(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Info(object)"/>
++		/// <seealso cref="M:Info(object)"/>
+ 		/// <seealso cref="IsInfoEnabled"/>
+ 		void Info(object message, Exception exception);
+ 
+@@ -270,16 +270,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Info(object,Exception)"/>
++		/// <seealso cref="M:Info(object,Exception)"/>
+ 		/// <seealso cref="IsInfoEnabled"/>
+ 		void InfoFormat(string format, params object[] args);
+ 
+@@ -291,16 +291,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Info(object)"/>
++		/// <seealso cref="M:Info(object)"/>
+ 		/// <seealso cref="IsInfoEnabled"/>
+ 		void InfoFormat(string format, object arg0); 
+ 
+@@ -313,16 +313,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Info(object)"/>
++		/// <seealso cref="M:Info(object)"/>
+ 		/// <seealso cref="IsInfoEnabled"/>
+ 		void InfoFormat(string format, object arg0, object arg1); 
+ 
+@@ -336,16 +336,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Info(object)"/>
++		/// <seealso cref="M:Info(object)"/>
+ 		/// <seealso cref="IsInfoEnabled"/>
+ 		void InfoFormat(string format, object arg0, object arg1, object arg2); 
+ 
+@@ -358,16 +358,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Info(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Info(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Info(object,Exception)"/>
++		/// <seealso cref="M:Info(object,Exception)"/>
+ 		/// <seealso cref="IsInfoEnabled"/>
+ 		void InfoFormat(IFormatProvider provider, string format, params object[] args);
+ 
+@@ -390,11 +390,11 @@
+ 		/// <para><b>WARNING</b> Note that passing an <see cref="Exception"/> 
+ 		/// to this method will print the name of the <see cref="Exception"/> 
+ 		/// but no stack trace. To print a stack trace use the 
+-		/// <see cref="Warn(object,Exception)"/> form instead.
++		/// <see cref="M:Warn(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+ 		/// <param name="message">The message object to log.</param>
+-		/// <seealso cref="Warn(object,Exception)"/>
++		/// <seealso cref="M:Warn(object,Exception)"/>
+ 		/// <seealso cref="IsWarnEnabled"/>
+ 		void Warn(object message);
+   
+@@ -407,10 +407,10 @@
+ 		/// <param name="exception">The exception to log, including its stack trace.</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// See the <see cref="Warn(object)"/> form for more detailed information.
++		/// See the <see cref="M:Warn(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Warn(object)"/>
++		/// <seealso cref="M:Warn(object)"/>
+ 		/// <seealso cref="IsWarnEnabled"/>
+ 		void Warn(object message, Exception exception);
+ 
+@@ -423,16 +423,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Warn(object,Exception)"/>
++		/// <seealso cref="M:Warn(object,Exception)"/>
+ 		/// <seealso cref="IsWarnEnabled"/>
+ 		void WarnFormat(string format, params object[] args);
+ 
+@@ -444,16 +444,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Warn(object)"/>
++		/// <seealso cref="M:Warn(object)"/>
+ 		/// <seealso cref="IsWarnEnabled"/>
+ 		void WarnFormat(string format, object arg0); 
+ 
+@@ -466,16 +466,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Warn(object)"/>
++		/// <seealso cref="M:Warn(object)"/>
+ 		/// <seealso cref="IsWarnEnabled"/>
+ 		void WarnFormat(string format, object arg0, object arg1); 
+ 
+@@ -489,16 +489,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Warn(object)"/>
++		/// <seealso cref="M:Warn(object)"/>
+ 		/// <seealso cref="IsWarnEnabled"/>
+ 		void WarnFormat(string format, object arg0, object arg1, object arg2); 
+ 
+@@ -511,16 +511,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Warn(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Warn(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Warn(object,Exception)"/>
++		/// <seealso cref="M:Warn(object,Exception)"/>
+ 		/// <seealso cref="IsWarnEnabled"/>
+ 		void WarnFormat(IFormatProvider provider, string format, params object[] args);
+ 
+@@ -544,10 +544,10 @@
+ 		/// <para><b>WARNING</b> Note that passing an <see cref="Exception"/> 
+ 		/// to this method will print the name of the <see cref="Exception"/> 
+ 		/// but no stack trace. To print a stack trace use the 
+-		/// <see cref="Error(object,Exception)"/> form instead.
++		/// <see cref="M:Error(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Error(object,Exception)"/>
++		/// <seealso cref="M:Error(object,Exception)"/>
+ 		/// <seealso cref="IsErrorEnabled"/>
+ 		void Error(object message);
+ 
+@@ -560,10 +560,10 @@
+ 		/// <param name="exception">The exception to log, including its stack trace.</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// See the <see cref="Error(object)"/> form for more detailed information.
++		/// See the <see cref="M:Error(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Error(object)"/>
++		/// <seealso cref="M:Error(object)"/>
+ 		/// <seealso cref="IsErrorEnabled"/>
+ 		void Error(object message, Exception exception);
+ 
+@@ -576,16 +576,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Error(object,Exception)"/>
++		/// <seealso cref="M:Error(object,Exception)"/>
+ 		/// <seealso cref="IsErrorEnabled"/>
+ 		void ErrorFormat(string format, params object[] args);
+ 
+@@ -597,16 +597,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Error(object)"/>
++		/// <seealso cref="M:Error(object)"/>
+ 		/// <seealso cref="IsErrorEnabled"/>
+ 		void ErrorFormat(string format, object arg0); 
+ 
+@@ -619,16 +619,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Error(object)"/>
++		/// <seealso cref="M:Error(object)"/>
+ 		/// <seealso cref="IsErrorEnabled"/>
+ 		void ErrorFormat(string format, object arg0, object arg1); 
+ 
+@@ -642,16 +642,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Error(object)"/>
++		/// <seealso cref="M:Error(object)"/>
+ 		/// <seealso cref="IsErrorEnabled"/>
+ 		void ErrorFormat(string format, object arg0, object arg1, object arg2); 
+ 
+@@ -664,16 +664,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Error(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Error(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Error(object,Exception)"/>
++		/// <seealso cref="M:Error(object,Exception)"/>
+ 		/// <seealso cref="IsErrorEnabled"/>
+ 		void ErrorFormat(IFormatProvider provider, string format, params object[] args);
+ 
+@@ -696,11 +696,11 @@
+ 		/// <para><b>WARNING</b> Note that passing an <see cref="Exception"/> 
+ 		/// to this method will print the name of the <see cref="Exception"/> 
+ 		/// but no stack trace. To print a stack trace use the 
+-		/// <see cref="Fatal(object,Exception)"/> form instead.
++		/// <see cref="M:Fatal(object,Exception)"/> form instead.
+ 		/// </para>
+ 		/// </remarks>
+ 		/// <param name="message">The message object to log.</param>
+-		/// <seealso cref="Fatal(object,Exception)"/>
++		/// <seealso cref="M:Fatal(object,Exception)"/>
+ 		/// <seealso cref="IsFatalEnabled"/>
+ 		void Fatal(object message);
+   
+@@ -713,10 +713,10 @@
+ 		/// <param name="exception">The exception to log, including its stack trace.</param>
+ 		/// <remarks>
+ 		/// <para>
+-		/// See the <see cref="Fatal(object)"/> form for more detailed information.
++		/// See the <see cref="M:Fatal(object)"/> form for more detailed information.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Fatal(object)"/>
++		/// <seealso cref="M:Fatal(object)"/>
+ 		/// <seealso cref="IsFatalEnabled"/>
+ 		void Fatal(object message, Exception exception);
+ 
+@@ -729,16 +729,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Fatal(object,Exception)"/>
++		/// <seealso cref="M:Fatal(object,Exception)"/>
+ 		/// <seealso cref="IsFatalEnabled"/>
+ 		void FatalFormat(string format, params object[] args);
+ 
+@@ -750,16 +750,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Fatal(object)"/>
++		/// <seealso cref="M:Fatal(object)"/>
+ 		/// <seealso cref="IsFatalEnabled"/>
+ 		void FatalFormat(string format, object arg0); 
+ 
+@@ -772,16 +772,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Fatal(object)"/>
++		/// <seealso cref="M:Fatal(object)"/>
+ 		/// <seealso cref="IsFatalEnabled"/>
+ 		void FatalFormat(string format, object arg0, object arg1); 
+ 
+@@ -795,16 +795,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object,Exception)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object,Exception)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Fatal(object)"/>
++		/// <seealso cref="M:Fatal(object)"/>
+ 		/// <seealso cref="IsFatalEnabled"/>
+ 		void FatalFormat(string format, object arg0, object arg1, object arg2); 
+ 
+@@ -817,16 +817,16 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The message is formatted using the <c>String.Format</c> method. See
+-		/// <see cref="String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
++		/// <see cref="M:String.Format(string, object[])"/> for details of the syntax of the format string and the behavior
+ 		/// of the formatting.
+ 		/// </para>
+ 		/// <para>
+ 		/// This method does not take an <see cref="Exception"/> object to include in the
+-		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="Fatal(object)"/>
++		/// log event. To pass an <see cref="Exception"/> use one of the <see cref="M:Fatal(object)"/>
+ 		/// methods instead.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Fatal(object,Exception)"/>
++		/// <seealso cref="M:Fatal(object,Exception)"/>
+ 		/// <seealso cref="IsFatalEnabled"/>
+ 		void FatalFormat(IFormatProvider provider, string format, params object[] args);
+ 
+@@ -864,7 +864,7 @@
+ 		/// the other hand, if the <c>log</c> is debug enabled, you
+ 		/// will incur the cost of evaluating whether the logger is debug
+ 		/// enabled twice. Once in <see cref="IsDebugEnabled"/> and once in
+-		/// the <see cref="Debug(object)"/>.  This is an insignificant overhead
++		/// the <see cref="M:Debug(object)"/>.  This is an insignificant overhead
+ 		/// since evaluating a logger takes about 1% of the time it
+ 		/// takes to actually log. This is the preferred style of logging.
+ 		/// </para>
+@@ -897,8 +897,8 @@
+ 		/// speed or runtime flexibility.
+ 		/// </para>
+ 		/// </remarks>
+-		/// <seealso cref="Debug(object)"/>
+-		/// <seealso cref="DebugFormat(IFormatProvider, string, object[])"/>
++		/// <seealso cref="M:Debug(object)"/>
++		/// <seealso cref="M:DebugFormat(IFormatProvider, string, object[])"/>
+ 		bool IsDebugEnabled { get; }
+   
+ 		/// <summary>
+@@ -910,8 +910,8 @@
+ 		/// <remarks>
+ 		/// For more information see <see cref="ILog.IsDebugEnabled"/>.
+ 		/// </remarks>
+-		/// <seealso cref="Info(object)"/>
+-		/// <seealso cref="InfoFormat(IFormatProvider, string, object[])"/>
++		/// <seealso cref="M:Info(object)"/>
++		/// <seealso cref="M:InfoFormat(IFormatProvider, string, object[])"/>
+ 		/// <seealso cref="ILog.IsDebugEnabled"/>
+ 		bool IsInfoEnabled { get; }
+ 
+@@ -924,8 +924,8 @@
+ 		/// <remarks>
+ 		/// For more information see <see cref="ILog.IsDebugEnabled"/>.
+ 		/// </remarks>
+-		/// <seealso cref="Warn(object)"/>
+-		/// <seealso cref="WarnFormat(IFormatProvider, string, object[])"/>
++		/// <seealso cref="M:Warn(object)"/>
++		/// <seealso cref="M:WarnFormat(IFormatProvider, string, object[])"/>
+ 		/// <seealso cref="ILog.IsDebugEnabled"/>
+ 		bool IsWarnEnabled { get; }
+ 
+@@ -938,8 +938,8 @@
+ 		/// <remarks>
+ 		/// For more information see <see cref="ILog.IsDebugEnabled"/>.
+ 		/// </remarks>
+-		/// <seealso cref="Error(object)"/>
+-		/// <seealso cref="ErrorFormat(IFormatProvider, string, object[])"/>
++		/// <seealso cref="M:Error(object)"/>
++		/// <seealso cref="M:ErrorFormat(IFormatProvider, string, object[])"/>
+ 		/// <seealso cref="ILog.IsDebugEnabled"/>
+ 		bool IsErrorEnabled { get; }
+ 
+@@ -952,8 +952,8 @@
+ 		/// <remarks>
+ 		/// For more information see <see cref="ILog.IsDebugEnabled"/>.
+ 		/// </remarks>
+-		/// <seealso cref="Fatal(object)"/>
+-		/// <seealso cref="FatalFormat(IFormatProvider, string, object[])"/>
++		/// <seealso cref="M:Fatal(object)"/>
++		/// <seealso cref="M:FatalFormat(IFormatProvider, string, object[])"/>
+ 		/// <seealso cref="ILog.IsDebugEnabled"/>
+ 		bool IsFatalEnabled { get; }
+ 	}
+Index: src/Layout/ExceptionLayout.cs
+===================================================================
+--- src/Layout/ExceptionLayout.cs	(revision 1380006)
++++ src/Layout/ExceptionLayout.cs	(working copy)
+@@ -90,7 +90,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// Write the exception string to the <see cref="TextWriter"/>.
+-		/// The exception string is retrieved from <see cref="LoggingEvent.GetExceptionString()"/>.
++		/// The exception string is retrieved from <see cref="M:LoggingEvent.GetExceptionString()"/>.
+ 		/// </para>
+ 		/// </remarks>
+ 		override public void Format(TextWriter writer, LoggingEvent loggingEvent) 
+Index: src/Layout/ILayout.cs
+===================================================================
+--- src/Layout/ILayout.cs	(revision 1380006)
++++ src/Layout/ILayout.cs	(working copy)
+@@ -31,7 +31,7 @@
+ 	/// <remarks>
+ 	/// <para>
+ 	/// An <see cref="ILayout"/> object is used to format a <see cref="LoggingEvent"/>
+-	/// as text. The <see cref="Format(TextWriter,LoggingEvent)"/> method is called by an
++	/// as text. The <see cref="M:Format(TextWriter,LoggingEvent)"/> method is called by an
+ 	/// appender to transform the <see cref="LoggingEvent"/> into a string.
+ 	/// </para>
+ 	/// <para>
+Index: src/Layout/LayoutSkeleton.cs
+===================================================================
+--- src/Layout/LayoutSkeleton.cs	(revision 1380006)
++++ src/Layout/LayoutSkeleton.cs	(working copy)
+@@ -37,7 +37,7 @@
+ 	/// <remarks>
+ 	/// <note type="inheritinfo">
+ 	/// <para>
+-	/// Subclasses must implement the <see cref="Format(TextWriter,LoggingEvent)"/>
++	/// Subclasses must implement the <see cref="M:Format(TextWriter,LoggingEvent)"/>
+ 	/// method.
+ 	/// </para>
+ 	/// <para>
+Index: src/Layout/Pattern/DatePatternConverter.cs
+===================================================================
+--- src/Layout/Pattern/DatePatternConverter.cs	(revision 1380006)
++++ src/Layout/Pattern/DatePatternConverter.cs	(working copy)
+@@ -69,7 +69,7 @@
+ 	/// 		<description>
+ 	/// 		Any other pattern string uses the <see cref="SimpleDateFormatter"/> formatter. 
+ 	/// 		This formatter passes the pattern string to the <see cref="DateTime"/> 
+-	/// 		<see cref="DateTime.ToString(string)"/> method.
++	/// 		<see cref="M:DateTime.ToString(string)"/> method.
+ 	/// 		For details on valid patterns see 
+ 	/// 		<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemglobalizationdatetimeformatinfoclasstopic.asp">DateTimeFormatInfo Class</a>.
+ 	/// 		</description>
+Index: src/Layout/PatternLayout.cs
+===================================================================
+--- src/Layout/PatternLayout.cs	(revision 1380006)
++++ src/Layout/PatternLayout.cs	(working copy)
+@@ -39,7 +39,7 @@
+ 	/// </summary>
+ 	/// <remarks>
+ 	/// <para>
+-	/// The goal of this class is to <see cref="PatternLayout.Format(TextWriter,LoggingEvent)"/> a 
++	/// The goal of this class is to <see cref="M:PatternLayout.Format(TextWriter,LoggingEvent)"/> a 
+ 	/// <see cref="LoggingEvent"/> as a string. The results
+ 	/// depend on the <i>conversion pattern</i>.
+ 	/// </para>
+@@ -178,7 +178,7 @@
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			The date format specifier admits the same syntax as the
+-	/// 			time pattern string of the <see cref="DateTime.ToString(string)"/>.
++	/// 			time pattern string of the <see cref="M:DateTime.ToString(string)"/>.
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			For better results it is recommended to use the log4net date
+@@ -191,7 +191,7 @@
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			These dedicated date formatters perform significantly
+-	/// 			better than <see cref="DateTime.ToString(string)"/>.
++	/// 			better than <see cref="M:DateTime.ToString(string)"/>.
+ 	/// 			</para>
+ 	///			</description>
+ 	///		</item>
+@@ -575,7 +575,7 @@
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			The date format specifier admits the same syntax as the
+-	/// 			time pattern string of the <see cref="DateTime.ToString(string)"/>.
++	/// 			time pattern string of the <see cref="M:DateTime.ToString(string)"/>.
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			For better results it is recommended to use the log4net date
+@@ -588,7 +588,7 @@
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			These dedicated date formatters perform significantly
+-	/// 			better than <see cref="DateTime.ToString(string)"/>.
++	/// 			better than <see cref="M:DateTime.ToString(string)"/>.
+ 	/// 			</para>
+ 	///			</description>
+ 	///		</item>
+@@ -760,7 +760,7 @@
+ 	/// </note>
+ 	/// <para>
+ 	/// Additional pattern converters may be registered with a specific <see cref="PatternLayout"/>
+-	/// instance using the <see cref="AddConverter(string, Type)"/> method.
++	/// instance using the <see cref="M:AddConverter(string, Type)"/> method.
+ 	/// </para>
+ 	/// </remarks>
+ 	/// <example>
+@@ -1125,7 +1125,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This version of the method is used by the configurator.
+-		/// Programmatic users should use the alternative <see cref="AddConverter(string,Type)"/> method.
++		/// Programmatic users should use the alternative <see cref="M:AddConverter(string,Type)"/> method.
+ 		/// </para>
+ 		/// </remarks>
+ 		public void AddConverter(ConverterInfo converterInfo)
+Index: src/LogManager.cs
+===================================================================
+--- src/LogManager.cs	(revision 1380006)
++++ src/LogManager.cs	(working copy)
+@@ -31,7 +31,7 @@
+ 	/// <remarks>
+ 	/// <para>
+ 	/// This class has static methods that are used by a client to request
+-	/// a logger instance. The <see cref="GetLogger(string)"/> method is 
++	/// a logger instance. The <see cref="M:GetLogger(string)"/> method is 
+ 	/// used to retrieve a logger.
+ 	/// </para>
+ 	/// <para>
+@@ -243,7 +243,7 @@
+ 		}	
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Get the logger for the fully qualified name of the type specified.
+@@ -256,7 +256,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Gets the logger for the fully qualified name of the type specified.
+@@ -270,7 +270,7 @@
+ 		}
+ 
+ 		/// <summary>
+-		/// Shorthand for <see cref="LogManager.GetLogger(string)"/>.
++		/// Shorthand for <see cref="M:LogManager.GetLogger(string)"/>.
+ 		/// </summary>
+ 		/// <remarks>
+ 		/// Gets the logger for the fully qualified name of the type specified.
+@@ -451,7 +451,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// Gets the <see cref="ILoggerRepository"/> for the repository specified
+-		/// by the callers assembly (<see cref="Assembly.GetCallingAssembly()"/>).
++		/// by the callers assembly (<see cref="M:Assembly.GetCallingAssembly()"/>).
+ 		/// </para>
+ 		/// </remarks>
+ 		/// <returns>The <see cref="ILoggerRepository"/> instance for the default repository.</returns>
+@@ -502,7 +502,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// Gets the <see cref="ILoggerRepository"/> for the repository specified
+-		/// by the callers assembly (<see cref="Assembly.GetCallingAssembly()"/>).
++		/// by the callers assembly (<see cref="M:Assembly.GetCallingAssembly()"/>).
+ 		/// </para>
+ 		/// </remarks>
+ 		/// <returns>The <see cref="ILoggerRepository"/> instance for the default repository.</returns>
+@@ -553,7 +553,7 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository()"/> will return 
++		/// specified such that a call to <see cref="M:GetRepository()"/> will return 
+ 		/// the same repository instance.
+ 		/// </para>
+ 		/// </remarks>
+@@ -578,7 +578,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository()"/> will return 
++		/// specified such that a call to <see cref="M:GetRepository()"/> will return 
+ 		/// the same repository instance.
+ 		/// </para>
+ 		/// </remarks>
+@@ -686,7 +686,7 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository(Assembly)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(Assembly)"/> with the
+ 		/// same assembly specified will return the same repository instance.
+ 		/// </para>
+ 		/// </remarks>
+@@ -707,7 +707,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
+-		/// specified such that a call to <see cref="GetRepository(Assembly)"/> with the
++		/// specified such that a call to <see cref="M:GetRepository(Assembly)"/> with the
+ 		/// same assembly specified will return the same repository instance.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/ObjectRenderer/DefaultRenderer.cs
+===================================================================
+--- src/ObjectRenderer/DefaultRenderer.cs	(revision 1380006)
++++ src/ObjectRenderer/DefaultRenderer.cs	(working copy)
+@@ -73,7 +73,7 @@
+ 		/// The <paramref name="rendererMap"/> parameter is
+ 		/// provided to lookup and render other objects. This is
+ 		/// very useful where <paramref name="obj"/> contains
+-		/// nested objects of unknown type. The <see cref="RendererMap.FindAndRender(object)"/>
++		/// nested objects of unknown type. The <see cref="M:RendererMap.FindAndRender(object)"/>
+ 		/// method can be used to render these objects.
+ 		/// </para>
+ 		/// <para>
+Index: src/ObjectRenderer/IObjectRenderer.cs
+===================================================================
+--- src/ObjectRenderer/IObjectRenderer.cs	(revision 1380006)
++++ src/ObjectRenderer/IObjectRenderer.cs	(working copy)
+@@ -52,7 +52,7 @@
+ 		/// The <paramref name="rendererMap"/> parameter is
+ 		/// provided to lookup and render other objects. This is
+ 		/// very useful where <paramref name="obj"/> contains
+-		/// nested objects of unknown type. The <see cref="RendererMap.FindAndRender(object, TextWriter)"/>
++		/// nested objects of unknown type. The <see cref="M:RendererMap.FindAndRender(object, TextWriter)"/>
+ 		/// method can be used to render these objects.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/ObjectRenderer/RendererMap.cs
+===================================================================
+--- src/ObjectRenderer/RendererMap.cs	(revision 1380006)
++++ src/ObjectRenderer/RendererMap.cs	(working copy)
+@@ -33,7 +33,7 @@
+ 	/// is used to render them.
+ 	/// </para>
+ 	/// <para>
+-	/// The <see cref="FindAndRender(object)"/> method is used to render an
++	/// The <see cref="M:FindAndRender(object)"/> method is used to render an
+ 	/// <c>object</c> using the appropriate renderers defined in this map.
+ 	/// </para>
+ 	/// </remarks>
+@@ -77,7 +77,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This is a convenience method used to render an object to a string.
+-		/// The alternative method <see cref="FindAndRender(object,TextWriter)"/>
++		/// The alternative method <see cref="M:FindAndRender(object,TextWriter)"/>
+ 		/// should be used when streaming output to a <see cref="TextWriter"/>.
+ 		/// </para>
+ 		/// </remarks>
+@@ -104,7 +104,7 @@
+ 		/// <para>
+ 		/// Find the appropriate renderer for the type of the
+ 		/// <paramref name="obj"/> parameter. This is accomplished by calling the
+-		/// <see cref="Get(Type)"/> method. Once a renderer is found, it is
++		/// <see cref="M:Get(Type)"/> method. Once a renderer is found, it is
+ 		/// applied on the object <paramref name="obj"/> and the result is returned
+ 		/// as a <see cref="string"/>.
+ 		/// </para>
+@@ -174,7 +174,7 @@
+ 		/// Gets the renderer for the specified object type.
+ 		/// </param>
+ 		/// <param>
+-		/// Syntactic sugar method that calls <see cref="Get(Type)"/> 
++		/// Syntactic sugar method that calls <see cref="M:Get(Type)"/> 
+ 		/// with the type of the object parameter.
+ 		/// </param>
+ 		/// </remarks>
+@@ -303,7 +303,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// Register an object renderer for a specific source type.
+-		/// This renderer will be returned from a call to <see cref="Get(Type)"/>
++		/// This renderer will be returned from a call to <see cref="M:Get(Type)"/>
+ 		/// specifying the same <paramref name="typeToRender"/> as an argument.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Plugin/RemoteLoggingServerPlugin.cs
+===================================================================
+--- src/Plugin/RemoteLoggingServerPlugin.cs	(revision 1380006)
++++ src/Plugin/RemoteLoggingServerPlugin.cs	(working copy)
+@@ -94,7 +94,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This is the name under which the object is marshaled.
+-		/// <see cref="RemotingServices.Marshal(MarshalByRefObject,String,Type)"/>
++		/// <see cref="M:RemotingServices.Marshal(MarshalByRefObject,String,Type)"/>
+ 		/// </para>
+ 		/// </remarks>
+ 		public virtual string SinkUri 
+Index: src/Repository/Hierarchy/Hierarchy.cs
+===================================================================
+--- src/Repository/Hierarchy/Hierarchy.cs	(revision 1380006)
++++ src/Repository/Hierarchy/Hierarchy.cs	(working copy)
+@@ -105,7 +105,7 @@
+ 	/// </para>
+ 	/// <para>
+ 	/// The structure of the logger hierarchy is maintained by the
+-	/// <see cref="GetLogger(string)"/> method. The hierarchy is such that children
++	/// <see cref="M:GetLogger(string)"/> method. The hierarchy is such that children
+ 	/// link to their parent but parents do not have any references to their
+ 	/// children. Moreover, loggers can be instantiated in any order, in
+ 	/// particular descendant before ancestor.
+@@ -457,7 +457,7 @@
+ 		/// This method should not normally be used to log.
+ 		/// The <see cref="ILog"/> interface should be used 
+ 		/// for routine logging. This interface can be obtained
+-		/// using the <see cref="log4net.LogManager.GetLogger(string)"/> method.
++		/// using the <see cref="M:log4net.LogManager.GetLogger(string)"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// The <c>logEvent</c> is delivered to the appropriate logger and
+@@ -568,7 +568,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This method provides the same functionality as the 
+-		/// <see cref="IBasicRepositoryConfigurator.Configure(IAppender)"/> method implemented
++		/// <see cref="M:IBasicRepositoryConfigurator.Configure(IAppender)"/> method implemented
+ 		/// on this object, but it is protected and therefore can be called by subclasses.
+ 		/// </para>
+ 		/// </remarks>
+@@ -612,7 +612,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This method provides the same functionality as the 
+-		/// <see cref="IBasicRepositoryConfigurator.Configure(IAppender)"/> method implemented
++		/// <see cref="M:IBasicRepositoryConfigurator.Configure(IAppender)"/> method implemented
+ 		/// on this object, but it is protected and therefore can be called by subclasses.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Repository/ILoggerRepository.cs
+===================================================================
+--- src/Repository/ILoggerRepository.cs	(revision 1380006)
++++ src/Repository/ILoggerRepository.cs	(working copy)
+@@ -219,7 +219,7 @@
+ 		/// lost.
+ 		/// </para>
+ 		/// <para>
+-		/// The <see cref="Shutdown()"/> method is careful to close nested
++		/// The <see cref="M:Shutdown()"/> method is careful to close nested
+ 		/// appenders before closing regular appenders. This is allows
+ 		/// configurations where a regular appender is attached to a logger
+ 		/// and again to a nested appender.
+@@ -254,7 +254,7 @@
+ 		/// This method should not normally be used to log.
+ 		/// The <see cref="ILog"/> interface should be used 
+ 		/// for routine logging. This interface can be obtained
+-		/// using the <see cref="log4net.LogManager.GetLogger(string)"/> method.
++		/// using the <see cref="M:log4net.LogManager.GetLogger(string)"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// The <c>logEvent</c> is delivered to the appropriate logger and
+Index: src/Repository/LoggerRepositorySkeleton.cs
+===================================================================
+--- src/Repository/LoggerRepositorySkeleton.cs	(revision 1380006)
++++ src/Repository/LoggerRepositorySkeleton.cs	(working copy)
+@@ -307,7 +307,7 @@
+ 		/// This method should not normally be used to log.
+ 		/// The <see cref="ILog"/> interface should be used 
+ 		/// for routine logging. This interface can be obtained
+-		/// using the <see cref="log4net.LogManager.GetLogger(string)"/> method.
++		/// using the <see cref="M:log4net.LogManager.GetLogger(string)"/> method.
+ 		/// </para>
+ 		/// <para>
+ 		/// The <c>logEvent</c> is delivered to the appropriate logger and
+Index: src/Util/NativeError.cs
+===================================================================
+--- src/Util/NativeError.cs	(revision 1380006)
++++ src/Util/NativeError.cs	(working copy)
+@@ -257,7 +257,7 @@
+ 		/// </para>
+ 		/// <para>
+ 		/// If the function fails, the return value is zero. To get extended error information, 
+-		/// call <see cref="Marshal.GetLastWin32Error()" />.
++		/// call <see cref="M:Marshal.GetLastWin32Error()" />.
+ 		/// </para>
+ 		/// </returns>
+ #if NETCF
+Index: src/Util/PatternString.cs
+===================================================================
+--- src/Util/PatternString.cs	(revision 1380006)
++++ src/Util/PatternString.cs	(working copy)
+@@ -73,7 +73,7 @@
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			The date format specifier admits the same syntax as the
+-	/// 			time pattern string of the <see cref="DateTime.ToString(string)"/>.
++	/// 			time pattern string of the <see cref="M:DateTime.ToString(string)"/>.
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			For better results it is recommended to use the log4net date
+@@ -86,7 +86,7 @@
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			These dedicated date formatters perform significantly
+-	/// 			better than <see cref="DateTime.ToString(string)"/>.
++	/// 			better than <see cref="M:DateTime.ToString(string)"/>.
+ 	/// 			</para>
+ 	///         </description>
+ 	///     </item>
+@@ -208,7 +208,7 @@
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			The date format specifier admits the same syntax as the
+-	/// 			time pattern string of the <see cref="DateTime.ToString(string)"/>.
++	/// 			time pattern string of the <see cref="M:DateTime.ToString(string)"/>.
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			For better results it is recommended to use the log4net date
+@@ -221,7 +221,7 @@
+ 	/// 			</para>
+ 	/// 			<para>
+ 	/// 			These dedicated date formatters perform significantly
+-	/// 			better than <see cref="DateTime.ToString(string)"/>.
++	/// 			better than <see cref="M:DateTime.ToString(string)"/>.
+ 	/// 			</para>
+ 	///         </description>
+ 	///     </item>
+@@ -236,8 +236,8 @@
+ 	/// </list>
+ 	/// <para>
+ 	/// Additional pattern converters may be registered with a specific <see cref="PatternString"/>
+-	/// instance using <see cref="AddConverter(ConverterInfo)"/> or
+-	/// <see cref="AddConverter(string, Type)" />.
++	/// instance using <see cref="M:AddConverter(ConverterInfo)"/> or
++	/// <see cref="M:AddConverter(string, Type)" />.
+ 	/// </para>
+ 	/// <para>
+ 	/// See the <see cref="log4net.Layout.PatternLayout"/> for details on the 
+@@ -462,7 +462,7 @@
+ 		/// <remarks>
+ 		/// <para>
+ 		/// This version of the method is used by the configurator.
+-		/// Programmatic users should use the alternative <see cref="AddConverter(string,Type)"/> method.
++		/// Programmatic users should use the alternative <see cref="M:AddConverter(string,Type)"/> method.
+ 		/// </para>
+ 		/// </remarks>
+ 		public void AddConverter(ConverterInfo converterInfo)
+Index: src/Util/PatternStringConverters/DatePatternConverter.cs
+===================================================================
+--- src/Util/PatternStringConverters/DatePatternConverter.cs	(revision 1380006)
++++ src/Util/PatternStringConverters/DatePatternConverter.cs	(working copy)
+@@ -69,7 +69,7 @@
+ 	/// 		<description>
+ 	/// 		Any other pattern string uses the <see cref="SimpleDateFormatter"/> formatter. 
+ 	/// 		This formatter passes the pattern string to the <see cref="DateTime"/> 
+-	/// 		<see cref="DateTime.ToString(string)"/> method.
++	/// 		<see cref="M:DateTime.ToString(string)"/> method.
+ 	/// 		For details on valid patterns see 
+ 	/// 		<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemglobalizationdatetimeformatinfoclasstopic.asp">DateTimeFormatInfo Class</a>.
+ 	/// 		</description>
+Index: src/Util/SystemInfo.cs
+===================================================================
+--- src/Util/SystemInfo.cs	(revision 1380006)
++++ src/Util/SystemInfo.cs	(working copy)
+@@ -566,7 +566,7 @@
+ 		/// <para>
+ 		/// If the type name is fully qualified, i.e. if contains an assembly name in 
+ 		/// the type name, the type will be loaded from the system using 
+-		/// <see cref="Type.GetType(string,bool)"/>.
++		/// <see cref="M:Type.GetType(string,bool)"/>.
+ 		/// </para>
+ 		/// <para>
+ 		/// If the type name is not fully qualified, it will be loaded from the assembly
+@@ -590,7 +590,7 @@
+ 		/// <para>
+ 		/// If the type name is fully qualified, i.e. if contains an assembly name in 
+ 		/// the type name, the type will be loaded from the system using 
+-		/// <see cref="Type.GetType(string,bool)"/>.
++		/// <see cref="M:Type.GetType(string,bool)"/>.
+ 		/// </para>
+ 		/// <para>
+ 		/// If the type name is not fully qualified it will be loaded from the
+@@ -615,7 +615,7 @@
+ 		/// <para>
+ 		/// If the type name is fully qualified, i.e. if contains an assembly name in 
+ 		/// the type name, the type will be loaded from the system using 
+-		/// <see cref="Type.GetType(string,bool)"/>.
++		/// <see cref="M:Type.GetType(string,bool)"/>.
+ 		/// </para>
+ 		/// <para>
+ 		/// If the type name is not fully qualified it will be loaded from the specified
+Index: src/Util/TypeConverters/ConverterRegistry.cs
+===================================================================
+--- src/Util/TypeConverters/ConverterRegistry.cs	(revision 1380006)
++++ src/Util/TypeConverters/ConverterRegistry.cs	(working copy)
+@@ -33,8 +33,8 @@
+ 	/// types.
+ 	/// </para>
+ 	/// <para>
+-	/// Use the <see cref="AddConverter(Type, object)"/> and 
+-	/// <see cref="AddConverter(Type, Type)"/> methods to register new converters.
++	/// Use the <see cref="M:AddConverter(Type, object)"/> and 
++	/// <see cref="M:AddConverter(Type, Type)"/> methods to register new converters.
+ 	/// The <see cref="GetConvertTo"/> and <see cref="GetConvertFrom"/> methods
+ 	/// lookup appropriate converters to use.
+ 	/// </para>
+Index: src/Util/TypeConverters/EncodingConverter.cs
+===================================================================
+--- src/Util/TypeConverters/EncodingConverter.cs	(revision 1380006)
++++ src/Util/TypeConverters/EncodingConverter.cs	(working copy)
+@@ -62,7 +62,7 @@
+ 		/// <returns>the encoding</returns>
+ 		/// <remarks>
+ 		/// <para>
+-		/// Uses the <see cref="Encoding.GetEncoding(string)"/> method to 
++		/// Uses the <see cref="M:Encoding.GetEncoding(string)"/> method to 
+ 		/// convert the <see cref="String"/> argument to an <see cref="Encoding"/>.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Util/TypeConverters/PatternStringConverter.cs
+===================================================================
+--- src/Util/TypeConverters/PatternStringConverter.cs	(revision 1380006)
++++ src/Util/TypeConverters/PatternStringConverter.cs	(working copy)
+@@ -69,7 +69,7 @@
+ 		/// <returns>the converted object</returns>
+ 		/// <remarks>
+ 		/// <para>
+-		/// Uses the <see cref="PatternString.Format()"/> method to convert the
++		/// Uses the <see cref="M:PatternString.Format()"/> method to convert the
+ 		/// <see cref="PatternString"/> argument to a <see cref="String"/>.
+ 		/// </para>
+ 		/// </remarks>
+Index: src/Util/TypeConverters/TypeConverter.cs
+===================================================================
+--- src/Util/TypeConverters/TypeConverter.cs	(revision 1380006)
++++ src/Util/TypeConverters/TypeConverter.cs	(working copy)
+@@ -61,7 +61,7 @@
+ 		/// <returns>the Type</returns>
+ 		/// <remarks>
+ 		/// <para>
+-		/// Uses the <see cref="Type.GetType(string,bool)"/> method to convert the
++		/// Uses the <see cref="M:Type.GetType(string,bool)"/> method to convert the
+ 		/// <see cref="String"/> argument to a <see cref="Type"/>.
+ 		/// Additional effort is made to locate partially specified types
+ 		/// by searching the loaded assemblies.
