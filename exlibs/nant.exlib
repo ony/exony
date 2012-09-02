@@ -1,0 +1,28 @@
+# Copyright 2012 Nikolay Orlyuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+export_exlib_phases src_compile src_install
+
+DEPENDENCIES="
+    build:
+        dev-util/nant
+        dev-lang/mono
+"
+
+enant() {
+    illegal_in_global_scope
+
+    edo nant "${@}"
+}
+
+nant_src_compile() {
+    illegal_in_global_scope
+
+    enant
+}
+
+nant_src_install() {
+    illegal_in_global_scope
+
+    die "TODO"
+}
