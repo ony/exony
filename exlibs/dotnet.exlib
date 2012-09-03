@@ -1,0 +1,29 @@
+# Copyright 2012 Nikolay Orlyuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+export_exlib_phases src_install
+
+DEPENDENCIES="
+    build:
+        dev-lang/mono
+"
+
+egacutil() {
+    illegal_in_global_scope
+
+    edo gacutil /package "${PNV}" /gacdir /usr/${LIBDIR:-lib} /root "${IMAGE}/usr/${LIBDIR:-lib}" "${@}"
+}
+
+eautogac() {
+    illegal_in_global_scope
+
+    einfo "Searching for compiled assemblies and installing them"
+    local assembly
+    find -name '*.dll' | while read assembly; do
+        egacutil /i "$assembly" /f
+    done
+}
+
+dotnet_src_install() {
+    eautogac
+}
