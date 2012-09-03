@@ -1,0 +1,73 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require dotnet sourceforge [ project=nini suffix=zip ]
+
+WORK="${WORKBASE}/${PN}"
+
+SUMMARY="Nini - A configuration library for .NET"
+DESCRIPTION="
+Nini is an uncommonly powerful .NET configuration library designed to help build highly configurable
+applications quickly.
+"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    debug [[ description = [ Build with debugging information ] ]]
+    bindist [[ description = [ Use binary distribution of precompiled assembly ] ]]
+
+    debug [[ requires = [ -bindist ] ]]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+src_prepare() {
+    option bindist && return
+
+    default
+
+    edo bash -c "base64 -d \"${FILES}/Nini.snk.b64\" > Source/Nini.snk"
+}
+
+src_compile() {
+    option bindist && return
+
+    edo cd Source
+    local args
+    args=(
+        $(option debug && echo "-debug")
+        -target:library
+        -out:Nini.dll
+        -define:STRONG
+        -r:System.dll
+        -r:System.Xml.dll
+        -keyfile:${PN}.snk
+        AssemblyInfo.cs Config/*.cs Ini/*.cs Util/*.cs
+    )
+    edo gmcs "${args[@]}"
+}
+
+src_install() {
+    if option bindist; then
+        egacutil /i Bin/Mono/1.1/Release/Nini.dll
+    else
+        egacutil /i Source/Nini.dll
+    fi
+
+    # from Gentoo ebuild
+    local pv_major="$(ever range 1-2 ${PV})"
+    local pkgdir=/usr/${LIBDIR:-lib}/pkgconfig
+    dodir ${pkgdir}
+    edo sed -e "s:@VERSION@:${PV}:" \
+        -e "s:@NET_VERSION@:2.0:" \
+        -e 's:@prefix@:${pcfiledir}/../..:' \
+        -e 's:@exec_prefix@:${prefix}:' \
+        -e "s:@libdir@:\$\{exec_prefix\}/${LIBDIR:-lib}:" \
+        -e "s|@libs@|-r:\$\{libdir\}/mono/${PNV}/Nini.dll|" \
+        "${FILES}"/nini.pc.in > "${IMAGE}"${pkgdir}/nini-${PV}.pc
+    dosym nini-${PV}.pc ${pkgdir}/nini-${pv_major}.pc
+    dosym nini-${PV}.pc ${pkgdir}/nini.pc
+}
+
