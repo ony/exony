@@ -1,7 +1,7 @@
 # Copyright 2012 Nikolay Orlyuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require mono nant
+require mono nant dotnet
 
 SUMMARY="Port of Apache log4j for .NET"
 DESCRIPTION="
@@ -40,7 +40,7 @@ src_install() {
 
     # install resulted assembly into GAC
     # TODO: make it more flexible
-    gacutil /i bin/mono/2.0/release/log4net.dll /package "${PVN}" /gacdir /usr/${LIBDIR:-lib} /root "${IMAGE}/usr/${LIBDIR:-lib}"
+    egacutil /i bin/mono/2.0/release/log4net.dll
 
     default
 }

@@ -8,5 +8,3 @@ require log4net scm-svn
 SLOT="0"
 PLATFORMS="~amd64"
 
-DEFAULT_SRC_PREPARE_PATCHES=( -p0 ${FILES}/${PN}-r1380006-cref.patch )
-
