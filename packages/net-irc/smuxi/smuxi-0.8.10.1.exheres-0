@@ -1,0 +1,36 @@
+# Copyright 2012 <name>
+# Distributed under the terms of the GNU General Public License v2
+
+require mono
+
+SUMMARY="cross-platform IRC client for GNOME/GTK+"
+DESCRIPTION="
+Smuxi is an irssi-inspired, flexible, user-friendly and cross-platform IRC client for sophisticated users, targeting the GNOME desktop.
+"
+HOMEPAGE="http://www.smuxi.org"
+DOWNLOADS="http://www.smuxi.org/jaws/data/files/${PNV}.tar.gz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    dbus
+    debug [[ description = [ Use debug Configuration ] ]]
+"
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/mono
+        dev-libs/log4net
+        dev-libs/Nini
+        dbus? ( dev-libs/ndesk-dbus dev-libs/ndesk-dbus-glib )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --with-db4o=included --without-indicate --without-notify --without-gtkspell --enable-engine-irc --disable-engine-{oscar,msnp,twitter,xmpp} --disable-frontend-{gnome,swf} )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( dbus )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "!debug release" debug )
+
+# TODO: at least one frontend
+
