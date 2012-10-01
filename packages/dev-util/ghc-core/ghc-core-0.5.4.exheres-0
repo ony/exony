@@ -1,0 +1,27 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage [ has_bin=true has_lib=false ]
+
+SUMMARY="Display GHC's core and assembly output in a pager"
+DESCRIPTION="
+A convenient command line wrapper for GHC that displays GHC's optimised core and assembly output in
+a human readable, colourised manner, in a pager. Unix systems only, currently.
+"
+HOMEPAGE="http://code.haskell.org/~dons/code/${PN} ${HOMEPAGE}"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    $(haskell_bin_dependencies "
+        dev-haskell/colorize-haskell
+        dev-haskell/directory
+        dev-haskell/filepath
+        dev-haskell/pcre-light
+        dev-haskell/process[>=1.0.1]
+    ")
+"
+
