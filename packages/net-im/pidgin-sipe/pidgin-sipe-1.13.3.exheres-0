@@ -1,0 +1,52 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge [ project=sipe ]
+
+SUMMARY="Pidgin Plug-in SIPE (Sip Exchange Protocol)"
+DESCRIPTION="
+Third-party plugin for the Pidgin multi-protocol instant messenger. It implements the extended
+version of SIP/SIMPLE used by various products: Microsoft Lync Server 2010, Microsoft Office
+Communications Server (OCS 2007/2007 R2), Microsoft Live Communications Server (LCS 2003/2005),
+Reuters Messaging.
+"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    debug [[ description = [ debugging support ] ]]
+    vv [[ description = [ voice and video support ] requires = [ purple ] ]]
+    krb5 [[ description = [ compile with Kerberos 5 support ] ]]
+    purple [[ description = [ build purple plugin ] ]]
+    telepathy [[ description = [ build telepathy plugin ] ]]
+    ocs2005-hack [[ description = [ disable message timeout for OCS2005 clients ] ]]
+
+    ( purple telepathy ) [[ number-selected = at-least-one ]]
+"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/glib:2[>=2.28.0]
+        dev-libs/nss
+        dev-libs/libxml2
+        purple? ( net-im/pidgin[>=2.8.0][vv?] )
+        vv? (
+            net-im/libnice[>=0.1.0]
+            media-libs/gstreamer:0.10
+        )
+        telepathy? (
+            net-im/telepathy-glib[>=0.18.0]
+            || ( net-utils/gmime:2.4[>=2.4.16] net-utils/gmime:2.6[>=2.5.2] )
+            dev-libs/dbus-glib:1
+        )
+        krb5? ( app-crypt/heimdal )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-quality-check )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( vv krb5 )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug purple telepathy "ocs2005-hack ocs2005-message-hack" )
+
+
