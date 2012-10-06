@@ -1,0 +1,30 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require gnu [ suffix=gz ]
+
+SUMMARY="Unit conversion program"
+DESCRIPTION="
+GNU Units converts quantities expressed in various systems of measurement to their equivalents in
+other systems of measurement. Like many similar programs, it can handle multiplicative scale
+changes. It can also handle nonlinear conversions such as Fahrenheit to Celsius or wire gauge, and
+it can convert from and to sums of units, such as converting between meters and feet plus inches
+"
+
+if ever is_scm; then
+    DOWNLOADS=""
+fi
+
+LICENCES="GPL-3"
+SLOT="0"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        sys-libs/readline
+        sys-libs/ncurses
+        dev-lang/python:*[>=2.5][<3.0]
+"
+
+BUGS_TO="virkony@gmail.com"
+
