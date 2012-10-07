@@ -1,0 +1,45 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge cmake
+
+SUMMARY="Qt4 GUI for Wine"
+DESCRIPTION="
+Q4Wine is a qt4 (http://www.qtsoftware.com/) GUI for W.I.N.E. (http://winehq.org/) It will help you
+manage wine prefixes and installed applications.
+"
+HOMEPAGE="http://q4wine.brezblock.org.ua/ ${HOMEPAGE}"
+#DOWNLOADS=""
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    debug [[ description = [ send debug messages to stdout during run ] ]]
+    icoutils [[ description = [ icoutils support ] ]]
+    wineappdb [[ description = [ Wine AppDB browser support ] ]]
+    dbus
+"
+
+DEPENDENCIES="
+    build:
+    build+run:
+        x11-libs/qt[sql][dbus?]
+        icoutils? ( media-gfx/icoutils[>=0.26.0] )
+    run:
+        x11-libs/qt[sqlite]
+        net-misc/wget
+        app-emulation/wine
+        app-admin/sudo
+        sys-apps/which[>=2.19]
+    suggestion:
+        kde/kde-runtime [[ description = [ sudo fronted ] ]]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+CMAKE_SRC_CONFIGURE_PARAMS=( -DUSE_BZIP2:BOOL=FALSE -DUSE_GZIP:BOOL=FALSE -DWITH_EMBEDDED_FUSEISO:BOOL=TRUE )
+CMAKE_SRC_CONFIGURE_OPTIONS=( DEBUG )
+CMAKE_SRC_CONFIGURE_OPTION_WITHS=( ICOUTILS WINEAPPDB DBUS )
+
+
