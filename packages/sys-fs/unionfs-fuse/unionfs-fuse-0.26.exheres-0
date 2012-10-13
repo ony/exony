@@ -1,0 +1,28 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require cmake
+
+SUMMARY="UnionFS based on FUSE"
+DESCRIPTION="
+Unionfs filesystem implementation which is intended to be more flexible than the current in-kernel
+unionfs solution.
+"
+HOMEPAGE="http://podgorny.cz/moin/UnionFsFuse"
+DOWNLOADS="http://podgorny.cz/unionfs-fuse/releases/${PNV}.tar.xz"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="xattr"
+
+DEPENDENCIES="
+    build:
+    build+run:
+        sys-fs/fuse
+"
+
+BUGS_TO="virkony@gmail.com"
+
+CMAKE_SRC_CONFIGURE_OPTION_WITHS=( xattr )
+
