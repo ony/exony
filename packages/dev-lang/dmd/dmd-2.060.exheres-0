@@ -1,0 +1,7 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require dmd
+
+PLATFORMS="~amd64 ~x86"
+
