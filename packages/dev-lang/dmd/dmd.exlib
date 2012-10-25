@@ -47,11 +47,6 @@ UPSTREAM_DOCUMENTATION="
 configure_prepare_one_multibuild() {
     edo mkdir -p "${WORKBASE}/${MULTIBUILD_CLASS}"
     edo ln -s "$WORK" "${WORKBASE}/${MULTIBUILD_CLASS}/${MULTIBUILD_TARGET}"
-
-    # TODO: make as patch
-    if ! ever is_scm; then
-    edo sed -i "s/^MODEL=/MODEL?=/" src/*/posix.mak
-    fi
 }
 
 src_configure() {

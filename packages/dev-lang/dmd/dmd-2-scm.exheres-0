@@ -8,8 +8,16 @@ require dmd scm-git
 
 SCM_REPOSITORY="git://github.com/D-Programming-Language"
 
-SCM_SECONDARY_REPOSITORIES="dmd druntime phobos tools"
-for SCM_THIS in ${SCM_SECONDARY_REPOSITORIES}; do
+SCM_SECONDARY_REPOSITORIES="
+    dmd druntime phobos
+    tools? ( tools )
+"
+
+for t in ${SCM_SECONDARY_REPOSITORIES}; do
+    [[ ${t} == *\? ]] && continue
+    [[ ${t} == \( ]] && continue
+    [[ ${t} == \) ]] && continue
+    SCM_THIS=${t}
     scm_set_var REPOSITORY "${SCM_REPOSITORY}/$SCM_THIS"
 done
 
@@ -19,14 +27,6 @@ WORK="${WORKBASE}"
 PLATFORMS="~amd64"
 
 src_prepare() {
-    pushd "${WORK}/dmd"
-    expatch -p1 "${FILES}/dmd-0001-Make-MODEL-optional-and-allow-override-in-posix.mak.patch"
-    popd
-
-    pushd "${WORK}/druntime"
-    expatch -p1 "${FILES}/druntime-0001-Allow-MODEL-overriding-in-posix.mak.patch"
-    popd
-
     if optionq tools; then
         pushd "${WORK}/tools"
         expatch -p1 "${FILES}/tools-0001-posix.mak-added.patch"
