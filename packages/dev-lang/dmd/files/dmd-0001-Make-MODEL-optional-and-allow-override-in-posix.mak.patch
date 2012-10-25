@@ -1,0 +1,26 @@
+Upstream: https://github.com/D-Programming-Language/dmd/pull/1217
+
+From 75e17ee03754b9f41a06fc6dfe424efa2b5af89a Mon Sep 17 00:00:00 2001
+From: Nikolay Orlyuk <virkony@gmail.com>
+Date: Thu, 25 Oct 2012 10:27:53 +0300
+Subject: [PATCH] Make MODEL optional and allow override in posix.mak
+
+---
+ src/posix.mak | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/posix.mak b/src/posix.mak
+index 6bd88a2..f682230 100644
+--- a/src/posix.mak
++++ b/src/posix.mak
+@@ -49,7 +49,6 @@ C=backend
+ TK=tk
+ ROOT=root
+ 
+-MODEL=32
+ ifneq (x,x$(MODEL))
+     MODEL_FLAG=-m$(MODEL)
+ endif
+-- 
+1.7.12.3
+

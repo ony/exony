@@ -1,0 +1,108 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_NO_AUTOMATIC_FINALISE=1
+SCM_NO_PRIMARY_REPOSITORY=1
+
+require dmd scm-git
+
+SCM_REPOSITORY="git://github.com/D-Programming-Language"
+
+SCM_SECONDARY_REPOSITORIES="dmd druntime phobos tools"
+for SCM_THIS in ${SCM_SECONDARY_REPOSITORIES}; do
+    scm_set_var REPOSITORY "${SCM_REPOSITORY}/$SCM_THIS"
+done
+
+scm_finalise
+
+WORK="${WORKBASE}"
+PLATFORMS="~amd64"
+
+src_prepare() {
+    pushd "${WORK}/dmd"
+    expatch -p1 "${FILES}/dmd-0001-Make-MODEL-optional-and-allow-override-in-posix.mak.patch"
+    popd
+
+    pushd "${WORK}/druntime"
+    expatch -p1 "${FILES}/druntime-0001-Allow-MODEL-overriding-in-posix.mak.patch"
+    popd
+
+    if optionq tools; then
+        pushd "${WORK}/tools"
+        expatch -p1 "${FILES}/tools-0001-posix.mak-added.patch"
+        popd
+    fi
+}
+
+src_compile() {
+    # compiler for default target
+    emake -C dmd/src -f posix.mak MODEL=$MULTIBUILD_C_DEFAULT_TARGET
+
+    # platform-specific targets
+    easy-multibuild_src_compile
+
+    # tools
+    if optionq tools; then
+        emake -C tools -f posix.mak DMD="${WORK}/dmd/src/dmd" MODEL=$MULTIBUILD_C_DEFAULT_TARGET
+    fi
+}
+
+compile_one_multibuild() {
+    # libraries
+    local library
+    for library in druntime phobos; do
+        emake -C $library -f posix.mak DMD="${WORK}/dmd/src/dmd" MODEL=$MULTIBUILD_TARGET
+    done
+}
+
+src_install() {
+    default
+
+    # TODO: handle SLOT=1 (D1 language)
+
+    # config
+    insinto /etc
+    doins dmd.conf
+
+    # binary
+    dobin dmd/src/dmd
+
+    # docs
+    doman dmd/docs/man/man1/{dmd.1,dmd.conf.5}
+
+    if optionq examples; then
+        insinto /usr/share/doc/${PNV}/samples/
+        doins dmd/samples/*
+    fi
+
+    if optionq tools; then
+        doman dmd/docs/man/man1/rdmd.1
+
+        emake -C tools -f posix.mak -j1 \
+            DMD="${WORK}/dmd/src/dmd" \
+            MODEL=$MULTIBUILD_C_DEFAULT_TARGET \
+            DESTDIR="${IMAGE}" \
+            install
+    fi
+
+    # target specific
+    easy-multibuild_src_install
+
+    # cleanup for installing imports through *
+    edo rm -r phobos/generated
+    edo rm -r phobos/etc/c/zlib
+    edo rm -r phobos/*.mak
+
+    # imports
+    insinto /usr/include/druntime/
+    doins -r druntime/import/*
+    insinto /usr/include/phobos2
+    doins -r phobos/*
+}
+
+install_one_multibuild() {
+    # libs
+    newlib.a "druntime/lib/libdruntime-linux${MULTIBUILD_TARGET}.a" "libdruntime.a"
+    dolib.a "phobos/generated/linux/release/${MULTIBUILD_TARGET}/libphobos2.a"
+}
+

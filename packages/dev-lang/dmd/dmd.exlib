@@ -16,8 +16,10 @@ SLOT="$(ever range 1 ${PV})"
 
 HOMEPAGE="http://digitalmars.com/d/${SLOT}.0/index.html http://dlang.org"
 
-DOWNLOADS="http://ftp.digitalmars.com/${PN}.${PV}.zip"
-WORK="${WORKBASE}/dmd${SLOT}"
+if ! ever is_scm; then
+    DOWNLOADS="http://ftp.digitalmars.com/${PN}.${PV}.zip"
+    WORK="${WORKBASE}/dmd${SLOT}"
+fi
 
 
 LICENCES="GPL-1"
@@ -47,14 +49,14 @@ configure_prepare_one_multibuild() {
     edo ln -s "$WORK" "${WORKBASE}/${MULTIBUILD_CLASS}/${MULTIBUILD_TARGET}"
 
     # TODO: make as patch
+    if ! ever is_scm; then
     edo sed -i "s/^MODEL=/MODEL?=/" src/*/posix.mak
+    fi
 }
 
 src_configure() {
-    cat > dmd.conf << EOF
-[Environment]
-DFLAGS=-I/usr/include/phobos2 -I/usr/include/druntime -L--no-warn-search-mismatch -L--export-dynamic -L-lrt
-EOF
+    edo cp "${FILES}/dmd.conf" dmd.conf
+
     easy-multibuild_src_configure
 }
 
@@ -64,8 +66,7 @@ configure_one_multibuild() {
 
 src_compile() {
     # compiler for default target
-    MULTIBUILD_TARGET=$MULTIBUILD_C_DEFAULT_TARGET
-    emake -C src/dmd -f posix.mak MODEL=$MULTIBUILD_TARGET
+    emake -C src/dmd -f posix.mak MODEL=$MULTIBUILD_C_DEFAULT_TARGET
 
     # rest for each target
     easy-multibuild_src_compile
