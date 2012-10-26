@@ -26,14 +26,6 @@ scm_finalise
 WORK="${WORKBASE}"
 PLATFORMS="~amd64"
 
-src_prepare() {
-    if optionq tools; then
-        pushd "${WORK}/tools"
-        expatch -p1 "${FILES}/tools-0001-posix.mak-added.patch"
-        popd
-    fi
-}
-
 src_compile() {
     # compiler for default target
     emake -C dmd/src -f posix.mak MODEL=$MULTIBUILD_C_DEFAULT_TARGET
@@ -82,6 +74,7 @@ src_install() {
             DMD="${WORK}/dmd/src/dmd" \
             MODEL=$MULTIBUILD_C_DEFAULT_TARGET \
             DESTDIR="${IMAGE}" \
+            PREFIX="/usr/bin" \
             install
     fi
 
