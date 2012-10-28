@@ -1,0 +1,28 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge [ project=hte ]
+
+SUMMARY="A file editor/viewer/analyzer for executables."
+DESCRIPTION="
+HT is a file editor/viewer/analyzer for executables. The goal is to combine the low-level
+functionality of a debugger and the usability of IDEs. We plan to implement all (hex-)editing
+features and support of the most important file formats.
+"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="x11 [[ description = [ build with x11 textmode support ] ]]"
+
+DEPENDENCIES="
+    build+run:
+        app-arch/lzo
+        sys-libs/ncurses
+        x11? ( x11-libs/libX11 )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-maintainermode --enable-release --disable-profiling --without-included-lzo )
+
