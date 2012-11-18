@@ -1,0 +1,26 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require googlecode [ suffix=tar.gz ]
+
+SUMMARY="A c++ binding for FUSE... makes implementing virtual filesystems peace of cake!"
+DESCRIPTION="
+fusekit is an object oriented c++ binding of FUSE. While FUSE provides a great c api / library which
+enables you to implement full-featured filesystems in userspace, it still requires some work to get
+things up and running. On top of FUSE, fusekit has been designed to ease this task. In opposite to
+the FUSE api, fusekit's api reflects a filesystem's hierarchical nature as it provides concepts of
+directories and files. fusekit is header-only and highly customizable through the usage of template
+techniques.
+"
+
+LICENCES="MIT"
+SLOT="0"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        sys-fs/fuse[>=2.4.0]
+"
+
+BUGS_TO="virkony@gmail.com"
+
