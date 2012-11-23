@@ -1,0 +1,19 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="Bindings for the FUSE library, compatible with OSXFUSE."
+HOMEPAGE="https://github.com/toothbrush/hfuse ${HOMEPAGE}"
+
+LICENCES="BSD-3"
+PLATFORMS="~x86 ~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/bytestring
+        dev-haskell/unix
+    ")
+"
+
