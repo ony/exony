@@ -1,0 +1,50 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Journaling incremental deduplicating archiving compressor"
+DESCRIPTION="
+ZPAQ is based on the PAQ context mixing model, which was developed over the period 2000-2009. A set
+of context models independently predict the next bit of input. Then the predictions (probabilities)
+are combined and used to arithmetic code the bit. Using lots of predictors improves compression but
+takes more time.
+"
+
+MY_PV="${PV//./}"
+MY_PNV="${PN}${MY_PV}"
+HOMEPAGE="http://mattmahoney.net/dc/zpaq.html"
+DOWNLOADS="http://mattmahoney.net/dc/${MY_PNV}.zip"
+
+LICENCES="
+    GPL-3 [[ note = [ zpaq itself ] ]]
+    MIT [[
+        note = [ mirror of libdivsufsort-lite BWT code by Yuta Mori needed to compile zpaq ]
+    ]]
+"
+
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="openmp [[ description = [ support for OpenMP ] ]]"
+
+DEPENDENCIES="
+    build:
+        app-arch/unzip
+        sys-devel/gcc:*[openmp?]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+WORK="${WORKBASE}"
+
+src_compile() {
+    local mycflags=(
+        ${CFLAGS} ${LDFLAGS} -Wall -DNDEBUG -Dunix
+        $(option openmp -fopenmp -pthread)
+    )
+    edo ${CXX} "${mycflags[@]}" -o ${PN} zpaq.cpp libzpaq.cpp divsufsort.c
+}
+
+src_install() {
+    dobin ${PN}
+    dodoc readme.txt
+}
+
