@@ -1,0 +1,32 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge
+
+SUMMARY="A hash table for C structures"
+DESCRIPTION="
+This is a hash table, implemented in C, supporting constant-time add/find/remove of C structures.
+Any structure having a unique, arbitrarily-typed key member can be hashed by adding a UT_hash_handle
+member to the structure and calling these macros.
+"
+
+LICENCES="BSD"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    test:
+        dev-lang/perl:*[>=5.10&<6]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+src_install() {
+    dodoc -r doc/{html,pdf,txt}
+    insinto /usr/include
+    doins src/*.h
+}
+
+src_test() {
+    emake -C tests
+}
