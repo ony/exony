@@ -1,0 +1,28 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Multi hardsdrive filesystem"
+DESCRIPTION="
+Join several filesystems together to form a single larger one
+"
+HOMEPAGE="http://mhddfs.uvw.ru/"
+DOWNLOADS="http://mhddfs.uvw.ru/downloads/${PN}_${PV}.tar.gz"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        dev-libs/uthash
+    build+run:
+        sys-fs/fuse[>=2.7.0]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+src_install() {
+    dobin "${PN}"
+    doman "${PN}.1"
+    emagicdocs
+}
