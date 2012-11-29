@@ -1,0 +1,29 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github \
+        autotools [ supported_automake=[ 1.12 ] supported_autoconf=[ 2.5 ] ]
+
+SUMMARY="The F# compiler, core library and core tools (open source edition)"
+
+LICENCES="Apache-2.0"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+    build+run:
+        dev-lang/mono[>=2.9]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}/0001-Respect-with-gacdir-path-to-gac.patch"
+    "${FILES}/0002-use-only-relative-symlinks.patch"
+)
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --with-gacdir=/usr/${LIBDIR:-lib}/mono/gac )
+

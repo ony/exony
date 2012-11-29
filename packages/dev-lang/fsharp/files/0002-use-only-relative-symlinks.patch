@@ -1,0 +1,60 @@
+Upstream: pull request https://github.com/fsharp/fsharp/pull/74
+
+From 4287a749b6f79b32c9cfbf948e584041f0ee1c76 Mon Sep 17 00:00:00 2001
+From: Nikolay Orlyuk <virkony@gmail.com>
+Date: Thu, 29 Nov 2012 01:24:10 +0200
+Subject: [PATCH 2/2] use only relative symlinks
+
+Many linux distributives uses DESTDIR for sandbox and then relocate all
+files under root causing absolute (to DESTDIR) symlinks to be broken.
+---
+ src/fsharp/targets.make | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/fsharp/targets.make b/src/fsharp/targets.make
+index 8265cc1..25a465a 100644
+--- a/src/fsharp/targets.make
++++ b/src/fsharp/targets.make
+@@ -149,11 +149,11 @@ install-lib-2 install-lib-2-1 install-lib-4:
+ 	@if test -e $(outdir)Microsoft.FSharp.targets; then \
+ 	    mkdir -p $(DESTDIR)$(monodir)/Microsoft\ F#/v$(TARGET)/; \
+ 	    mkdir -p $(DESTDIR)$(monodir)/Microsoft\ SDKs/F#/3.0/Framework/v$(TARGET)/; \
+-	    ln -fs $(DESTDIR)$(monodir)/$(TARGET)/$(ASSEMBLY) $(DESTDIR)$(monodir)/Microsoft\ F#/v$(TARGET)/$(ASSEMBLY); \
+-	    ln -fs $(DESTDIR)$(monodir)/$(TARGET)/$(ASSEMBLY) $(DESTDIR)$(monodir)/Microsoft\ SDKs/F#/3.0/Framework/v$(TARGET)/$(ASSEMBLY); \
++	    ln -fs ../../$(TARGET)/$(ASSEMBLY) $(DESTDIR)$(monodir)/Microsoft\ F#/v$(TARGET)/$(ASSEMBLY); \
++	    ln -fs ../../../../../$(TARGET)/$(ASSEMBLY) $(DESTDIR)$(monodir)/Microsoft\ SDKs/F#/3.0/Framework/v$(TARGET)/$(ASSEMBLY); \
+ 	    $(INSTALL_LIB) $(outdir)Microsoft.FSharp.targets $(DESTDIR)$(monodir)/$(TARGET)/; \
+-	    ln -fs $(DESTDIR)$(monodir)/$(TARGET)/Microsoft.FSharp.targets $(DESTDIR)$(monodir)/Microsoft\ F#/v$(TARGET)/Microsoft.FSharp.targets; \
+-	    ln -fs $(DESTDIR)$(monodir)/$(TARGET)/Microsoft.FSharp.targets $(DESTDIR)$(monodir)/Microsoft\ SDKs/F#/3.0/Framework/v$(TARGET)/Microsoft.FSharp.targets; \
++	    ln -fs ../../$(TARGET)/Microsoft.FSharp.targets $(DESTDIR)$(monodir)/Microsoft\ F#/v$(TARGET)/Microsoft.FSharp.targets; \
++	    ln -fs ../../../../../$(TARGET)/Microsoft.FSharp.targets $(DESTDIR)$(monodir)/Microsoft\ SDKs/F#/3.0/Framework/v$(TARGET)/Microsoft.FSharp.targets; \
+ 	fi
+ 	@if test -e $(outdir)$(NAME).xml; then \
+ 		$(INSTALL_LIB) $(outdir)$(NAME).xml $(DESTDIR)$(monodir)/gac/$(NAME)/$(VERSION)__$(TOKEN); \
+@@ -170,18 +170,18 @@ install-lib-2 install-lib-2-1 install-lib-4:
+ 
+ install-lib-4-5: install-lib-4
+ 	@if test -e $(DESTDIR)$(monodir)/4.5/; then \
+-		ln -fs $(DESTDIR)$(monodir)/4.0/$(ASSEMBLY) $(DESTDIR)$(monodir)/4.5/$(ASSEMBLY); \
++		ln -fs ../4.0/$(ASSEMBLY) $(DESTDIR)$(monodir)/4.5/$(ASSEMBLY); \
+ 		if test -e $(DESTDIR)$(monodir)/4.0/$(ASSEMBLY).config; then \
+-		    ln -fs $(DESTDIR)$(monodir)/4.0/$(ASSEMBLY).config $(DESTDIR)$(monodir)/4.5/$(ASSEMBLY).config; \
++		    ln -fs ../4.0/$(ASSEMBLY).config $(DESTDIR)$(monodir)/4.5/$(ASSEMBLY).config; \
+ 		fi; \
+ 		if test -e $(DESTDIR)$(monodir)/4.0/$(NAME).sigdata; then \
+-		    ln -fs $(DESTDIR)$(monodir)/4.0/$(NAME).sigdata $(DESTDIR)$(monodir)/4.5/$(NAME).sigdata; \
++		    ln -fs ../4.0/$(NAME).sigdata $(DESTDIR)$(monodir)/4.5/$(NAME).sigdata; \
+ 		fi; \
+ 		if test -e $(DESTDIR)$(monodir)/4.0/$(NAME).xml; then \
+-		    ln -fs $(DESTDIR)$(monodir)/4.0/$(NAME).xml $(DESTDIR)$(monodir)/4.5/$(NAME).xml; \
++		    ln -fs ../4.0/$(NAME).xml $(DESTDIR)$(monodir)/4.5/$(NAME).xml; \
+ 		fi; \
+ 		if test -e $(DESTDIR)$(monodir)/4.0/$(NAME).optdata; then \
+-		    ln -fs $(DESTDIR)$(monodir)/4.0/$(NAME).optdata $(DESTDIR)$(monodir)/4.5/$(NAME).optdata; \
++		    ln -fs ../4.0/$(NAME).optdata $(DESTDIR)$(monodir)/4.5/$(NAME).optdata; \
+ 		fi; \
+ 	fi
+ 
+-- 
+1.8.0
+
