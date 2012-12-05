@@ -20,10 +20,5 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
-DEFAULT_SRC_PREPARE_PATCHES=(
-    "${FILES}/0001-Respect-with-gacdir-path-to-gac.patch"
-    "${FILES}/0002-use-only-relative-symlinks.patch"
-)
-
 DEFAULT_SRC_CONFIGURE_PARAMS=( --with-gacdir=/usr/${LIBDIR:-lib}/mono/gac )
 
