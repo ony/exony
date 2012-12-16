@@ -1,0 +1,27 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="Easily create histograms of your data"
+DESCRIPTION="
+This package easily lets you create high quality histogram plots from your data in Haskell. It
+automatically bins your data using whichever binning strategy you'd like, then plots the data. It
+uses the gnuplot package to do all the actual graphing, so any options that work for making gnuplot
+pretty will also work here.
+"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/containers[>=0.4]
+        dev-haskell/gnuplot[>=0.5]
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
