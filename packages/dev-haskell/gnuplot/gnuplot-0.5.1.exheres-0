@@ -1,0 +1,29 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="2D and 3D plots using gnuplot"
+DESCRIPTION="
+This is a wrapper to gnuplot which lets you create 2D and 3D plots. 
+"
+HOMEPAGE="http://www.haskell.org/haskellwiki/Gnuplot ${HOMEPAGE}"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/containers[>=0.1&<0.6]
+        dev-haskell/monoid-transformer[>=0.0.2&<0.1]
+        dev-haskell/old-locale[=1.0*]
+        dev-haskell/process[>=1.0&<1.2]
+        dev-haskell/time[>=1.1&<1.5]
+        dev-haskell/utility-ht[>=0.0.1&<0.1]
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
