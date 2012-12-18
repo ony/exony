@@ -1,0 +1,17 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="Storable instance for Complex"
+DESCRIPTION="
+Provides a Storable instance for Complex which is binary compatible with C99, C++ and Fortran
+complex data types.
+"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+BUGS_TO="virkony@gmail.com"
+
