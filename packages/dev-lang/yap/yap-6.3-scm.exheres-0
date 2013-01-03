@@ -10,7 +10,7 @@ DEFAULT_SRC_CONFIGURE_PARAMS+=( --enable-rational-trees )
 RESTRICT+=test
 
 MY_YAP_REPOSITORY_PREFIX="git://yap.git.sourceforge.net/gitroot/yap"
-MY_YAP_PACKAGES="chr clpqr jpl zlib http clib sgml RDF semweb plunit R pldoc"
+MY_YAP_PACKAGES="chr clpqr jpl zlib http clib sgml RDF semweb plunit R pldoc archive odbc"
 
 SCM_REPOSITORY="${MY_YAP_REPOSITORY_PREFIX}/${PNV%-scm}"
 SCM_SECONDARY_REPOSITORIES="real ${MY_YAP_PACKAGES}"
