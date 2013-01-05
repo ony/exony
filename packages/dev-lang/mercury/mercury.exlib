@@ -1,0 +1,100 @@
+# Copyright 2013 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="The Mercury logic programming system."
+DESCRIPTION="
+Mercury is a new logic/functional programming language, which combines the clarity and
+expressiveness of declarative programming with advanced static analysis and error detection
+features. Its highly optimized execution algorithm delivers efficiency far in excess of existing
+logic programming systems, and close to conventional programming systems. Mercury addresses the
+problems of large-scale program development, allowing modularity, separate compilation, and numerous
+optimization/time trade-offs. 
+"
+HOMEPAGE="http://mercurylang.org/"
+
+LICENCES="GPL-2"
+SLOT="0"
+MYOPTIONS="
+    debug [[ description = [ build debug and decl-debug grades ] ]]
+    minimal [[ description = [ disable most grades ] ]]
+    readline
+"
+
+DEPENDENCIES="
+    build+run:
+        readline? ( sys-libs/readline )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+UPSTREAM_DOCUMENTATION="
+    ${HOMEPAGE}/information/doc-release/mercury_ref/index.html [[
+        lang = en
+        description = [ Mercury Language Reference Manual ]
+    ]]
+
+    ${HOMEPAGE}/information/doc-release/mercury_user_guide/index.html [[
+        lang = en
+        description = [ Mercury User's Guide ]
+    ]]
+
+    ${HOMEPAGE}/information/doc-release/mercury_library/index.html [[
+        lang = en
+        description = [ Mercury Library Reference Manual ]
+    ]]
+
+    ${HOMEPAGE}/information/doc-release/mercury_trans_guide/index.html [[
+        lang = en
+        description = [ Prolog to Mercury Transition Guide ]
+    ]]
+
+    ${HOMEPAGE}/information/comparison_with_haskell.html [[
+        lang = en
+        description = [ Comparing Mercury and Haskell ]
+    ]]
+
+    ${HOMEPAGE}/information/doc-release/mercury_faq/index.html [[
+        lang = en
+        description = [ Frequently Asked Questions ]
+    ]]
+
+    ${HOMEPAGE}/tutorial/index.html [[
+        lang = en
+        description = [ Mercury Tutorial ]
+    ]]
+"
+#UPSTREAM_RELEASE_NOTES=""
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
+    "!minimal most-grades"
+    "debug debug-grades"
+    "debug decl-debug-grades"
+)
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( readline )
+
+DEFAULT_SRC_COMPILE_PARAMS=( "PARALLEL=-j${EXJOBS:-1}" )
+DEFAULT_SRC_INSTALL_PARAMS=( "PARALLEL=-j${EXJOBS:-1}" )
+
+src_install() {
+    default
+    local base_grades grades grade
+
+    base_grades=(asm_fast)
+
+    grades=()
+    for grade in ${base_grades[@]}; do
+        grades+=(${grade}.gc)
+
+        optionq minimal || grades+=(${grade}.{par.gc.stseg,gc.{trseg,prof{,deep},memprof}})
+
+        optionq debug \
+            && grades+=(${grade}.gc.{decl,}debug) \
+            && ! optionq minimal && grades+=(${grade}{,.par}.gc.trseg.debug)
+    done
+
+    for grade in ${grades[@]}; do
+        keepdir "/usr/${LIBDIR:-lib}/mercury/lib/${grade}/inc/Mercury"
+    done
+}
+

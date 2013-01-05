@@ -1,0 +1,31 @@
+# Copyright 2013 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PV_BASE=$(ever range 1-2 ${PV})
+MY_PV_DATE=$(ever range 3 ${PV})
+MY_PV_DATE=${MY_PV_DATE#beta}
+MY_PV_DATE="${MY_PV_DATE:0:4}-${MY_PV_DATE:4:2}-${MY_PV_DATE:6:2}"
+MY_PV="${MY_PV_BASE}-beta-${MY_PV_DATE}"
+MY_PNV="${PN}-compiler-${MY_PV}"
+
+require mercury \
+        autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.12 ] ]
+
+WORK="${WORKBASE}/${MY_PNV}"
+RESTRICT=test
+AT_M4DIR=( m4 )
+
+DOWNLOADS="http://www.mercury.csse.unimelb.edu.au/download/files/beta-releases/${MY_PV_BASE}/${MY_PNV}-unstable.tar.gz"
+
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+UPSTREAM_RELEASE_NOTES="http://mercurylang.org/download/files/beta-releases/${MY_PV_BASE}-beta/mercury-NEWS-${MY_PV}-unstable.txt"
+
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}/${PNV}-Fix-for-bug-203-DESTDIR-brokes-installation.patch"
+    "${FILES}/${PNV}-Allow-usr-lib64-override-bug259.patch"
+    "${FILES}/${PNV}-Add-man-info-and-lisp-dirs-configuring-bug259.patch"
+)
+
