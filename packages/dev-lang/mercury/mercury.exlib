@@ -96,5 +96,7 @@ src_install() {
     for grade in ${grades[@]}; do
         keepdir "/usr/${LIBDIR:-lib}/mercury/lib/${grade}/inc/Mercury"
     done
+
+    ever at_least "${PVR}" 12.08 || keepdir /usr/lib64/mercury/doc
 }
 
