@@ -10,7 +10,7 @@ Routers, and probably others.
 HOMEPAGE="http://www.infradead.org/openconnect/"
 DOWNLOADS="ftp://ftp.infradead.org/pub/${PN}/${PNV}.tar.gz"
 
-LICENCES=""
+LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS="
