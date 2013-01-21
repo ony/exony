@@ -1,0 +1,35 @@
+# Copyright 2013 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A client for Cisco's AnyConnect SSL VPN"
+DESCRIPTION="
+OpenConnect is a client for Cisco's AnyConnect SSL VPN, which is supported by the ASA5500 Series, by
+IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800, 7200 Series and Cisco 7301
+Routers, and probably others.
+"
+HOMEPAGE="http://www.infradead.org/openconnect/"
+DOWNLOADS="ftp://ftp.infradead.org/pub/${PN}/${PNV}.tar.gz"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+openssl [[ description = [ Use dev-libs/openssl ] ]]
+gnutls [[ description = [ Use dev-libs/gnutls instead of dev-libs/openssl (experimental) ] ]]
+( openssl gnutls ) [[ number-selected = exactly-one ]]
+"
+
+DEPENDENCIES="
+    build:
+    build+run:
+        net-apps/vpnc
+        openssl? ( dev-libs/openssl )
+        gnutls? ( dev-libs/gnutls )
+    run:
+        sys-apps/iproute2
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( openssl gnutls )
+
