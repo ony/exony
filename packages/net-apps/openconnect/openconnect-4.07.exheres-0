@@ -20,8 +20,10 @@ gnutls [[ description = [ Use dev-libs/gnutls instead of dev-libs/openssl (exper
 "
 
 DEPENDENCIES="
-    build:
     build+run:
+        sys-libs/zlib
+        dev-libs/libxml2
+        virtual/pkg-config
         net-apps/vpnc
         openssl? ( dev-libs/openssl )
         gnutls? ( dev-libs/gnutls )
