@@ -1,14 +1,11 @@
 # Copyright 2013 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-# Note: tag 1.1.11 points to 846f2ba (at the date 2013-Mar-21)
-
 MY_USER=fritzy
-MY_REV=846f2ba
 
-require github [ user="${MY_USER}" rev="${MY_REV}" ] distutils [ python_dep=2.6 ]
+require github [ user="${MY_USER}" rev="${PV}" ] distutils [ python_dep=2.6 ]
 
-WORK="${WORKBASE}/${MY_USER}-SleekXMPP-${MY_REV}"
+WORK="${WORKBASE}/SleekXMPP-${PV}"
 
 SUMMARY="Flexible XMPP client/component/server library for Python 2.6+/3+"
 DESCRIPTION="
