@@ -27,17 +27,16 @@ src_prepare() {
     # fix sources
     edo sed -i \
         -e 's/\$(INSTALL) -s/\$(INSTALL)/g' \
-        -e 's/ \$(BINDIR)/ \$(DESTDIR)\$(BINDIR)/g' \
         "${WORK}/mod_notionflux/notionflux/Makefile"
 
     # kinda configure
     edo sed -i \
         -e '/^PREFIX\>/s@/usr/local@/usr@' \
         -e "/^LIBDIR\>/s@\$(PREFIX)/lib@\$(PREFIX)/${LIBDIR:-}@" \
-        -e '/^X11_PREFIX\>/s@/usr/X11R6@/usr@' \
+        -e '/^X11_PREFIX\>/s@/usr/X11R6@$(PREFIX)@' \
         -e '/TEXTPROP_BUG/s/^/#/' \
         -e "/^CC\>/s@\<gcc\>@$CC@" \
-        "${WORK}/system.mk"
+        "${WORK}/system-autodetect.mk"
 }
 
 src_install() {
