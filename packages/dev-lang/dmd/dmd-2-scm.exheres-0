@@ -23,6 +23,11 @@ done
 
 scm_finalise
 
+DEPENDENCIES="
+    build+run:
+        net-misc/curl[multibuild_c:*(-)?]
+"
+
 WORK="${WORKBASE}"
 PLATFORMS="~amd64"
 
