@@ -16,5 +16,3 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES+=( rational-trees )
 # TODO: fix tests
 RESTRICT+=test
 
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-fixed-makefiles-to-build-in-multilib-env.patch" )
-
