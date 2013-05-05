@@ -13,11 +13,15 @@ MY_YAP_REPOSITORY_PREFIX="git://yap.git.sourceforge.net/gitroot/yap"
 MY_YAP_PACKAGES="chr clpqr jpl zlib http clib sgml RDF semweb plunit R pldoc archive odbc"
 
 SCM_REPOSITORY="${MY_YAP_REPOSITORY_PREFIX}/${PNV%-scm}"
-SCM_SECONDARY_REPOSITORIES="real ${MY_YAP_PACKAGES}"
+SCM_SECONDARY_REPOSITORIES="real ${MY_YAP_PACKAGES} udi"
 
 # real is taken from SWI Prolog
 SCM_real_REPOSITORY="git://www.swi-prolog.org/home/pl/git/packages/real.git"
 SCM_EXTERNAL_REFS="packages/real:real"
+
+# udi is taken from external repo
+SCM_udi_REPOSITORY="git://github.com/davidvaz/yap-udi-indexers.git"
+SCM_EXTERNAL_REFS+=" packages/udi:udi"
 
 for SCM_THIS in ${MY_YAP_PACKAGES}; do
     scm_set_var REPOSITORY "${MY_YAP_REPOSITORY_PREFIX}/${SCM_THIS}"
