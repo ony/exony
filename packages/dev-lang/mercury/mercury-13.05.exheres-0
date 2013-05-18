@@ -1,0 +1,22 @@
+# Copyright 2013 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require mercury \
+        autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 ] ]
+
+WORK="${WORKBASE}/${PN}-srcdist-${PV}"
+RESTRICT=test
+AT_M4DIR=( m4 )
+
+DOWNLOADS="http://dl.mercurylang.org/release/${PN}-srcdist-${PV}.tar.gz"
+
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+UPSTREAM_RELEASE_NOTES="http://dl.mercurylang.org/release/release-notes-${PV}.txt"
+
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}/${PNV}-bug259-dirs-overriding.patch"
+)
+
