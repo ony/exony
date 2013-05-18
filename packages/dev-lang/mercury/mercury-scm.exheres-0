@@ -3,7 +3,7 @@
 
 require mercury \
         github [ user=Mercury-Language ] \
-        autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.12 ] ]
+        autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 ] ]
 
 RESTRICT=test
 AT_M4DIR=( m4 )
@@ -20,8 +20,6 @@ DEPENDENCIES="
 "
 
 DEFAULT_SRC_PREPARE_PATCHES=(
-    "${FILES}/${PNV}-Fix-for-bug-203-DESTDIR-brokes-installation.patch"
-    "${FILES}/${PNV}-Allow-usr-lib64-override-bug259.patch"
-    "${FILES}/${PNV}-Add-man-info-and-lisp-dirs-configuring-bug259.patch"
+    "${FILES}/${PN}-13.05-bug259-dirs-overriding.patch"
 )
 
