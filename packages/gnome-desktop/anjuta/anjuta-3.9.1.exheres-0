@@ -3,11 +3,6 @@
 
 require gnome.org [ suffix=.tar.xz ] gsettings gtk-icon-cache freedesktop-desktop freedesktop-mime
 
-require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.12 1.11 ] ]
-
-# Note that autotools required because one of the patch changes configure.ac.
-# As well we need gnome-desktop/gnome-common and gnome-desktop/yelp-tools to pull in some macroses.
-
 SUMMARY="An intergrated development environment (IDE) for the GNOME desktop"
 DESCRIPTION="
 Anjuta DevStudio is a versatile Integrated Development Environment (IDE)
@@ -41,8 +36,6 @@ DEPENDENCIES="
         dev-util/pkg-config[>=0.22]
         gnome-desktop/gnome-doc-utils[>=0.18]
         sys-devel/gettext[>=0.12]
-        gnome-desktop/gnome-common
-        gnome-desktop/yelp-tools
         gtk-doc? ( dev-doc/gtk-doc[>=1.4] )
         gobject-introspection? ( gnome-desktop/gobject-introspection:1[>=0.9.5] )
     build+run:
@@ -51,22 +44,20 @@ DEPENDENCIES="
         dev-libs/libgda:=[>=4.2.0]
         dev-libs/libxml2:2.0[>=2.4.23]
         dev-libs/vte:3.0[>=0.27.6]
-        gnome-desktop/gdl:3.0[>=3.5.4]
+        gnome-desktop/gdl:3.0[>=3.5.5]
         gnome-desktop/gtksourceview:3.0[>=3.0.0]
         sys-devel/autogen
         x11-libs/gdk-pixbuf:2.0[>=2.0.0]
         x11-libs/gtk+:3[>=3.4.0][gobject-introspection?]
         x11-libs/libXrender
         x11-libs/libXext
-        devhelp? ( gnome-desktop/devhelp:3.0[>=3.4.2] )
+        devhelp? ( gnome-desktop/devhelp:3.0[>=3.7.4] )
         glade? ( dev-util/glade[>=3.12.0] )
         subversion? ( dev-scm/subversion[>=1.5.0] )
         vala? ( dev-lang/vala:=[>=0.16.0] )
 "
 
 RESTRICT="test" # Docs fail validity check
-
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/${PN}-bug684758.patch" )
 
 DEFAULT_SRC_CONFIGURE_PARAMS=(
     --enable-nls

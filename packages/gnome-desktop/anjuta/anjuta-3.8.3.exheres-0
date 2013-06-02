@@ -51,7 +51,7 @@ DEPENDENCIES="
         x11-libs/gtk+:3[>=3.4.0][gobject-introspection?]
         x11-libs/libXrender
         x11-libs/libXext
-        devhelp? ( gnome-desktop/devhelp:3.0[>=3.4.2] )
+        devhelp? ( gnome-desktop/devhelp:3.0[>=3.7.4] )
         glade? ( dev-util/glade[>=3.12.0] )
         subversion? ( dev-scm/subversion[>=1.5.0] )
         vala? ( dev-lang/vala:=[>=0.16.0] )
