@@ -1,9 +1,7 @@
 # Copyright 2012 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-SCM_REPOSITORY="git://git.sanityinc.com/${PN}.git"
-
-require scm-git
+require github [ user=purcell ]
 
 SUMMARY="Ruby script to convert from a Darcs repository to a Git one"
 DESCRIPTION="
