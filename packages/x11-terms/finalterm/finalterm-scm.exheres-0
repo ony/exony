@@ -1,0 +1,41 @@
+# Copyright 2013 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user="p-e-w" ] cmake gsettings
+
+SUMMARY="At last – a modern terminal emulator"
+DESCRIPTION="
+Final Term is a new breed of terminal emulator. It goes beyond mere emulation and understands what is
+happening inside the shell it is hosting. This allows it to offer features no other terminal can,
+including: Semantic text menus; Smart command completion; GUI terminal controls.
+"
+
+HOMEPAGE="http://finalterm.org/ $HOMEPAGE"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="libnotify"
+
+DEPENDENCIES="
+    build:
+        dev-lang/vala:*[>=0.16.0]
+    build+run:
+        base/libgee:0.8
+        x11-libs/gtk+:3
+        x11-libs/clutter:1[>=1.12]
+        x11-libs/clutter-gtk:1.0
+        x11-libs/mx:1.0
+        dev-libs/keybinder:3.0
+        libnotify? ( x11-libs/libnotify )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+CMAKE_SRC_CONFIGURE_PARAMS=( -DCMAKE_DISABLE_FIND_PACKAGE_unity:BOOL=TRUE )
+CMAKE_SRC_CONFIGURE_OPTION_DISABLE_FINDS=( libnotify )
+
+src_install() {
+    cmake_src_install
+    gsettings_src_install
+}
