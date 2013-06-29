@@ -1,0 +1,53 @@
+# Copyright 2013 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge [ suffix=tar.gz ]  java ant
+
+SUMMARY="Open-Source tool in Java to draw UML Diagram"
+DESCRIPTION="
+UML diagram drawing tool that supports: sequence, use-case, class, activity, component, state,
+object diagrams.
+"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    suggestion:
+        media-gfx/graphviz
+"
+
+BUGS_TO="virkony@gmail.com"
+
+src_prepare() {
+    : # do nothing
+}
+
+src_test() {
+    : # do nothing
+}
+
+generate_jar_wrapper() {
+    cat > "$1" << EOW
+#!/bin/bash
+exec java -jar '/usr/share/${PN}/${PN}.jar' "\$@"
+EOW
+}
+
+src_compile() {
+    ant_src_compile
+
+    edo generate_jar_wrapper "${WORK}/${PN}"
+}
+
+src_install() {
+    default
+
+    dodir "/usr/share/$PN"
+    insinto "/usr/share/$PN"
+    doins "${WORK}/${PN}.jar"
+
+    dobin "${WORK}/${PN}"
+}
+
