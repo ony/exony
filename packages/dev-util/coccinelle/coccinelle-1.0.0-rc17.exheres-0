@@ -1,0 +1,41 @@
+# Copyright 2013 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Semantic patch program"
+DESCRIPTION="
+Coccinelle is a program matching and transformation engine which provides the language SmPL
+(Semantic Patch Language) for specifying desired matches and transformations in C code. Coccinelle
+was initially targeted towards performing collateral evolutions in Linux. Such evolutions comprise
+the changes that are needed in client code in response to evolutions in library APIs, and may
+include modifications such as renaming a function, adding a function argument whose value is somehow
+context-dependent, and reorganizing a data structure.
+"
+HOMEPAGE="http://coccinelle.lip6.fr"
+DOWNLOADS="${HOMEPAGE}/distrib/coccinelle-1.0.0-rc17.tgz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    ocamlopt [[ description = [ build an optimized spatch ] ]]
+"
+
+DEPENDENCIES="
+    build:
+    build+run:
+        dev-lang/ocaml[ocamlopt?]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+UPSTREAM_RELEASE_NOTES="${HOMEPAGE}/distrib/changes.html [[ lang = en ]]"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-release )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "ocamlopt opt" )
+
+src_install() {
+    default
+    keepdir /usr/${LIBDIR:-lib}
+}
+
