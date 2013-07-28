@@ -1,0 +1,22 @@
+# Copyright 2013 Jakob Nixdorf <flocke@shadowice.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require pypi [ suffix=zip ] distutils [ python_dep=2.7 ]
+
+SUMMARY="Store and access your passwords safely."
+
+LICENCES="PSF"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        dev-python/setuptools
+    suggestion:
+        gnome-desktop/libgnome-keyring[gobject-introspection] [[ description = [ GNOME Keyring backend ] ]]
+        gnome-bindings/pygobject:3 [[ description = [ GNOME Keyring backend ] ]]
+        kde/pykde4 [[ description = [ KDE Wallet backend ] ]]
+"
+
+BUGS_TO="flocke@shadowice.org"
