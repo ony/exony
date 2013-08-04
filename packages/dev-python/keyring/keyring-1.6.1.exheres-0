@@ -4,6 +4,11 @@
 require pypi [ suffix=zip ] distutils [ python_dep=2.7 ]
 
 SUMMARY="Store and access your passwords safely."
+DESCRIPTION="
+Provides easy access to safe password storage services from python applications.
+Supports the KDE Wallet, GNOME Keyring and the newer Secret Service API as backends
+as well as the native CryptFile and UncryptFile storage.
+"
 
 LICENCES="PSF"
 SLOT="0"
@@ -20,3 +25,4 @@ DEPENDENCIES="
 "
 
 BUGS_TO="flocke@shadowice.org"
+
