@@ -1,0 +1,41 @@
+# Copyright 2013 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A free SOCKS server and socksifier"
+DESCRIPTION="
+SOCKS server and a SOCKS client, implementing RFC 1928 and related standards. It is a flexible
+product that can be used to provide convenient and secure network connectivity.
+"
+HOMEPAGE="http://www.inet.no/dante"
+
+MY_PNV="${PN}-${PV/_/-}"
+DOWNLOADS="ftp://ftp.inet.no/pub/socks/${MY_PNV}.tar.gz"
+WORK="${WORKBASE}/${MY_PNV}"
+
+LICENCES="TODO"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    (
+        server [[ description = [ enable server ] ]]
+        client [[ description = [ enable client library ] ]]
+    ) [[ number-selected = at-least-one ]]
+    upnp [[ description = [ upnp support ] ]]
+"
+
+DEPENDENCIES="
+    build:
+    build+run:
+        upnp? ( net-libs/miniupnpc )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --enable-release --without-bsdauth --without-gssapi --without-krb5 --without-sasl --without-ldap
+    --without-libwrap --without-pam
+)
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( upnp )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( server client )
+
