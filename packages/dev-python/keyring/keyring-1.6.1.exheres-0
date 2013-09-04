@@ -19,9 +19,9 @@ DEPENDENCIES="
     suggestion:
         (
             gnome-bindings/pygobject:3
-            gnome-desktop/libgnome-keyring[gobject-introspection]
-        ) [[ *description = [ Gnome Keyring backend ] *group-name = [ gnome-keyring ] ]]
-        kde/pykde4 [[ description = [ KDE Wallet backend ] ]]
+            gnome-desktop/libgnome-keyring:1[gobject-introspection]
+        ) [[ *description = [ Used to store passwords in the Gnome Keyring ] *group-name = [ gnome-keyring ] ]]
+        kde/pykde4:4 [[ description = [ Used to store passwords in the KDE Wallet ] ]]
 "
 
 BUGS_TO="flocke@shadowice.org"
