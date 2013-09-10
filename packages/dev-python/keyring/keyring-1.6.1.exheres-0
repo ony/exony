@@ -1,7 +1,7 @@
 # Copyright 2013 Jakob Nixdorf <flocke@shadowice.org>
 # Distributed under the terms of the GNU General Public License v2
 
-require pypi [ suffix=zip ] setuptools [ python_dep=2.7 ]
+require pypi [ suffix=zip ] setuptools [ python_dep='[>=2.7]' ]
 
 SUMMARY="Store and access your passwords safely."
 DESCRIPTION="
