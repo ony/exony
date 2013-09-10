@@ -26,3 +26,6 @@ DEPENDENCIES="
 
 BUGS_TO="flocke@shadowice.org"
 
+# Need some additional deps (WIP)
+RESTRICT="test"
+
