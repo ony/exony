@@ -3,19 +3,23 @@
 
 require notion
 
-SCM_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/notion"
+MY_REPO_PREFIX="git://git.code.sf.net/p/notion"
+
+SCM_REPOSITORY="$MY_REPO_PREFIX/notion"
 SCM_EXTERNAL_REFS="mod_xinerama:mod_xinerama mod_xrandr:mod_xrandr mod_xkbevents:mod_xkbevents libextl:libextl libtu:libtu contrib:contrib mod_notionflux:mod_notionflux"
 SCM_SECONDARY_REPOSITORIES="mod_xinerama mod_xrandr mod_xkbevents libextl libtu contrib mod_notionflux"
-SCM_mod_xinerama_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/mod_xinerama"
-SCM_mod_xrandr_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/mod_xrandr"
-SCM_mod_xkbevents_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/mod_xkbevents"
-SCM_libextl_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/libextl"
-SCM_libtu_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/libtu"
-SCM_contrib_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/contrib"
-SCM_mod_notionflux_REPOSITORY="git://notion.git.sourceforge.net/gitroot/notion/mod_notionflux"
+SCM_mod_xinerama_REPOSITORY="$MY_REPO_PREFIX/mod_xinerama"
+SCM_mod_xrandr_REPOSITORY="$MY_REPO_PREFIX/mod_xrandr"
+SCM_mod_xkbevents_REPOSITORY="$MY_REPO_PREFIX/mod_xkbevents"
+SCM_libextl_REPOSITORY="$MY_REPO_PREFIX/libextl"
+SCM_libtu_REPOSITORY="$MY_REPO_PREFIX/libtu"
+SCM_contrib_REPOSITORY="$MY_REPO_PREFIX/contrib"
+SCM_mod_notionflux_REPOSITORY="$MY_REPO_PREFIX/mod_notionflux"
 
 require scm-git
 
 SLOT="0"
 PLATFORMS="~amd64"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-fix-LUA_VERSION-detection-ticket-64.patch" )
 
