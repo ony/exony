@@ -16,6 +16,13 @@ PLATFORMS="~amd64"
 MYOPTIONS=""
 
 DEPENDENCIES="
+    test:
+        dev-python/fs[python_abis:*(-)?]
+        dev-python/gdata[python_abis:*(-)?]
+        dev-python/keyczar[python_abis:*(-)?]
+        dev-python/mock[python_abis:*(-)?]
+        dev-python/pycrypto[python_abis:*(-)?]
+        dev-python/pytest[python_abis:*(-)?]
     suggestion:
         (
             gnome-bindings/pygobject:3
@@ -27,5 +34,7 @@ DEPENDENCIES="
 BUGS_TO="flocke@shadowice.org"
 
 # Need some additional deps (WIP)
+#  missing exheres: dev-python/pytest
+#  missing multipy: dev-python/gdata, dev-python/mock, gnome-bindings/pygobject:3, kde/pykde4:4
 RESTRICT="test"
 
