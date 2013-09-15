@@ -1,7 +1,8 @@
 # Copyright 2013 Jakob Nixdorf <flocke@shadowice.org>
 # Distributed under the terms of the GNU General Public License v2
 
-require pypi [ suffix=zip ] setuptools [ python_dep='[>=2.7]' ]
+# dev-python/fs, dev-python/gdata and dev-python/keyczar only support python2
+require pypi [ suffix=zip ] setuptools [ python_sup='2.6 2.7' python_dep='[>=2.7]' ]
 
 SUMMARY="Store and access your passwords safely."
 DESCRIPTION="
@@ -35,7 +36,7 @@ DEPENDENCIES="
 BUGS_TO="flocke@shadowice.org"
 
 # TODO
-#  missing multipy: dev-python/gdata, dev-python/mock, gnome-bindings/pygobject:3, kde/pykde4:4
+#  missing multipy: dev-python/mock, gnome-bindings/pygobject:3, kde/pykde4:4
 
 # Use pytest-runner for testing
 src_test() {
