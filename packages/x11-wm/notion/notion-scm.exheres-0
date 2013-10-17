@@ -21,5 +21,3 @@ require scm-git
 SLOT="0"
 PLATFORMS="~amd64"
 
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-fix-LUA_VERSION-detection-ticket-64.patch" )
-

@@ -21,22 +21,24 @@ RESTRICT="test"
 
 UPSTREAM_DOCUMENTATION="http://notion.sourceforge.net/#documentation"
 
+DEFAULT_SRC_INSTALL_PARAMS=(
+    "PREFIX=/usr"
+    "LIBDIR=/usr/${LIBDIR:-lib}"
+    "X11_PREFIX=/usr"
+    )
+
+DEFAULT_SRC_COMPILE_PARAMS=(
+    "${DEFAULT_SRC_INSTALL_PARAMS[@]}"
+    "CC=$CC"
+    )
+
 src_prepare() {
     default
 
-    # fix sources
+    # do not strip during install
     edo sed -i \
         -e 's/\$(INSTALL) -s/\$(INSTALL)/g' \
         "${WORK}/mod_notionflux/notionflux/Makefile"
-
-    # kinda configure
-    edo sed -i \
-        -e '/^PREFIX\>/s@/usr/local@/usr@' \
-        -e "/^LIBDIR\>/s@\$(PREFIX)/lib@\$(PREFIX)/${LIBDIR:-}@" \
-        -e '/^X11_PREFIX\>/s@/usr/X11R6@$(PREFIX)@' \
-        -e '/TEXTPROP_BUG/s/^/#/' \
-        -e "/^CC\>/s@\<gcc\>@$CC@" \
-        "${WORK}/system-autodetect.mk"
 }
 
 src_install() {
