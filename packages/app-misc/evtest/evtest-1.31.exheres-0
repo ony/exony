@@ -1,0 +1,30 @@
+# Copyright 2013 Nikolay Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 ] ]
+
+SUMMARY="Input device event monitor and query tool"
+DESCRIPTION="
+evtest displays information on the input device specified on the command line, including all the
+events supported by the device. It then monitors the device and displays all the events layer events
+generated.
+"
+HOMEPAGE="http://cgit.freedesktop.org/${PN}/"
+DOWNLOADS="http://cgit.freedesktop.org/${PN}/snapshot/${PNV}.tar.gz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="doc"
+
+DEPENDENCIES="
+    build:
+        doc? (
+            app-text/xmlto
+            app-doc/asciidoc
+        )
+    build+run:
+"
+
+BUGS_TO="virkony@gmail.com"
+
