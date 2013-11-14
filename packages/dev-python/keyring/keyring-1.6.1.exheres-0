@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # dev-python/fs, dev-python/gdata and dev-python/keyczar only support python2
-require pypi [ suffix=zip ] setuptools [ python_sup='2.6 2.7' python_dep='[>=2.7]' ]
+require setup-py [ import=setuptools test=pytest blacklist="3" ] pypi [ suffix=zip ]
 
 SUMMARY="Store and access your passwords safely."
 DESCRIPTION="
@@ -24,7 +24,6 @@ DEPENDENCIES="
         dev-python/mock[python_abis:*(-)?]
         dev-python/pycrypto[python_abis:*(-)?]
         dev-python/pytest[python_abis:*(-)?]
-        dev-python/pytest-runner[python_abis:*(-)?]
     suggestion:
         (
             gnome-bindings/pygobject:3
@@ -34,12 +33,4 @@ DEPENDENCIES="
 "
 
 BUGS_TO="flocke@shadowice.org"
-
-# TODO
-#  missing multipy: dev-python/mock, gnome-bindings/pygobject:3, kde/pykde4:4
-
-# Use pytest-runner for testing
-src_test() {
-    edo ${PYTHON} -B setup.py ptr
-}
 
