@@ -27,7 +27,7 @@ MYOPTIONS="ntfs jpeg"
 DEPENDENCIES="
     sys-libs/ncurses[>=5.2]
     jpeg? ( media-libs/jpeg:0 )
-    ntfs? ( sys-fs/ntfsprogs[>=2] )
+    ntfs? ( sys-fs/ntfs-3g_ntfsprogs )
     sys-fs/e2fsprogs[>=1.35]
     sys-libs/zlib
 "
