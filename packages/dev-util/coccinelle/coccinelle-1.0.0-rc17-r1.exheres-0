@@ -16,23 +16,24 @@ DOWNLOADS="${HOMEPAGE}/distrib/coccinelle-1.0.0-rc17.tgz"
 LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS="
-    ocamlopt [[ description = [ build an optimized spatch ] ]]
-"
+MYOPTIONS=""
 
 DEPENDENCIES="
     build:
     build+run:
-        dev-lang/ocaml[ocamlopt?]
+        || (
+            dev-lang/ocaml[>=4.01.0-r1]
+            dev-lang/ocaml[<4.01.0-r1][ocamlopt(-)]
+        )
 "
 
 BUGS_TO="virkony@gmail.com"
 
 UPSTREAM_RELEASE_NOTES="${HOMEPAGE}/distrib/changes.html [[ lang = en ]]"
 
-DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-release )
+DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-release --enable-opt )
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
-DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "ocamlopt opt" )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( )
 
 src_install() {
     default
