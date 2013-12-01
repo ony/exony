@@ -1,0 +1,69 @@
+# Copyright 2013 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A WYSIWYM (What You See Is What You Mean) document processor"
+DESCRIPTION="
+LyX is a document processor that encourages an approach to writing based on the structure of your
+documents, not their appearance. It is released under a Free Software/Open Source license (GPL v.2).
+
+LyX is for people that write and want their writing to look great, right out of the box. No more
+endless tinkering with formatting details, 'finger painting' font attributes or futzing around with
+page boundaries. You just write. In the background, Prof. Knuth's legendary TeX typesetting engine
+makes you look good.
+
+On screen, LyX looks like any word processor; its printed output -- or richly cross-referenced PDF,
+just as readily produced -- looks like nothing else. Gone are the days of industrially bland .docs,
+all looking similarly not-quite-right, yet coming out unpredictably different on different printer
+drivers. Gone are the crashes 'eating' your dissertation the evening before going to press.
+
+LyX is stable and fully featured. It is a multi-platform, fully internationalized application
+running natively on Unix/Linux, the Macintosh and modern Windows platforms.
+"
+HOMEPAGE="http://www.lyx.org"
+UPSTREAM_RELEASE_NOTES="${HOMEPAGE}/News [[ lang = en ]]"
+UPSTREAM_DOCUMENTATION="
+    ${HOMEPAGE}/AboutLyX [[ lang = en description = [ About ] ]]
+    http://wiki.lyx.org [[ lang = en description = [ Wiki / Documentation ] ]]
+"
+DOWNLOADS="ftp://ftp.lyx.org/pub/${PN}/stable/$(ever range 1-2).x/${PNV}.tar.xz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    aspell [[ description = [ Use ASpell for spell checking ] ]]
+    enchant [[ description = [ Use Enchant for spell checking ] ]]
+    hunspell [[ description = [ Use Hunspell for spell checking ] ]]
+    debug [[ description = [ enable debug information ] ]]
+"
+
+DEPENDENCIES="
+    build+run:
+        app-text/texlive-core
+        x11-libs/qt:4
+        sys-libs/zlib
+        sys-devel/gettext[>0.16.1]
+        dev-lang/python:*[>=2.4.0&<3]
+        aspell? ( app-spell/aspell )
+        enchant? ( app-spell/enchant )
+        hunspell? ( app-spell/hunspell )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --disable-dependency-tracking --disable-pch --disable-rpath --with-gnu-ld
+    --enable-monolithic-build
+    --with-frontend=qt4 --with-x
+    --without-included-boost
+)
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( aspell enchant hunspell )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug )
+
+src_configure() {
+    # fix python scripts to refer only to 2.x version by default
+    edo find -name '*.py' -exec sed -i '1s@^#!\s*/usr/bin/env\s\+python\>@&2@' '{}' ';'
+
+    default
+}
+
