@@ -19,12 +19,8 @@ PLATFORMS="~amd64"
 MYOPTIONS=""
 
 DEPENDENCIES="
-    build:
     build+run:
-        || (
-            dev-lang/ocaml[>=4.01.0-r1]
-            dev-lang/ocaml[<4.01.0-r1][ocamlopt(-)]
-        )
+        dev-lang/ocaml[>=4.01.0-r1]
 "
 
 BUGS_TO="virkony@gmail.com"
