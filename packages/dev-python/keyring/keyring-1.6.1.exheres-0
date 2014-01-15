@@ -29,10 +29,8 @@ DEPENDENCIES="
             gnome-bindings/pygobject:3[python_abis:*(-)?]
             gnome-desktop/libgnome-keyring:1[gobject-introspection]
         ) [[ *description = [ Used to store passwords in the Gnome Keyring ] *group-name = [ gnome-keyring ] ]]
+        kde/pykde4:4[python_abis:*(-)?] [[ description = [ Used to store passwords in the KDE Wallet ] ]]
 "
-
-# TODO: Add setup-py support for pykde4:4 and enable it as suggenstion
-#        kde/pykde4:4[python_abis:*(-)?] [[ description = [ Used to store passwords in the KDE Wallet ] ]]
 
 BUGS_TO="flocke@shadowice.org"
 
