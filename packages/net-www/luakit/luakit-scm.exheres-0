@@ -22,7 +22,7 @@ DEPENDENCIES="
         dev-lang/lua[>=5.1]
         dev-lua/luafilesystem
         net-libs/webkit-gtk
-        dev-libs/unique
+        dev-libs/unique:1
         dev-db/sqlite:3
 "
 
