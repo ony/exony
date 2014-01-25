@@ -1,11 +1,7 @@
 # Copyright 2013 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-MY_USER=fritzy
-
-require github [ user="${MY_USER}" rev="${PV}" ] distutils [ python_dep=2.6 ]
-
-WORK="${WORKBASE}/SleekXMPP-${PV}"
+require github [ user=fritzy pn=SleekXMPP tag=${PV} ] distutils [ python_dep=2.6 ]
 
 SUMMARY="Flexible XMPP client/component/server library for Python 2.6+/3+"
 DESCRIPTION="
