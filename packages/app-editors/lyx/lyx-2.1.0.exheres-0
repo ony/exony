@@ -1,6 +1,8 @@
 # Copyright 2013 Nikolay Orliuk
 # Distributed under the terms of the GNU General Public License v2
 
+require gtk-icon-cache freedesktop-desktop
+
 SUMMARY="A WYSIWYM (What You See Is What You Mean) document processor"
 DESCRIPTION="
 LyX is a document processor that encourages an approach to writing based on the structure of your
@@ -39,10 +41,10 @@ MYOPTIONS="
 
 DEPENDENCIES="
     build+run:
+        dev-libs/boost
         app-text/texlive-core
-        x11-libs/qt:4
+        x11-libs/qt:4[>=4.5.0]
         sys-libs/zlib
-        sys-devel/gettext[>0.16.1]
         dev-lang/python:*[>=2.4.0&<3]
         aspell? ( app-spell/aspell )
         enchant? ( app-spell/enchant )
@@ -60,10 +62,26 @@ DEFAULT_SRC_CONFIGURE_PARAMS=(
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( aspell enchant hunspell )
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug )
 
-src_configure() {
+src_prepare() {
     # fix python scripts to refer only to 2.x version by default
     edo find -name '*.py' -exec sed -i '1s@^#!\s*/usr/bin/env\s\+python\>@&2@' '{}' ';'
 
     default
+}
+
+src_install() {
+    default
+
+    keepdir /usr/share/lyx/images/commands
+}
+
+pkg_postinst() {
+    gtk-icon-cache_pkg_postinst
+    freedesktop-desktop_pkg_postinst
+}
+
+pkg_postrm() {
+    gtk-icon-cache_pkg_postrm
+    freedesktop-desktop_pkg_postrm
 }
 
