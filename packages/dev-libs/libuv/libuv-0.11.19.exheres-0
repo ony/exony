@@ -1,0 +1,28 @@
+# Copyright 2014 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=joyent tag=v${PV} ] autotools [ supported_automake=[ 1.13 ] supported_autoconf=[ 2.5 ] ]
+
+SUMMARY="Cross-platform asychronous I/O"
+DESCRIPTION="
+libuv is a multi-platform support library with a focus on asynchronous I/O. It was primarily
+developed for use by Node.js, but it's also used by Mozilla's Rust language, Luvit, Julia, pyuv, and
+others.
+"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+    build+run:
+"
+
+BUGS_TO="virkony@gmail.com"
+
+RESTRICT=test
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/libuv-automake-1.13.patch" )
+DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-static )
+

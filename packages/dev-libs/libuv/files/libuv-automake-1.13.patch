@@ -1,0 +1,9 @@
+Source: autogen.sh
+Upstream: none
+Reason: upstream does some pre-configuration before eautoreconf, but since
+        we've put automake-1.13 as supported we can hardcode result of that
+        script
+--- ./m4/libuv-extra-automake-flags.m4.orig	2014-02-22 20:29:56.306643514 +0200
++++ ./m4/libuv-extra-automake-flags.m4	2014-02-22 20:30:06.676643163 +0200
+@@ -0,0 +1 @@
++m4_define([UV_EXTRA_AUTOMAKE_FLAGS], [serial-tests])
