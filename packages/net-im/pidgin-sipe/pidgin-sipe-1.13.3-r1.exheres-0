@@ -37,7 +37,7 @@ DEPENDENCIES="
         )
         telepathy? (
             net-im/telepathy-glib[>=0.18.0]
-            || ( net-utils/gmime:2.4[>=2.4.16] net-utils/gmime:2.6[>=2.5.2] )
+            net-utils/gmime:2.6[>=2.5.2]
             dev-libs/dbus-glib:1
         )
         kerberos? ( app-crypt/heimdal )
