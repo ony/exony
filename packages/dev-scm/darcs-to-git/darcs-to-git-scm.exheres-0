@@ -15,7 +15,7 @@ SLOT="0"
 PLATFORMS="~amd64"
 DEPENDENCIES="
     run:
-        dev-lang/ruby:1.8
+        dev-lang/ruby:*
 "
 
 src_install() {
