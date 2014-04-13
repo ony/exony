@@ -1,0 +1,23 @@
+# Copyright 2014 Nikolay Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=ony ] cmake
+
+SUMMARY="LevelDB Template Library"
+DESCRIPTION="
+Features LevelDB with transactions, multiple tables in single database, etc. This project is
+intended for using in programs like browsers, small dbms like http://github.com/openwebos/db8
+"
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-db/leveldb
+"
+
+BUGS_TO="virkony@gmail.com"
+
