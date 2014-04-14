@@ -12,12 +12,19 @@ intended for using in programs like browsers, small dbms like http://github.com/
 LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS=""
+MYOPTIONS="doc"
 
 DEPENDENCIES="
+    build:
+        doc? (
+            app-doc/doxygen
+            media-gfx/graphviz
+        )
     build+run:
         dev-db/leveldb
 "
 
 BUGS_TO="virkony@gmail.com"
+
+CMAKE_SRC_CONFIGURE_OPTIONS=("doc BUILD_DOCUMENTATION")
 
