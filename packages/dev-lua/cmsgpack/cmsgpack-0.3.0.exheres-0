@@ -1,0 +1,36 @@
+# Copyright 2014 Nikolay Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=antirez pn="lua-cmsgpack"  ]
+SUMMARY="A self contained Lua MessagePack C implementation."
+DESCRIPTION="
+Lua-cmsgpack is a MessagePack implementation and bindings for Lua 5.1/5.2 in a self contained C file
+without external dependencies.
+"
+
+LICENCES="BSD"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/lua
+"
+
+BUGS_TO="virkony@gmail.com"
+
+src_compile() {
+    edo ${CC:-cc} ${CFLAGS} $(pkg-config --cflags lua) -fPIC -c -o lua_cmsgpack.o lua_cmsgpack.c
+    edo ${LD:-ld} ${LDFLAGS} $(pkg-config --libs lua) -shared -o ${PN}.so lua_cmsgpack.o
+}
+
+src_test() {
+    edo lua -l ${PN} test.lua
+}
+
+src_install() {
+    insinto $(pkg-config --variable INSTALL_CMOD lua)
+    doins ${PN}.so
+}
+
