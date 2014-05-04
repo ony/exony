@@ -1,0 +1,30 @@
+# Copyright 2014 Nikolay Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Just-In-Time Compiler for Lua"
+DESCRIPTION="
+LuaJIT is a Just-In-Time Compiler (JIT) for the Lua programming language. Lua is a powerful, dynamic
+and light-weight programming language. It may be embedded or used as a general-purpose, stand-alone
+language.
+"
+HOMEPAGE="http://luajit.org"
+DOWNLOADS="http://luajit.org/download/${PNV}.tar.gz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+    "PREFIX=/usr"
+    "INSTALL_LIB=${IMAGE}/usr/${LIBDIR:-lib}"
+)
+
+DEFAULT_SRC_COMPILE_PARAMS=( "${DEFAULT_SRC_INSTALL_PARAMS[@]}" )
+
+src_install() {
+    default
+    keepdir /usr/{lib64,share}/lua/5.1
+}
