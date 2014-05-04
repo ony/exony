@@ -1,0 +1,33 @@
+# Copyright 2014 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require cmake github [ user=neovim ]
+
+SUMMARY="Vim's rebirth for the 21st century"
+DESCRIPTION="
+Neovim is a project that seeks to aggressively refactor vim source code in order to simplify
+maintenance, split the work between multiple developers, enable the implementation of new/modern
+user interfaces and improve the extensibility power with a new plugin architecture based on
+coprocesses
+"
+
+LICENCES="vim"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        dev-libs/libuv[>=0.11.21]
+    build+run:
+        sys-libs/ncurses
+        dev-libs/msgpack
+        dev-lang/LuaJIT
+        dev-lua/lpeg
+        dev-lua/cmsgpack
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-fix-strict-overflow-cases.patch" )
+
