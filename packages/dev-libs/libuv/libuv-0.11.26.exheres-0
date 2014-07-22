@@ -16,7 +16,7 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     build:
-    build+run:
+        virtual/pkg-config
 "
 
 BUGS_TO="virkony@gmail.com"
