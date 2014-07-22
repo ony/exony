@@ -11,7 +11,11 @@ user interfaces and improve the extensibility power with a new plugin architectu
 coprocesses
 "
 
-LICENCES="vim"
+LICENCES="
+vim         [[ note = [ original vim works + upstream vim patches ] ]]
+Apache-2.0  [[ note = [ neovim changes submitted after 24-06-2014 ] ]]
+"
+
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
@@ -28,6 +32,4 @@ DEPENDENCIES="
 "
 
 BUGS_TO="virkony@gmail.com"
-
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-fix-strict-overflow-cases.patch" )
 
