@@ -1,7 +1,7 @@
 # Copyright 2013 Jakob Nixdorf <flocke@shadowice.org>
 # Distributed under the terms of the GNU General Public License v2
 
-# dev-python/fs, dev-python/gdata and dev-python/keyczar only support python2
+# dev-python/gdata and dev-python/keyczar only support python2
 require setup-py [ import=setuptools test=pytest blacklist="3" ] pypi [ suffix=zip ]
 
 SUMMARY="Store and access your passwords safely."
@@ -18,7 +18,7 @@ MYOPTIONS=""
 
 DEPENDENCIES="
     test:
-        dev-python/fs[python_abis:*(-)?]
+        dev-python/fs[=0.4.0][python_abis:*(-)?]
         dev-python/gdata[python_abis:*(-)?]
         dev-python/keyczar[python_abis:*(-)?]
         dev-python/mock[python_abis:*(-)?]
