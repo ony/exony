@@ -22,7 +22,7 @@ BUGS_TO="virkony@gmail.com"
 
 src_compile() {
     edo ${CC:-cc} ${CFLAGS} $(pkg-config --cflags lua) -fPIC -c -o lua_cmsgpack.o lua_cmsgpack.c
-    edo ${LD:-ld} ${LDFLAGS} $(pkg-config --libs lua) -shared -o ${PN}.so lua_cmsgpack.o
+    edo ${LD:-ld} ${LDFLAGS//-Wl,/} $(pkg-config --libs lua) -shared -o ${PN}.so lua_cmsgpack.o
 }
 
 src_test() {
