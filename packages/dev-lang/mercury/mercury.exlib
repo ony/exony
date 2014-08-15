@@ -1,6 +1,8 @@
 # Copyright 2013 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
+export_exlib_phases src_install
+
 SUMMARY="The Mercury logic programming system."
 DESCRIPTION="
 Mercury is a new logic/functional programming language, which combines the clarity and
@@ -76,7 +78,7 @@ DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( readline )
 DEFAULT_SRC_COMPILE_PARAMS=( "PARALLEL=-j${EXJOBS:-1}" )
 DEFAULT_SRC_INSTALL_PARAMS=( "PARALLEL=-j${EXJOBS:-1}" )
 
-src_install() {
+mercury_src_install() {
     default
     local base_grades grades grade
 

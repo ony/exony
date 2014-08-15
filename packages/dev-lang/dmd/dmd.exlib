@@ -6,6 +6,8 @@
 
 require easy-multibuild
 
+export_exlib_phases src_configure src_compile src_install
+
 SUMMARY="DigitalMars compiler of D prgoramming language"
 DESCRIPTION="
 D is a language with C-like syntax and static typing. It pragmatically combines efficiency, control,
@@ -49,7 +51,7 @@ configure_prepare_one_multibuild() {
     edo ln -s "$WORK" "${WORKBASE}/${MULTIBUILD_CLASS}/${MULTIBUILD_TARGET}"
 }
 
-src_configure() {
+dmd_src_configure() {
     edo cp "${FILES}/dmd.conf" dmd.conf
 
     easy-multibuild_src_configure
@@ -59,7 +61,7 @@ configure_one_multibuild() {
     sed -i "s@^DFLAGS=@&-L-L/usr/${LIBDIR} @" dmd.conf
 }
 
-src_compile() {
+dmd_src_compile() {
     # compiler for default target
     emake -C src/dmd -f posix.mak MODEL=$MULTIBUILD_C_DEFAULT_TARGET
 
@@ -75,7 +77,7 @@ compile_one_multibuild() {
     done
 }
 
-src_install() {
+dmd_src_install() {
     default
 
     # TODO: handle SLOT=1 (D1 language)

@@ -3,6 +3,8 @@
 
 require sourceforge [ project=${PN} ]
 
+export_exlib_phases src_prepare src_install
+
 SUMMARY="Notion is a tiling, tabbed window manager for the X window system"
 LICENCES="LGPL-2.1"
 
@@ -32,7 +34,7 @@ DEFAULT_SRC_COMPILE_PARAMS=(
     "CC=$CC"
     )
 
-src_prepare() {
+notion_src_prepare() {
     default
 
     # do not strip during install
@@ -41,7 +43,7 @@ src_prepare() {
         "${WORK}/mod_notionflux/notionflux/Makefile"
 }
 
-src_install() {
+notion_src_install() {
     default
 
     insinto /usr/share/xsessions

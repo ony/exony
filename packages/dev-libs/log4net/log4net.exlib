@@ -3,6 +3,8 @@
 
 require mono nant dotnet
 
+export_exlib_phases src_install
+
 SUMMARY="Port of Apache log4j for .NET"
 DESCRIPTION="
 The Apache log4net library is a tool to help the programmer output log statements to a variety of
@@ -28,7 +30,7 @@ BUGS_TO="virkony@gmail.com"
 
 UPSTREAM_RELEASE_NOTES="${HOMEPAGE}/release/release-notes.html"
 
-src_install() {
+log4net_src_install() {
 
     # install resulted assembly into GAC
     # TODO: make it more flexible
