@@ -6,5 +6,3 @@ require log4net
 SLOT="0"
 PLATFORMS="~amd64"
 
-DEFAULT_SRC_PREPARE_PATCHES=( ${FILES}/${PNV}-cref.patch )
-

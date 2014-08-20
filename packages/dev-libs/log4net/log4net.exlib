@@ -15,7 +15,7 @@ of new features in the .NET runtime. For more information on log4net see the fea
 HOMEPAGE="http://logging.apache.org/${PN}/"
 
 if ! ever is_scm; then
-    DOWNLOADS="http://mirrors.besplatnyeprogrammy.ru/apache/logging/${PN}/source/${PNV}-src.zip"
+    DOWNLOADS="http://apache.ip-connect.vn.ua/logging/${PN}/source/${PNV}-src.zip"
 fi
 
 LICENCES="Apache-2.0"
