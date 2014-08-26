@@ -33,3 +33,9 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
+src_install(){
+    esandbox allow_net "unix:${TEMP}/**"
+    cmake_src_install
+    esandbox disallow_net "unix:${TEMP}/**"
+}
+
