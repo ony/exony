@@ -1,0 +1,20 @@
+# Copyright 2014 Nikolay Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="A better i7 (and now i3, i5) reporting tool for Linux"
+HOMEPAGE="https://code.google.com/p/i7z/"
+DOWNLOADS="http://${PN}.googlecode.com/files/${PNV}.tar.gz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        sys-libs/ncurses
+"
+
+BUGS_TO="virkony@gmail.com"
+
+
