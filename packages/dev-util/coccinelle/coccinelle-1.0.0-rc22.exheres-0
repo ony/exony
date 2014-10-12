@@ -1,5 +1,7 @@
-# Copyright 2013 Nikolay Orliuk
+# Copyright 2013-2014 Nikolay Orliuk
 # Distributed under the terms of the GNU General Public License v2
+
+require python [ blacklist=none multibuild=false ]
 
 SUMMARY="Semantic patch program"
 DESCRIPTION="
@@ -11,25 +13,37 @@ include modifications such as renaming a function, adding a function argument wh
 context-dependent, and reorganizing a data structure.
 "
 HOMEPAGE="http://coccinelle.lip6.fr"
-DOWNLOADS="${HOMEPAGE}/distrib/coccinelle-1.0.0-rc17.tgz"
+DOWNLOADS="${HOMEPAGE}/distrib/${PNV}.tgz"
 
 LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS=""
+MYOPTIONS="
+    python [[ description = [ enable python scripting ] ]]
+    ocaml [[ description = [ enable ocaml scripting ] ]]
+    pcre [[ description = [ enable pcre regular expression syntax ] ]]
+"
 
 DEPENDENCIES="
     build+run:
         dev-lang/ocaml[>=4.01.0-r1]
+        pcre? ( dev-libs/pcre )
 "
 
 BUGS_TO="virkony@gmail.com"
 
 UPSTREAM_RELEASE_NOTES="${HOMEPAGE}/distrib/changes.html [[ lang = en ]]"
 
-DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-release --enable-opt )
-DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
-DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( )
+# Note: To use boundled pcre ocaml module we pass --disable-pcre
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --enable-release --enable-opt
+    --disable-pcre
+)
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( "python python ${PYTHON}" )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
+    ocaml python
+    "pcre pcre-syntax"
+)
 
 src_install() {
     default
