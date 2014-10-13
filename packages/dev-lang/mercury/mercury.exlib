@@ -80,25 +80,21 @@ DEFAULT_SRC_INSTALL_PARAMS=( "PARALLEL=-j${EXJOBS:-1}" )
 
 mercury_src_install() {
     default
-    local base_grades grades grade
 
-    base_grades=(asm_fast)
-
+    local grade_path grades grade
+    local grades_path="${IMAGE}/usr/${LIBDIR:-lib}/mercury/lib"
     grades=()
-    for grade in ${base_grades[@]}; do
-        grades+=(${grade}.gc)
 
-        optionq minimal || grades+=(${grade}.{par.gc.stseg,gc.{trseg,prof{,deep},memprof}})
-
-        optionq debug \
-            && grades+=(${grade}.gc.{decl,}debug) \
-            && ! optionq minimal && grades+=(${grade}{,.par}.gc.trseg.debug)
+    for grade_path in "$grades_path"/*/inc/Mercury; do
+        grade=${grade_path%/inc/Mercury}
+        grade=$(basename "${grade}")
+        grades+=("$grade")
+        grade_path=${grade_path#${IMAGE}}
+        keepdir "$grade_path"
     done
 
-    for grade in ${grades[@]}; do
-        keepdir "/usr/${LIBDIR:-lib}/mercury/lib/${grade}/inc/Mercury"
-    done
+    einfo "Installed grades: ${grades[*]}"
 
-    ever at_least "${PVR}" 12.08 || keepdir /usr/lib64/mercury/doc
+    ever at_least "${PVR}" 12.08 || keepdir /usr/${LIBDIR:-lib}/mercury/doc
 }
 

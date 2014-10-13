@@ -8,8 +8,8 @@ MY_PV_DATE="${MY_PV_DATE:0:4}-${MY_PV_DATE:4:2}-${MY_PV_DATE:6:2}"
 MY_PV="rotd-${MY_PV_DATE}"
 MY_PNV="${PN}-srcdist-${MY_PV}"
 
-require mercury \
-        autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 ] ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 ] ]
+require mercury
 
 WORK="${WORKBASE}/${MY_PNV}"
 RESTRICT=test
