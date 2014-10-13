@@ -11,19 +11,15 @@ changes. It can also handle nonlinear conversions such as Fahrenheit to Celsius 
 it can convert from and to sums of units, such as converting between meters and feet plus inches
 "
 
-if ever is_scm; then
-    DOWNLOADS=""
-fi
-
 LICENCES="GPL-3"
 SLOT="0"
 MYOPTIONS=""
 
 DEPENDENCIES="
     build+run:
-        sys-libs/readline
-        sys-libs/ncurses
         dev-lang/python:*[>=2.5][<3.0]
+        sys-libs/ncurses
+        sys-libs/readline
 "
 
 BUGS_TO="virkony@gmail.com"
