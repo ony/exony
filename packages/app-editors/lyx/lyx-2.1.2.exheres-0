@@ -27,7 +27,7 @@ UPSTREAM_DOCUMENTATION="
     ${HOMEPAGE}/AboutLyX [[ lang = en description = [ About ] ]]
     http://wiki.lyx.org [[ lang = en description = [ Wiki / Documentation ] ]]
 "
-DOWNLOADS="ftp://ftp.lyx.org/pub/${PN}/stable/$(ever range 1-2).x/${PNV}.tar.xz"
+DOWNLOADS="mirror://lyx/stable/$(ever range 1-2).x/${PNV}.tar.xz"
 
 LICENCES="GPL-2"
 SLOT="0"
