@@ -1,7 +1,7 @@
 # Copyright 2014 Nikolay Orliuk
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=joyent tag=v${PV} ] autotools [ supported_automake=[ 1.13 ] supported_autoconf=[ 2.5 ] ]
+require github [ tag=v${PV} ] autotools [ supported_automake=[ 1.13 ] supported_autoconf=[ 2.5 ] ]
 
 SUMMARY="Cross-platform asychronous I/O"
 DESCRIPTION="
