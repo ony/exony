@@ -1,7 +1,7 @@
 # Copyright 2014 Nikolay Orliuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=ony ] cmake
+require github [ user=ony branch=gcc-4.7 ] cmake
 
 SUMMARY="LevelDB Template Library"
 DESCRIPTION="
