@@ -1,0 +1,56 @@
+# Copyright 2015 Nikolay Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PN=trigger-rally
+MY_PNV=${MY_PN}-${PV}
+
+require sourceforge jam
+
+SUMMARY="Free OpenGL rally car racing game"
+DESCRIPTION="
+Trigger Rally is a fast-paced single-player racing game for Linux and Windows.
+"
+DOWNLOADS+=" mirror://sourceforge/${MY_PN}/README"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+    build+run:
+        media-libs/SDL:0[>=1.2.5]
+        media-libs/SDL_image[>=1.2]
+        dev-games/physfs
+        x11-dri/mesa
+        x11-dri/glu
+        media-libs/freealut
+"
+
+BUGS_TO="virkony@gmail.com"
+
+WORK="${WORKBASE}/${MY_PNV}"
+
+MY_DATADIR="/usr/share/${PNV}"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --datadir="$MY_DATADIR" )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( )
+
+src_unpack() {
+    default
+    edo cp "${FETCHEDDIR}/README" "${WORK}/"
+}
+
+src_compile() {
+    AR="${AR} cru" jam_src_compile
+}
+
+src_install() {
+    jam_src_install
+    insinto "$MY_DATADIR"
+    doins -r data/*
+    dodoc doc/*.txt
+}
+
