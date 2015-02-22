@@ -1,0 +1,24 @@
+# Copyright 2015 Volodymyr Medvid <vmedvid@riseup.net>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=mauke tag=v${PV} ]
+
+SUMMARY="A terminfo parsing library"
+DESCRIPTION="
+Unibilium is a very basic terminfo library. It doesn't depend on curses or any
+other library. It also doesn't use global variables, so it should be
+thread-safe.
+"
+
+LICENCES="LGPL-3"
+SLOT="0"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        dev-lang/perl:* [[ description = [ pod2man is required ] ]]
+"
+
+DEFAULT_SRC_COMPILE_PARAMS=( PREFIX=/usr LIBDIR=/usr/${LIBDIR} )
+DEFAULT_SRC_INSTALL_PARAMS=( PREFIX=/usr LIBDIR=/usr/${LIBDIR} )
+
