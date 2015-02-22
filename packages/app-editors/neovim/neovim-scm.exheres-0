@@ -22,16 +22,23 @@ MYOPTIONS=""
 
 DEPENDENCIES="
     build:
-        dev-libs/libuv[>=0.11.28]
     build+run:
         sys-libs/ncurses
-        dev-libs/msgpack[>=0.6]
+        dev-libs/libtermkey
+        dev-libs/libuv[>=1.2.0]
+        dev-libs/msgpack[~scm]
+        dev-libs/unibilium
         dev-lang/LuaJIT
         dev-lua/lpeg
         dev-lua/MessagePack
 "
 
 BUGS_TO="virkony@gmail.com"
+
+CMAKE_SRC_CONFIGURE_PARAMS+=(
+    -DLIBUNIBILIUM_USE_STATIC:BOOL=OFF
+    -DLIBTERMKEY_USE_STATIC:BOOL=OFF
+)
 
 src_install(){
     esandbox allow_net "unix:${TEMP}/**"
