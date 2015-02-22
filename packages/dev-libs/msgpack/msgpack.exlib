@@ -1,11 +1,8 @@
 # Copyright 2014 Nikolay Orliuk
 # Distributed under the terms of the GNU General Public License v2
 
-if ever is_scm ; then
-    require cmake github [ user=msgpack pn="msgpack-c" branch="poc/$(ever range 1-2)" ]
-else
-    require github [ user=msgpack pn="msgpack-c" ]
-fi
+require github [ user=msgpack pn="msgpack-c" ]
+ever is_scm && require cmake
 
 SUMMARY="MessagePack implementation for C and C++"
 DESCRIPTION="
@@ -18,7 +15,6 @@ HOMEPAGE="http://msgpack.org/"
 if ! ever is_scm; then
     DOWNLOADS="https://github.com/msgpack/msgpack-c/releases/download/cpp-${PV}/${PNV}.tar.gz"
     WORK="${WORKBASE}/${PNV}" # override github's
-
 fi
 
 LICENCES="Apache-2.0"
