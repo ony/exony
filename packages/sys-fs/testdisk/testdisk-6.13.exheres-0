@@ -8,7 +8,7 @@ MY_PNV="${PNV}"
 require testdisk autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.12 ] ]
 
 SLOT="0"
-PLATFORMS="~amd64"
+PLATFORMS="~amd64 ~x86"
 
 DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/${PNV}-html.patch" )
 
