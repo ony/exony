@@ -1,8 +1,9 @@
 # Copyright 2013 Jakob Nixdorf <flocke@shadowice.org>
 # Distributed under the terms of the GNU General Public License v2
 
-# dev-python/gdata and dev-python/keyczar only support python2
-require setup-py [ import=setuptools test=pytest blacklist="3" ] pypi [ suffix=zip ]
+# Note: dev-python/gdata and dev-python/keyczar needed for test phase
+#       support python2 only
+require setup-py [ import=setuptools test=pytest ] pypi [ suffix=zip ]
 
 SUMMARY="Store and access your passwords safely."
 DESCRIPTION="
