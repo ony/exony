@@ -16,28 +16,41 @@ SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS="
     debug [[ description = [ debugging support ] ]]
-    vv [[ description = [ voice and video support ] requires = [ purple ] ]]
+    vv [[ description = [ voice and video support ] ]]
     kerberos [[ description = [ compile with Kerberos 5 support ] ]]
     purple [[ description = [ build purple plugin ] ]]
+    purple3 [[ description = [ build purple plugin for version 3.x ] ]]
     telepathy [[ description = [ build telepathy plugin ] ]]
     ocs2005-hack [[ description = [ disable message timeout for OCS2005 clients ] ]]
+    openssl [[ description = [ use OpenSSL as crypto backend instead of NSS ] ]]
 
     ( purple telepathy ) [[ number-selected = at-least-one ]]
+    ( purple3 vv ) [[ *requires = purple ]]
 "
 
 DEPENDENCIES="
     build+run:
-        dev-libs/glib:2[>=2.28.0]
-        dev-libs/nss
+        dev-libs/glib:2[>=2.32.0]
+        net-utils/gmime:2.6[>=2.5.2] [[ description = [ automagic (optional for non-telepathy) ] ]]
+        !openssl? (
+            dev-libs/nspr [[ description = [ NSS pulls in ] ]]
+            dev-libs/nss
+        )
+        openssl? ( dev-libs/openssl )
         dev-libs/libxml2
-        purple? ( net-im/pidgin[>=2.8.0][vv?] )
+        purple? (
+            net-im/pidgin[>=2.8.0][vv?]
+        )
+        purple3? (
+            net-im/pidgin[>=3.0.0][vv?]
+        )
         vv? (
             net-im/libnice[>=0.1.0]
-            media-libs/gstreamer:0.10
+            !purple3? ( media-libs/gstreamer:0.10 )
+            purple3? ( media-libs/gstreamer:1.0 )
         )
         telepathy? (
             net-im/telepathy-glib[>=0.18.0]
-            net-utils/gmime:2.6[>=2.5.2]
             dev-libs/dbus-glib:1
         )
         kerberos? ( app-crypt/heimdal )
@@ -50,6 +63,14 @@ DEFAULT_SRC_CONFIGURE_OPTION_WITHS=(
     'vv'
     'kerberos krb5'
 )
-DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug purple telepathy "ocs2005-hack ocs2005-message-hack" )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
+    debug telepathy openssl
+    "!openssl nss"
+    "ocs2005-hack ocs2005-message-hack"
+)
 
+DEFAULT_SRC_CONFIGURE_OPTIONS=(
+    "purple --enable-purple --disable-purple"
+    "purple3 --enable-purple=3"
+)
 
