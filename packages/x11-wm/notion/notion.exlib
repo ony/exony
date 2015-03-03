@@ -18,6 +18,7 @@ DEPENDENCIES="
         x11-libs/libXinerama
         x11-libs/libXrandr
         x11-libs/libSM
+        x11-libs/libICE
 "
 
 RESTRICT="test"
