@@ -18,7 +18,7 @@ DEPENDENCIES="
     build+run:
         mail-client/evolution[>=$(ever range 1-3)&=$(ever range 1-2)*][kerberos?]
         gnome-desktop/evolution-data-server:1.2[>=$(ever range 1-3)&=$(ever range 1-2)*][kerberos?]
-        dev-libs/glib:2[>=2.32]
+        dev-libs/glib:2[>=2.34]
         x11-libs/gtk+:3[>=3.0]
         gnome-desktop/libsoup:2.4[>=2.42]
         dev-db/sqlite:3
