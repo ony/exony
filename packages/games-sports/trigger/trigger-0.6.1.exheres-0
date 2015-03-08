@@ -26,6 +26,7 @@ DEPENDENCIES="
         x11-dri/mesa
         x11-dri/glu
         media-libs/freealut
+        media-libs/openal
 "
 
 BUGS_TO="virkony@gmail.com"
