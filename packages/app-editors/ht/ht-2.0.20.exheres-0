@@ -25,4 +25,5 @@ DEPENDENCIES="
 BUGS_TO="virkony@gmail.com"
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-maintainermode --enable-release --disable-profiling --without-included-lzo )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "x11 x11-textmode" )
 
