@@ -1,0 +1,55 @@
+# Copyright 2015 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge [ suffix=tar.gz ]
+
+SUMMARY="Record what you eat and analyze your nutrient levels"
+DESCRIPTION="
+Open-source free nutrition software, which records what you eat and analyzes your meals for nutrient
+levels in terms of the 'Daily Value' or DV which is the standard for food labeling in the US. The
+program uses the free food composition database from the USDA.
+"
+#HOMEPAGE=""
+#DOWNLOADS=""
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="fltk"
+
+DEPENDENCIES="
+    build:
+    build+run:
+        fltk? (
+            x11-libs/fltk
+            x11-libs/libXpm [[ description = [ automagic based on fltk build ] ]]
+        )
+"
+
+BUGS_TO="virkony@gmail.com"
+
+MY_FOODDIR="/usr/share/${PNV}"
+
+DEFAULT_SRC_COMPILE_PARAMS=(
+    prefix="/usr"
+    mandir="/usr/share/man"
+    FOODDIR="\\\"${MY_FOODDIR}\\\""
+)
+
+src_compile() {
+    emake \
+        "${DEFAULT_SRC_COMPILE_PARAMS[@]}" \
+        $(option fltk all nut)
+}
+
+src_install() {
+    dobin nut
+    doman nut.1
+    optionq fltk && dobin fltk/Nut
+
+    insinto "$MY_FOODDIR"
+    doins raw.data/*
+
+    emagicdocs
+}
+
