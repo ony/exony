@@ -1,0 +1,62 @@
+# Copyright 2015 Orliuk Mykola <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+# TODO: enhance github.exlib to allow git checkout
+#    require github [ user=HaxeFoundation tag=${PV} download_type=scm ]
+
+MY_GITHUB_USER=HaxeFoundation
+MY_REPO_PREFIX="https://github.com/${MY_GITHUB_USER}"
+
+REMOTE_IDS+=" github:${MY_GITHUB_USER}/${PN}"
+
+SCM_REPOSITORY="${MY_REPO_PREFIX}/${PN}.git"
+SCM_EXTERNAL_REFS="libs:libs extra/haxelib_src:haxelib"
+SCM_SECONDARY_REPOSITORIES="libs haxelib"
+SCM_libs_REPOSITORY="${MY_REPO_PREFIX}/ocamllibs.git"
+SCM_haxelib_REPOSITORY="${MY_REPO_PREFIX}/haxelib.git"
+
+require scm-git
+
+SUMMARY="Haxe - The Cross-Platform Toolkit"
+DESCRIPTION="
+Haxe is an open source toolkit based on a modern, high level, strictly typed programming language, a
+cross-compiler, a complete cross-platform standard library and ways to access each platform's native
+capabilities.
+"
+HOMEPAGE="http://haxe.org"
+
+LICENCES="
+    GPL-2 [[ description = [ Haxe compiler ] ]]
+    BSD-2 [[ description = [ Haxe libraries ] ]]
+    LGPL-2.1 [[ description = [ Neko runtime ] ]]
+"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        dev-lang/ocaml
+        dev-ocaml/camlp4
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_COMPILE_PARAMS=( -j1 )
+
+src_install() {
+    # Note: libdir should be accessible through /usr/lib/haxe
+    herebin haxelib <<EOF
+#!/bin/sh
+exec /usr/bin/haxe -cp /usr/${LIBDIR}/haxe/extra/haxelib_src/src --run tools.haxelib.Main "\$@"
+EOF
+    dosym ../${LIBDIR}/haxe/haxe /usr/bin/haxe
+
+    insinto /usr/${LIBDIR}/haxe
+    doins -r std extra
+
+    exeinto /usr/${LIBDIR}/haxe
+    dobin haxe
+
+    emagicdocs
+}
+
