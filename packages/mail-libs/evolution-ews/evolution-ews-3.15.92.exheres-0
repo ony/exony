@@ -12,21 +12,21 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
 LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS="kerberos"
 
 DEPENDENCIES="
     build+run:
-        mail-client/evolution[>=$(ever range 1-3)&=$(ever range 1-2)*][kerberos?]
-        gnome-desktop/evolution-data-server:1.2[>=$(ever range 1-3)&=$(ever range 1-2)*][kerberos?]
-        dev-libs/glib:2[>=2.34]
+        mail-client/evolution[>=$(ever range 1-3)&=$(ever range 1-2)*]
+        gnome-desktop/evolution-data-server:1.2[>=$(ever range 1-3)&=$(ever range 1-2)*]
+        dev-libs/glib:2[>=2.40]
         x11-libs/gtk+:3[>=3.0]
         gnome-desktop/libsoup:2.4[>=2.42]
         dev-db/sqlite:3
         office-libs/libical
+        dev-libs/libxml2:2.0 [[ description = [ Implicit ref in src/server and src/calendar ] ]]
+        x11-libs/pango [[ description = [ Implicit ref in src/configuration ] ]]
 "
 
 BUGS_TO="virkony@gmail.com"
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( --with-internal-lzx )
-DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( "kerberos krb5" )
 
