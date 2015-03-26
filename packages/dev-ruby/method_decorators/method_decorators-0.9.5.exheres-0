@@ -1,0 +1,13 @@
+# Copyright 2015 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require gem
+
+SUMMARY="Python's function decorators for Ruby"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+BUGS_TO="virkony@gmail.com"
+
