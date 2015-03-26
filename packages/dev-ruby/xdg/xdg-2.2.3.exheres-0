@@ -1,0 +1,17 @@
+# Copyright 2015 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require gem
+
+SUMMARY="Module for supporting the XDG Base Directory Standard"
+DESCRIPTION="
+XDG provides a module for supporting the XDG Base Directory Standard. See
+http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
+"
+
+LICENCES="BSD-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+BUGS_TO="virkony@gmail.com"
+
