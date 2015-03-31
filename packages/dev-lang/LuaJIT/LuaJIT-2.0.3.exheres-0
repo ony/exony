@@ -17,14 +17,28 @@ MYOPTIONS=""
 
 BUGS_TO="virkony@gmail.com"
 
-DEFAULT_SRC_INSTALL_PARAMS=(
-    "PREFIX=/usr"
-    "INSTALL_LIB=${IMAGE}/usr/${LIBDIR:-lib}"
-)
+src_compile() {
+    local var
+    myflags=(
+        HOST_CC=$(exhost --build)-gcc
+        CROSS=$(exhost --tool-prefix)
+        PREFIX=/usr/$(exhost --target)
+        INSTALL_LIB=${IMAGE}/usr/$(exhost --target)/lib
+        INSTALL_SHARE=${IMAGE}/usr/share
+        TARGET_CFLAGS="${CFLAGS}"
+        TARGET_LDFLAGS="${LDFLAGS}"
+    )
 
-DEFAULT_SRC_COMPILE_PARAMS=( "${DEFAULT_SRC_INSTALL_PARAMS[@]}" )
+    var=${CHOST//-/_}_CFLAGS; myflags+=( HOST_CFLAGS="${!var}" )
+    var=${CHOST//-/_}_LDFLAGS; myflags+=( HOST_LDFLAGS="${!var}" )
+    export myflags
+
+    emake "${myflags[@]}"
+}
 
 src_install() {
-    default
-    keepdir /usr/{lib64,share}/lua/5.1
+    emake -j1 DESTDIR="${IMAGE}" "${myflags[@]}" install
+
+    keepdir /usr/share/lua/5.1
+    keepdir /usr/$(exhost --target)/lib/lua/5.1
 }
