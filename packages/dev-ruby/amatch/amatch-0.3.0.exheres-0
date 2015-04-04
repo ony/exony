@@ -1,0 +1,24 @@
+# Copyright 2015 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require gem
+
+SUMMARY="Approximate String Matching library"
+DESCRIPTION="
+This is a collection of classes that can be used for Approximate matching, searching, and comparing
+of Strings. They implement algorithms that compute the Levenshtein edit distance, Sellers edit
+distance, the Hamming distance, the longest common subsequence length, the longest common substring
+length, the pair distance metric, the Jaro-Winkler metric.
+"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        dev-ruby/tins[~>1.0]
+"
+
+BUGS_TO="virkony@gmail.com"
+
