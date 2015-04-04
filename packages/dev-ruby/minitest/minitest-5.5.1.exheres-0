@@ -1,0 +1,13 @@
+# Copyright 2015 Nikolay Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require gem
+
+SUMMARY="A complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+BUGS_TO="virkony@gmail.com"
+
