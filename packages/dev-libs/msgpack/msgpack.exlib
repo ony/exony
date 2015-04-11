@@ -28,15 +28,10 @@ BUGS_TO="virkony@gmail.com"
 
 if ever at_least 0.6; then
     CMAKE_SRC_CONFIGURE_TESTS=( "-DMSGPACK_BUILD_TESTS:BOOL=ON" )
-    CMAKE_SRC_CONFIGURE_PARAMS=(
-        "-DMSGPACK_CXX11:BOOL=ON"
-        "-DCMAKE_INSTALL_LIBDIR:PATH=/usr/${LIBDIR:-lib}"
-    )
+    CMAKE_SRC_CONFIGURE_PARAMS=( "-DMSGPACK_CXX11:BOOL=ON" )
 else
     MYOPTIONS="debug [[ description = [ enable assert macros and debug information ] ]]"
 
-    DEFAULT_SRC_CONFIGURE_PARAMS=( )
-    DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
     DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug )
 fi
 
