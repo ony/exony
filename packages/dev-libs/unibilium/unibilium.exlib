@@ -19,6 +19,6 @@ DEPENDENCIES="
         dev-lang/perl:* [[ description = [ pod2man is required ] ]]
 "
 
-DEFAULT_SRC_COMPILE_PARAMS=( PREFIX=/usr LIBDIR=/usr/${LIBDIR} )
-DEFAULT_SRC_INSTALL_PARAMS=( PREFIX=/usr LIBDIR=/usr/${LIBDIR} )
+DEFAULT_SRC_COMPILE_PARAMS=( PREFIX=/usr/$(exhost --target) MANDIR=/usr/share/man )
+DEFAULT_SRC_INSTALL_PARAMS=( "${DEFAULT_SRC_COMPILE_PARAMS[@]}" )
 
