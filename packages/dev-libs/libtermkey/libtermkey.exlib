@@ -1,6 +1,8 @@
 # Copyright 2015 Volodymyr Medvid <vmedvid@riseup.net>
 # Distributed under the terms of the GNU General Public License v2
 
+export_exlib_phases src_prepare
+
 SUMMARY="Terminal keypress reading library"
 DESCRIPTION="
 libtermkey allows easy processing of keyboard entry from terminal-based programs.
@@ -21,6 +23,10 @@ DEPENDENCIES="
         dev-libs/unibilium[>=0.1.0]
 "
 
-DEFAULT_SRC_COMPILE_PARAMS=( PREFIX=/usr LIBDIR=/usr/${LIBDIR} )
-DEFAULT_SRC_INSTALL_PARAMS=( PREFIX=/usr LIBDIR=/usr/${LIBDIR} )
+DEFAULT_SRC_COMPILE_PARAMS=( PREFIX=/usr/$(exhost --target) MANDIR=/usr/share/man )
+DEFAULT_SRC_INSTALL_PARAMS=( "${DEFAULT_SRC_COMPILE_PARAMS[@]}" )
+
+libtermkey_src_prepare() {
+    sed -i 's/pkg-config/$(PKG_CONFIG)/g' Makefile
+}
 
