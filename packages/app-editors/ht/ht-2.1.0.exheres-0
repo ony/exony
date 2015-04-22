@@ -1,7 +1,8 @@
 # Copyright 2012 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-require sourceforge [ project=hte ]
+require sourceforge [ project=hte ] \
+        autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
 
 SUMMARY="A file editor/viewer/analyzer for executables."
 DESCRIPTION="
@@ -23,6 +24,8 @@ DEPENDENCIES="
 "
 
 BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-automake-AR-detection-rutine.patch" )
 
 DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-maintainermode --enable-release --disable-profiling --without-included-lzo )
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "x11 x11-textmode" )

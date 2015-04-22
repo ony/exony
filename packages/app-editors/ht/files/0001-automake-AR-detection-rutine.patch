@@ -1,0 +1,26 @@
+From 3fd92d75da1a372ae987b9b28ada8eddc7ccde7e Mon Sep 17 00:00:00 2001
+From: Nikolay Orlyuk <virkony@gmail.com>
+Date: Wed, 22 Apr 2015 09:09:53 +0300
+Subject: [PATCH] automake AR detection rutine
+
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0e8590a..28fe814 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,8 +104,7 @@ AC_PROG_CPP
+ AC_PROG_CXX
+ AC_PROG_YACC
+ AM_PROG_LEX
+-AC_PATH_PROG(AR, ar)
+-AC_PATH_PROG(AR, gar)
++AM_PROG_AR
+ 
+ if test "x$AR" = "x"; then
+ 	   AC_MSG_ERROR([*** 'ar' and 'gar' missing, please install one of them or fix your \$PATH ***])
+-- 
+2.3.3
+
