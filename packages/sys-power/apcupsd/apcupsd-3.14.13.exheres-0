@@ -59,13 +59,13 @@ src_install() {
     dodoc ReleaseNotes Developers
 
     edo rm -r "${IMAGE}usr/share/hal"
-    edo rm "${IMAGE}sbin/smtp" # we use mailx instead
+    edo rm "${IMAGE}/usr/$(exhost --target)/bin/smtp" # we use mailx instead
 
     insinto /etc/apcupsd
     newins examples/safe.apccontrol safe.apccontrol
 
     install_systemd_files
-    insinto /usr/${LIBDIR}/tmpfiles.d
+    insinto /usr/$(exhost --target)/lib/tmpfiles.d
     hereins apcupsd.conf <<EOF
 d /run/lock 0755 root root -
 EOF
