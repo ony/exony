@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 require sourceforge [ project=${PN} ]
+require lua [ multibuild=false whitelist="5.2 5.1 5.0" ]
 
-export_exlib_phases src_prepare src_install
+export_exlib_phases src_prepare src_compile src_install
 
 SUMMARY="Notion is a tiling, tabbed window manager for the X window system"
 LICENCES="LGPL-2.1"
@@ -11,29 +12,30 @@ LICENCES="LGPL-2.1"
 DEPENDENCIES="
     build:
         sys-devel/gettext
+        virtual/pkg-config
     build+run:
-        dev-lang/lua
+        x11-libs/libICE
+        x11-libs/libSM
         x11-libs/libX11
         x11-libs/libXext
         x11-libs/libXinerama
         x11-libs/libXrandr
-        x11-libs/libSM
-        x11-libs/libICE
 "
 
 RESTRICT="test"
 
 UPSTREAM_DOCUMENTATION="http://notion.sourceforge.net/#documentation"
 
-DEFAULT_SRC_INSTALL_PARAMS=(
-    "PREFIX=/usr"
-    "LIBDIR=/usr/${LIBDIR:-lib}"
-    "X11_PREFIX=/usr"
-    )
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-Enhance-Lua-autoconfiguration.patch" )
 
-DEFAULT_SRC_COMPILE_PARAMS=(
-    "${DEFAULT_SRC_INSTALL_PARAMS[@]}"
-    "CC=$CC"
+DEFAULT_SRC_INSTALL_PARAMS=(
+    "PREFIX=/usr/$(exhost --target)"
+    "LIBDIR=/usr/$(exhost --target)/lib"
+    "SHAREDIR=/usr/share/notion"
+    "DOCDIR=/usr/share/doc/notion"
+    "LOCALEDIR=/usr/share/locale"
+    "ETCDIR=/etc/notion"
+    "X11_PREFIX=/usr/$(exhost --target)"
     )
 
 notion_src_prepare() {
@@ -43,6 +45,16 @@ notion_src_prepare() {
     edo sed -i \
         -e 's/\$(INSTALL) -s/\$(INSTALL)/g' \
         "${WORK}/mod_notionflux/notionflux/Makefile"
+}
+
+notion_src_compile() {
+    # TARGETS variable used inside of Makefiles to enumerate make goals
+    ( unset TARGETS; emake "${DEFAULT_SRC_INSTALL_PARAMS[@]}" \
+        CC="$CC" \
+        AR="$AR" \
+        RANLIB="$RANLIB" \
+        LUA_VERSION="$(lua_get_abi)" \
+        PKG_CONFIG="$(exhost --tool-prefix)pkg-config" )
 }
 
 notion_src_install() {
