@@ -14,7 +14,7 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     build:
-        sys-devel/gcc:*[openmp] [[ description = [ hardcoded -fopenmp flag ] ]]
+        sys-libs/libgomp [[ description = [ hardcoded -fopenmp flag ] ]]
     build+run:
         dev-libs/glib:2[>=2.22]
         sys-apps/dbus[>=1.1]
