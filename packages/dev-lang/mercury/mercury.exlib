@@ -75,14 +75,22 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
 
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( readline )
 
-DEFAULT_SRC_COMPILE_PARAMS=( "PARALLEL=-j${EXJOBS:-1}" )
-DEFAULT_SRC_INSTALL_PARAMS=( "PARALLEL=-j${EXJOBS:-1}" )
+DEFAULT_SRC_COMPILE_PARAMS=( PARALLEL=-j${EXJOBS:-1} )
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+    "${DEFAULT_SRC_COMPILE_PARAMS[@]}"
+    INSTALL_INFO_DIR="${IMAGE}/usr/share/info"
+    INSTALL_MAN_DIR="${IMAGE}/usr/share/man"
+    INSTALL_{DVI,TEXT,PS,PDF}_DIR="${IMAGE}/usr/share/doc/${PNVR}"
+    INSTALL_HTML_DIR="${IMAGE}/usr/share/doc/${PNVR}/html"
+    INSTALL_MDB_DIR="${IMAGE}/usr/share/doc/${PNVR}/mdb"
+)
 
 mercury_src_install() {
     default
 
     local grade_path grades grade
-    local grades_path="${IMAGE}/usr/${LIBDIR:-lib}/mercury/lib"
+    local grades_path="${IMAGE}/usr/$(exhost --target)/lib/mercury/lib"
     grades=()
 
     for grade_path in "$grades_path"/*/inc/Mercury; do
@@ -94,7 +102,5 @@ mercury_src_install() {
     done
 
     einfo "Installed grades: ${grades[*]}"
-
-    ever at_least "${PVR}" 12.08 || keepdir /usr/${LIBDIR:-lib}/mercury/doc
 }
 

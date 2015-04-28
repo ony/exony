@@ -24,7 +24,3 @@ MYOPTIONS=""
 
 UPSTREAM_RELEASE_NOTES="http://dl.mercurylang.org/release/release-notes-${MY_PV_BASE}.txt"
 
-DEFAULT_SRC_PREPARE_PATCHES=(
-    "${FILES}/${PN}-${MY_PV_BASE}-bug259-dirs-overriding.patch"
-)
-

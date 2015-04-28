@@ -19,7 +19,3 @@ DEPENDENCIES="
         dev-lang/mercury
 "
 
-DEFAULT_SRC_PREPARE_PATCHES=(
-    "${FILES}/${PN}-13.05-bug259-dirs-overriding.patch"
-)
-
