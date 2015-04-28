@@ -17,4 +17,10 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
+DEFAULT_SRC_INSTALL_PARAMS=(
+    prefix=/usr/$(exhost --target)/
+    sbindir=/usr/$(exhost --target)/bin/
+    docdir=/usr/share/doc/${PNVR}/
+    mandir=/usr/share/man/
+)
 
