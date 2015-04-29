@@ -25,7 +25,7 @@ DEPENDENCIES="
         dev-libs/libxml2
         virtual/pkg-config
         net-apps/vpnc
-        openssl? ( dev-libs/openssl )
+        openssl? ( virtual/libssl )
         gnutls? ( dev-libs/gnutls )
     run:
         sys-apps/iproute2
