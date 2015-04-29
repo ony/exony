@@ -1,0 +1,23 @@
+# Copyright 2015 Nikolay Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PNV="${PN/_/-}-${PV}"
+
+require setup-py [ import=setuptools work="${MY_PNV}" ] pypi [ pnv="${MY_PNV}"  suffix=tar.gz ]
+
+SUMMARY="the blessed package to manage your versions by scm tags"
+DESCRIPTION="
+setuptools_scm is a simple utility for the setup_requires feature of setuptools for use in Mercurial
+and Git based projects.
+
+It uses metadata from the SCM to generate the version of a project and is able to list the files
+belonging to that project (which makes the MANIFEST.in file unnecessary in many cases).
+"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+BUGS_TO="virkony@gmail.com"
+
