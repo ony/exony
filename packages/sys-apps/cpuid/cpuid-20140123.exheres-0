@@ -1,0 +1,32 @@
+# Copyright 2015 Nikolay Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Linux tool to dump x86 CPUID information about the CPU(s)"
+DESCRIPTION="
+cpuid dumps detailed information about the CPU(s) gathered from the CPUID instruction, and also
+determines the exact model of CPU(s). It supports Intel, AMD, and VIA CPUs, as well as older
+Transmeta, Cyrix, UMC, NexGen, Rise, and SiS CPUs.
+"
+HOMEPAGE="http://www.etallen.com/${PN}.html"
+DOWNLOADS="http://www.etallen.com/${PN}/${PNV}.src.tar.gz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="parts: binaries documentation"
+
+DEPENDENCIES=""
+
+BUGS_TO="virkony@gmail.com cpuid@etallen.com"
+
+src_install() {
+    dobin ${PN}
+    edo mv ${PN}.man ${PN}.1
+    doman ${PN}.1
+
+    emagicdocs
+
+    expart binaries /usr/$(exhost --target)/bin
+    expart documentation /usr/share/{doc,man}
+}
+
