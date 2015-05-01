@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 require python [ blacklist=none multibuild=false ]
+require autotools [ supported_automake=[ 1.15 ] supported_autoconf=[ 2.5 ] ]
 
 SUMMARY="Semantic patch program"
 DESCRIPTION="
@@ -25,6 +26,10 @@ MYOPTIONS="
 "
 
 DEPENDENCIES="
+    build:
+        dev-ocaml/camlp4
+        dev-ocaml/findlib
+        virtual/pkg-config
     build+run:
         dev-lang/ocaml[>=4.01.0-r1]
         pcre? ( dev-libs/pcre )
@@ -34,10 +39,13 @@ BUGS_TO="virkony@gmail.com"
 
 UPSTREAM_RELEASE_NOTES="${HOMEPAGE}/distrib/changes.html [[ lang = en ]]"
 
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-autotools-use-libdir-instead-of-datadir.patch" )
+
 # Note: To use boundled pcre ocaml module we pass --disable-pcre
 DEFAULT_SRC_CONFIGURE_PARAMS=(
     --enable-release --enable-opt
     --disable-pcre
+    --with-pkg-config
 )
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( "python python ${PYTHON}" )
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
@@ -45,8 +53,8 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
     "pcre pcre-syntax"
 )
 
-src_install() {
+src_configure() {
+    unset PKG_CONFIG # will detect it automatically with tool prefix
     default
-    keepdir /usr/${LIBDIR:-lib}
 }
 
