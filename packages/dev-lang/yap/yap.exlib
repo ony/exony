@@ -22,7 +22,7 @@ fi
 LICENCES="Artistic"
 SLOT="0"
 MYOPTIONS="
-    threads static gmp
+    threads static
     tabling [[ description = [ tabling support ] ]]
     depth-limit [[ description = [ support depth-bound computation ] ]]
     wam-profile [[ description = [ support low level profiling of abstract machine ] ]]
@@ -57,7 +57,7 @@ MYOPTIONS="
 
 DEPENDENCIES="
     build+run:
-        gmp? ( dev-libs/gmp )
+        dev-libs/gmp
         R? ( sci-lang/R )
         minisat? ( sci-libs/minisat )
         cudd? ( sci-libs/cudd )
@@ -82,11 +82,12 @@ UPSTREAM_RELEASE_NOTES=""
 DEFAULT_SRC_CONFIGURE_PARAMS+=(
     --prefix=/usr --exec-prefix=/usr/$(exhost --target)
     --disable-or-parallelism --enable-use-malloc --enable-coroutining
+    --enable-gmp
 )
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( R minisat cudd java readline )
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
     "static static-compilation"
-    threads gmp tabling depth-limit wam-profile low-level-tracer bddlib
+    threads tabling depth-limit wam-profile low-level-tracer bddlib
     pthread-locking max-performance max-memory debug-yap eam prism dynamic-loading condor
     chr clpqr april clpbn-bp myddas myddas-stats myddas-top-level gecode
 )
