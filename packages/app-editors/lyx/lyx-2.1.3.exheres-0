@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 require gtk-icon-cache freedesktop-desktop
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.15 ] ]
 
 SUMMARY="A WYSIWYM (What You See Is What You Mean) document processor"
 DESCRIPTION="
@@ -53,6 +54,8 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/${PNV}-Autotools-configure-AR-program.patch" )
+
 DEFAULT_SRC_CONFIGURE_PARAMS=(
     --disable-dependency-tracking --disable-pch --disable-rpath --with-gnu-ld
     --enable-monolithic-build
@@ -62,11 +65,15 @@ DEFAULT_SRC_CONFIGURE_PARAMS=(
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( aspell enchant hunspell )
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug )
 
+AT_M4DIR=( m4 config )
+
 src_prepare() {
     # fix python scripts to refer only to 2.x version by default
     edo find -name '*.py' -exec sed -i '1s@^#!\s*/usr/bin/env\s\+python\>@&2@' '{}' ';'
 
     default
+
+    eautoreconf
 }
 
 src_install() {

@@ -1,0 +1,10 @@
+--- lyx-2.1.2/configure.ac.orig	2014-09-23 17:21:32.000000000 +0300
++++ lyx-2.1.2/configure.ac	2015-05-01 12:04:52.330955845 +0300
+@@ -59,6 +59,7 @@
+ done
+ 
+ AM_PATH_PYTHON(2.4.0,, :)
++AM_PROG_AR
+ AC_PROG_RANLIB
+ 
+ ### Check for a C++ compiler
