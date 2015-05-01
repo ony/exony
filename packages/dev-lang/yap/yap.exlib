@@ -3,6 +3,8 @@
 
 require sourceforge [ project=${PN} ]
 
+export_exlib_phases src_install
+
 SUMMARY="YAP is a high-performance Prolog compiler"
 DESCRIPTION="
 YAP is a high-performance Prolog compiler developed at CRACS and LIACC/Universidade do Porto. Its
@@ -77,7 +79,10 @@ UPSTREAM_DOCUMENTATION="
 "
 UPSTREAM_RELEASE_NOTES=""
 
-DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-or-parallelism --enable-use-malloc --enable-coroutining )
+DEFAULT_SRC_CONFIGURE_PARAMS+=(
+    --prefix=/usr --exec-prefix=/usr/$(exhost --target)
+    --disable-or-parallelism --enable-use-malloc --enable-coroutining
+)
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( R minisat cudd java readline )
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
     "static static-compilation"
@@ -90,9 +95,20 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
 # TODO: report all issues upstream rather be silent about them
 # TODO: check flags dependencies
 
+DEFAULT_SRC_INSTALL_PARAMS=( INCLUDEDIR=/usr/$(exhost --target)/include )
+
 # exheres notes:
 # - compilation of C/heapgc.c failed if configured with --disable-use-malloc (hard-enable)
 # - looks like current development happens only with rational-trees and coroutining enabled
 # (hard-enable for scm, TODO: continue investigation)
 # - issues with tests (restrict, TODO: check if I can fix it)
+
+yap_src_install() {
+    default
+
+    # Yap contains a lot of tiny packages and some of them installs examples directly into
+    # @datadir@/doc/Yap/examples even when DOCSDIR and DOCDIR points to the right location.
+    edo mv "${IMAGE}"/usr/share/doc/{Yap/*,${PNVR}}
+    edo rmdir "${IMAGE}"/usr/share/doc/Yap
+}
 
