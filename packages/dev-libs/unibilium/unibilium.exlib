@@ -10,7 +10,7 @@ other library. It also doesn't use global variables, so it should be
 thread-safe.
 "
 
-LICENCES="LGPL-3"
+LICENCES="LGPL-3 MIT [[ note = [ tools/*.c ] ]]"
 SLOT="0"
 MYOPTIONS=""
 
