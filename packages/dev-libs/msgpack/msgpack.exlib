@@ -1,8 +1,7 @@
 # Copyright 2014 Nikolay Orliuk
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=msgpack pn="msgpack-c" ]
-ever is_scm && require cmake
+require github [ user=msgpack pn="msgpack-c" tag=cpp-${PV} ] cmake [ api=2 ]
 
 SUMMARY="MessagePack implementation for C and C++"
 DESCRIPTION="
@@ -11,11 +10,6 @@ languages like JSON. But it's faster and smaller. Small integers are encoded int
 typical short strings require only one extra byte in addition to the strings themselves.
 "
 HOMEPAGE="http://msgpack.org/"
-
-if ! ever is_scm; then
-    DOWNLOADS="https://github.com/msgpack/msgpack-c/releases/download/cpp-${PV}/${PNV}.tar.gz"
-    WORK="${WORKBASE}/${PNV}" # override github's
-fi
 
 LICENCES="Apache-2.0"
 
@@ -26,12 +20,6 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
-if ever at_least 0.6; then
-    CMAKE_SRC_CONFIGURE_TESTS=( "-DMSGPACK_BUILD_TESTS:BOOL=ON" )
-    CMAKE_SRC_CONFIGURE_PARAMS=( "-DMSGPACK_CXX11:BOOL=ON" )
-else
-    MYOPTIONS="debug [[ description = [ enable assert macros and debug information ] ]]"
-
-    DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug )
-fi
+CMAKE_SRC_CONFIGURE_TESTS=( "-DMSGPACK_BUILD_TESTS:BOOL=ON -DMSGPACK_BUILD_TESTS:BOOL=OFF" )
+CMAKE_SRC_CONFIGURE_PARAMS=( -DMSGPACK_CXX11:BOOL=ON )
 
