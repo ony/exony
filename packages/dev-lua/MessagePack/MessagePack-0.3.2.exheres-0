@@ -1,7 +1,11 @@
 # Copyright 2014 Nikolay Orliuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=fperrad pn="lua-MessagePack"  ]
+MY_PN="lua-MessagePack"
+
+require github [ user=fperrad ]
+require lua [ whitelist="5.1 5.2" multiunpack=true work=${MY_PN}-${PV} ]
+
 SUMMARY="a pure Lua implementation of msgpack.org"
 DESCRIPTION="
 MessagePack is an efficient binary serialization format. It lets you exchange data among multiple
@@ -14,11 +18,12 @@ PLATFORMS="~amd64"
 MYOPTIONS=""
 RESTRICT=test
 
-DEPENDENCIES="
-    build+run:
-        dev-lang/lua
-"
+DEPENDENCIES=""
 
 BUGS_TO="virkony@gmail.com"
-DEFAULT_SRC_INSTALL_PARAMS="PREFIX=/usr"
+
+install_one_multibuild() {
+    emake -j1 DESTDIR="${IMAGE}" LUAVER=$(lua_get_abi) PREFIX=/usr install
+    emagicdocs
+}
 
