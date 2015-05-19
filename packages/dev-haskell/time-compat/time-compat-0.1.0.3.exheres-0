@@ -1,0 +1,23 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="Compatibility with old-time for the time package"
+DESCRIPTION="
+Compatibility with the old-time package for the \"new\" time package.
+"
+HOMEPAGE="http://hub.darcs.net/dag/time-compat"
+
+LICENCES="BSD-3"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/old-time
+        dev-haskell/time
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
