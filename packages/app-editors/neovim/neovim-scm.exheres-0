@@ -29,6 +29,7 @@ DEPENDENCIES="
         dev-libs/msgpack[~scm]
         dev-libs/unibilium
         dev-lang/LuaJIT
+        dev-lua/LuaBitOp
         dev-lua/lpeg
         dev-lua/MessagePack
         x11-libs/libvterm
