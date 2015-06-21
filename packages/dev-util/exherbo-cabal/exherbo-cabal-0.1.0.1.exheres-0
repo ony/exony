@@ -1,6 +1,5 @@
 # Copyright 2015 Mykola Orliuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
-# Generated for exherbo-cabal-0.1.0.0
 
 require hackage [ has_lib=false has_bin=true ]
 
@@ -15,7 +14,7 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     $(haskell_bin_dependencies "
-        dev-haskell/Cabal[>=1.18&<1.19]
+        dev-haskell/Cabal[>=1.20&<1.23]
         dev-haskell/bytestring[>=0.10&<0.11]
         dev-haskell/containers
         dev-haskell/haddock-library[>=1.0&<1.3]
