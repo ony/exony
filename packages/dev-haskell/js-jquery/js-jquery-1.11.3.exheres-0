@@ -1,0 +1,27 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="Obtain minified jQuery code"
+DESCRIPTION="
+This package bundles the minified jQuery code into a Haskell package, so it can be depended upon by
+Cabal packages. The first three components of the version number match the upstream jQuery version.
+The package is designed to meet the redistribution requirements of downstream users (e.g. Debian).
+"
+HOMEPAGE="https://github.com/ndmitchell/js-jquery#readme"
+
+LICENCES="MIT"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_test_dependencies "
+        dev-haskell/HTTP
+    ")
+"
+
+# test-suite wants internet connection
+RESTRICT=test
+
+BUGS_TO="virkony@gmail.com"
+
