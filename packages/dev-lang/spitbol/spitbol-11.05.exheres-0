@@ -1,0 +1,31 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=spitbol pn=x64 ]
+
+SUMMARY="A speedy implementation of the SNOBOL4 programming language"
+DESCRIPTION="
+SPITBOL for the 64-bit x86-x64 (amd64) architecture, running on Unix and its derivatives, including
+Linux and OSX
+"
+HOMEPAGE="http://www.snobol4.com/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+    build+run:
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_COMPILE_PARAMS=( -f makefile.gcc spitbol-dynamic )
+
+src_install() {
+    dobin spitbol
+    dodoc docs/*
+}
+
