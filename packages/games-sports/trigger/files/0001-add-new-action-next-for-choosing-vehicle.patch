@@ -1,0 +1,62 @@
+From c0ba3eaffb23416e0befb36440826cad74963341 Mon Sep 17 00:00:00 2001
+From: Nikolay Orlyuk <virkony@gmail.com>
+Date: Sun, 28 Jun 2015 22:01:58 +0300
+Subject: [PATCH] add new action "next" for choosing vehicle
+
+Right now using of axis for "left" and "right" do not allow to choose
+vehicle. Introduce new action "next" that behaves like "right" and can
+be separately assigned to any button.
+---
+ src/trigger/main.cpp | 9 +++++++--
+ src/trigger/main.h   | 1 +
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/trigger/main.cpp b/src/trigger/main.cpp
+index 6c0b84e..6957fd5 100755
+--- a/src/trigger/main.cpp
++++ b/src/trigger/main.cpp
+@@ -97,6 +97,7 @@ void MainApp::loadConfig()
+   ctrl.action_name[ActionCamLeft] = std::string("camleft");
+   ctrl.action_name[ActionCamRight] = std::string("camright");
+   ctrl.action_name[ActionShowMap] = std::string("showmap");
++  ctrl.action_name[ActionNext] = std::string("next");
+   
+   for (int i = 0; i < ActionCount; i++) {
+     ctrl.map[i].type = UserControl::TypeUnassigned;
+@@ -1060,7 +1061,9 @@ void MainApp::keyEvent(const SDL_KeyboardEvent &ke)
+         return;
+       }
+       if (ctrl.map[ActionRight].type == UserControl::TypeKey &&
+-        ctrl.map[ActionRight].key.sym == ke.keysym.sym) {
++        ctrl.map[ActionRight].key.sym == ke.keysym.sym ||
++        ctrl.map[ActionNext].type == UserControl::TypeKey &&
++        ctrl.map[ActionNext].key.sym == ke.keysym.sym) {
+         if (++choose_type >= (int)game->vehiclechoices.size())
+           choose_type = 0;
+         return;
+@@ -1154,7 +1157,9 @@ void MainApp::joyButtonEvent(int which, int button, bool down)
+         return;
+       }
+       if (ctrl.map[ActionRight].type == UserControl::TypeJoyButton &&
+-        ctrl.map[ActionRight].joybutton.button == button) {
++        ctrl.map[ActionRight].joybutton.button == button ||
++        ctrl.map[ActionNext].type == UserControl::TypeJoyButton &&
++        ctrl.map[ActionNext].joybutton.button == button) {
+         if (++choose_type >= (int)game->vehiclechoices.size())
+           choose_type = 0;
+         return;
+diff --git a/src/trigger/main.h b/src/trigger/main.h
+index 1aa393f..9f86ea3 100755
+--- a/src/trigger/main.h
++++ b/src/trigger/main.h
+@@ -222,6 +222,7 @@ private:
+     ActionCamLeft,
+     ActionCamRight,
+     ActionShowMap,
++    ActionNext,
+     ActionCount
+   };
+   struct {
+-- 
+2.3.3
+

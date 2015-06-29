@@ -21,7 +21,7 @@ DEPENDENCIES="
     build:
     build+run:
         media-libs/SDL:0[>=1.2.5]
-        media-libs/SDL_image[>=1.2]
+        media-libs/SDL_image:1[>=1.2]
         dev-games/physfs
         x11-dri/mesa
         x11-dri/glu
@@ -32,6 +32,10 @@ DEPENDENCIES="
 BUGS_TO="virkony@gmail.com"
 
 WORK="${WORKBASE}/${MY_PNV}"
+
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}/0001-add-new-action-next-for-choosing-vehicle.patch"
+)
 
 MY_DATADIR="/usr/share/${PNV}"
 
