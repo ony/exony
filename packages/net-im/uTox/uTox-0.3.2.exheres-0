@@ -1,0 +1,37 @@
+# Copyright 2015 Mykola Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=notsecure tag=v${PV} ]
+
+SUMMARY="Lightweight Tox client"
+HOMEPAGE+=" http://utox.org/"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        sys-apps/dbus
+        media-libs/fontconfig
+        media-libs/freetype:2
+        net-libs/toxcore
+        media-libs/openal
+        media-libs/libvpx
+        x11-libs/libX11
+        x11-libs/libXext
+        x11-libs/libXrender
+        media-libs/v4l-utils
+"
+
+BUGS_TO="virkony@gmail.com"
+
+MY_MAKE_PARAMS=(
+    FILTER_AUDIO=0
+    PREFIX=/usr
+)
+
+DEFAULT_SRC_COMPILE_PARAMS=( "${MY_MAKE_PARAMS[@]}" )
+DEFAULT_SRC_INSTALL_PARAMS=( "${MY_MAKE_PARAMS[@]}" )
+
