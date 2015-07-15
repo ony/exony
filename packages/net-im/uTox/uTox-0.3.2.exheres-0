@@ -1,0 +1,44 @@
+# Copyright 2015 Mykola Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=notsecure tag=v${PV} ]
+
+SUMMARY="Lightweight Tox client"
+HOMEPAGE+=" http://utox.org/"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        sys-apps/dbus
+        media-libs/fontconfig
+        media-libs/freetype:2
+        net-libs/toxcore
+        media-libs/openal
+        media-libs/libvpx
+        x11-libs/libX11
+        x11-libs/libXext
+        x11-libs/libXrender
+        media-libs/v4l-utils
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}/0001-Allow-overriding-pkg-config.patch"
+    "${FILES}/0002-Install-platform-indep.-files-under-DATAROOTDIR.patch"
+)
+
+MY_MAKE_PARAMS=(
+    FILTER_AUDIO=0
+    PREFIX=/usr/$(exhost --target)
+    DATAROOTDIR=/usr/share
+    PKG_CONFIG=$(exhost --tool-prefix)pkg-config
+)
+
+DEFAULT_SRC_COMPILE_PARAMS=( "${MY_MAKE_PARAMS[@]}" )
+DEFAULT_SRC_INSTALL_PARAMS=( "${MY_MAKE_PARAMS[@]}" )
+

@@ -1,0 +1,30 @@
+From 49e2beaf76e4ca50ed31f6494e26aec74de0d67e Mon Sep 17 00:00:00 2001
+From: Mykola Orliuk <virkony@gmail.com>
+Date: Tue, 14 Jul 2015 09:10:50 +0300
+Subject: [PATCH 1/2] Allow overriding pkg-config
+
+---
+ Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b741ba0..f8fbb21 100644
+--- a/Makefile
++++ b/Makefile
+@@ -26,10 +26,11 @@ endif
+ 
+ UNAME_S := $(shell uname -s)
+ 
++PKG_CONFIG = pkg-config
+ CFLAGS += -g -Wall -Wshadow -pthread -std=gnu99
+-CFLAGS += $(shell pkg-config --cflags $(DEPS))
++CFLAGS += $(shell $(PKG_CONFIG) --cflags $(DEPS))
+ LDFLAGS = -pthread -lm
+-LDFLAGS += $(shell pkg-config --libs $(DEPS))
++LDFLAGS += $(shell $(PKG_CONFIG) --libs $(DEPS))
+ 
+ ifneq ($(DBUS), 1)
+     CFLAGS += -DNO_DBUS
+-- 
+2.3.3
+
