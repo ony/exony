@@ -24,6 +24,8 @@ done
 scm_finalise
 
 DEPENDENCIES="
+    build:
+        dev-lang/dmd:2 [[ description = [ Bootstrap from release ] ]]
     build+run:
         net-misc/curl[multibuild_c:*(-)?]
 "
@@ -31,35 +33,56 @@ DEPENDENCIES="
 WORK="${WORKBASE}"
 PLATFORMS="~amd64"
 
-src_compile() {
-    # compiler for default target
-    emake -C dmd/src -f posix.mak MODEL=$MULTIBUILD_C_DEFAULT_TARGET
-
-    # platform-specific targets
-    easy-multibuild_src_compile
-
-    # tools
-    if optionq tools; then
-        emake -C tools -f posix.mak DMD="${WORK}/dmd/src/dmd" MODEL=$MULTIBUILD_C_DEFAULT_TARGET
-    fi
+src_prepare() {
+    default
+    edo sed -i '/^\t/s/\<ar\>/$(AR)/' dmd/src/posix.mak
 }
 
-compile_one_multibuild() {
+src_compile() {
+    local model=$(dmd_exhost_model)
+
+    # compiler for default target
+    emake -C dmd -f posix.mak MODEL=${model} HOST_CC="${CXX}" AR="${AR}" TARGET_CPU=X86
+
     # libraries
     local library
     for library in druntime phobos; do
-        emake -C $library -f posix.mak DMD="${WORK}/dmd/src/dmd" MODEL=$MULTIBUILD_TARGET
+        emake -C $library -f posix.mak DMD="${WORK}/dmd/src/dmd" MODEL=${model} CC="${CC}" CFLAGS="-O -fPIC"
     done
+
+    # tools
+    if optionq tools; then
+        emake -C tools -f posix.mak DMD="${WORK}/dmd/src/dmd" MODEL=${model}
+    fi
 }
 
 src_install() {
+    local model=$(dmd_exhost_model)
+
     default
 
     # TODO: handle SLOT=1 (D1 language)
 
     # config
-    insinto /etc
-    doins dmd.conf
+    hereconfd dmd.conf << EOF
+;
+; dmd.conf file for dmd
+;
+; dmd will look for dmd.conf in the following sequence of directories:
+;   - current working directory
+;   - directory specified by the HOME environment variable
+;   - directory dmd resides in
+;   - /etc directory
+;
+; Names enclosed by %% are searched for in the existing environment and inserted
+;
+; The special name %@P% is replaced with the path to this file
+;
+
+[Environment]
+DFLAGS=-I/usr/$(exhost --target)/include/phobos2 -I/usr/$(exhost --target)/include/druntime -L--no-warn-search-mismatch -L--export-dynamic -L-lrt
+CC=${CC}
+EOF
 
     # binary
     dobin dmd/src/dmd
@@ -77,14 +100,15 @@ src_install() {
 
         emake -C tools -f posix.mak -j1 \
             DMD="${WORK}/dmd/src/dmd" \
-            MODEL=$MULTIBUILD_C_DEFAULT_TARGET \
+            MODEL=${model} \
             DESTDIR="${IMAGE}" \
             PREFIX="/usr/bin" \
             install
     fi
 
-    # target specific
-    easy-multibuild_src_install
+    # libs
+    newlib.a "druntime/lib/libdruntime-linux${model}.a" "libdruntime.a"
+    dolib.a "phobos/generated/linux/release/${model}/libphobos2.a"
 
     # cleanup for installing imports through *
     edo rm -r phobos/generated
@@ -96,11 +120,5 @@ src_install() {
     doins -r druntime/import/*
     insinto /usr/include/phobos2
     doins -r phobos/*
-}
-
-install_one_multibuild() {
-    # libs
-    newlib.a "druntime/lib/libdruntime-linux${MULTIBUILD_TARGET}.a" "libdruntime.a"
-    dolib.a "phobos/generated/linux/release/${MULTIBUILD_TARGET}/libphobos2.a"
 }
 

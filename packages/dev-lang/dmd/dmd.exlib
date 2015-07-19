@@ -4,10 +4,6 @@
 #
 #  See http://git.overlays.gentoo.org/gitweb/?p=proj/sunrise-reviewed.git;a=blob_plain;f=dev-lang/dmd/dmd-2.060.ebuild;hb=HEAD
 
-require easy-multibuild
-
-export_exlib_phases src_configure src_compile src_install
-
 SUMMARY="DigitalMars compiler of D prgoramming language"
 DESCRIPTION="
 D is a language with C-like syntax and static typing. It pragmatically combines efficiency, control,
@@ -18,21 +14,10 @@ SLOT="$(ever range 1 ${PV})"
 
 HOMEPAGE="http://digitalmars.com/d/${SLOT}.0/index.html http://dlang.org"
 
-if ! ever is_scm; then
-    DOWNLOADS="http://ftp.digitalmars.com/${PN}.${PV}.zip"
-    WORK="${WORKBASE}/dmd${SLOT}"
-fi
-
-
 LICENCES="GPL-1"
 MYOPTIONS="
     examples
     tools [[ description = [ Include boundled pre-built tools (rdmd, dumpobj, obj2asm) ] ]]
-    multibuild_c: 32 64
-"
-
-DEPENDENCIES="
-    build+run:
 "
 
 BUGS_TO="virkony@gmail.com"
@@ -46,84 +31,11 @@ UPSTREAM_DOCUMENTATION="
     http://dlang.org/articles.html [[ lang = en description = [ Articles ] ]]
 "
 
-configure_prepare_one_multibuild() {
-    edo mkdir -p "${WORKBASE}/${MULTIBUILD_CLASS}"
-    edo ln -s "$WORK" "${WORKBASE}/${MULTIBUILD_CLASS}/${MULTIBUILD_TARGET}"
+dmd_exhost_model() {
+    case "$(exhost --target)" in
+    x86_64-*) echo 64 ;;
+    i?86-*) echo 32 ;;
+    *) die "Unknown target $(exhost --target)" ;;
+    esac
 }
-
-dmd_src_configure() {
-    edo cp "${FILES}/dmd.conf" dmd.conf
-
-    easy-multibuild_src_configure
-}
-
-configure_one_multibuild() {
-    sed -i "s@^DFLAGS=@&-L-L/usr/${LIBDIR} @" dmd.conf
-}
-
-dmd_src_compile() {
-    # compiler for default target
-    emake -C src/dmd -f posix.mak MODEL=$MULTIBUILD_C_DEFAULT_TARGET
-
-    # rest for each target
-    easy-multibuild_src_compile
-}
-
-compile_one_multibuild() {
-    # libraries
-    local library
-    for library in druntime phobos; do
-        emake -C src/$library -f posix.mak DMD=../dmd/dmd MODEL=$MULTIBUILD_TARGET
-    done
-}
-
-dmd_src_install() {
-    default
-
-    # TODO: handle SLOT=1 (D1 language)
-
-    # config
-    insinto /etc
-    doins dmd.conf
-
-    # binary
-    dobin src/dmd/dmd
-
-    # docs
-    doman man/man1/{dmd.1,dmd.conf.5}
-
-    if optionq examples; then
-        insinto /usr/share/doc/${PNV}/samples/
-        doins samples/d/*
-    fi
-
-    if optionq tools; then
-        doman man/man1/{dumpobj,obj2asm,rdmd}.1
-
-        # Bundled pre-compiled tools
-        dobin linux/bin${MULTIBUILD_C_DEFAULT_TARGET}/{dumpobj,obj2asm,rdmd}
-    fi
-
-    # target specific
-    easy-multibuild_src_install
-
-    # cleanup for installing imports through *
-    edo rm -r src/druntime/{obj,lib}
-    edo rm -r src/phobos/generated
-    edo rm -r src/phobos/etc/c/zlib
-    edo rm -r src/*/*.mak
-
-    # imports
-    insinto /usr/include/druntime/
-    doins -r src/druntime/import/*
-    insinto /usr/include/phobos2
-    doins -r src/phobos/*
-}
-
-install_one_multibuild() {
-    # libs
-    newlib.a "src/druntime/lib/libdruntime-linux${MULTIBUILD_TARGET}.a" "libdruntime.a"
-    dolib.a "src/phobos/generated/linux/release/${MULTIBUILD_TARGET}/libphobos2.a"
-}
-
 

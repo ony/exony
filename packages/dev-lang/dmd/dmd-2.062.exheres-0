@@ -3,5 +3,84 @@
 
 require dmd
 
-PLATFORMS="~amd64 ~x86"
+DOWNLOADS="http://ftp.digitalmars.com/${PN}.${PV}.zip"
+WORK="${WORKBASE}/dmd${SLOT}"
+
+PLATFORMS="~amd64"
+
+src_compile() {
+    local model=$(dmd_exhost_model)
+
+    # compiler for default target
+    emake -C src/dmd -f posix.mak MODEL=${model} HOST_CC="${CXX}"
+
+    # libraries
+    local library
+    for library in druntime phobos; do
+        emake -C src/${library} -f posix.mak DMD=../dmd/dmd MODEL=${model} CC="${CC}"
+    done
+}
+
+src_install() {
+    local model=$(dmd_exhost_model)
+
+    default
+
+    # TODO: handle SLOT=1 (D1 language)
+
+    # config
+    hereconfd dmd.conf << EOF
+;
+; dmd.conf file for dmd
+;
+; dmd will look for dmd.conf in the following sequence of directories:
+;   - current working directory
+;   - directory specified by the HOME environment variable
+;   - directory dmd resides in
+;   - /etc directory
+;
+; Names enclosed by %% are searched for in the existing environment and inserted
+;
+; The special name %@P% is replaced with the path to this file
+;
+
+[Environment]
+DFLAGS=-I/usr/$(exhost --target)/include/phobos2 -I/usr/$(exhost --target)/include/druntime -L-L/usr/$(exhost --target)/lib -L--no-warn-search-mismatch -L--export-dynamic -L-lrt
+CC=${CC}
+EOF
+
+    # binary
+    dobin src/dmd/dmd
+
+    # docs
+    doman man/man1/{dmd.1,dmd.conf.5}
+
+    if optionq examples; then
+        insinto /usr/share/doc/${PNV}/samples/
+        doins samples/d/*
+    fi
+
+    if optionq tools; then
+        doman man/man1/{dumpobj,obj2asm,rdmd}.1
+
+        # Bundled pre-compiled tools
+        dobin linux/bin${model}/{dumpobj,obj2asm,rdmd}
+    fi
+
+    # libs
+    newlib.a "src/druntime/lib/libdruntime-linux${model}.a" "libdruntime.a"
+    dolib.a "src/phobos/generated/linux/release/${model}/libphobos2.a"
+
+    # cleanup for installing imports through *
+    edo rm -r src/druntime/{obj,lib}
+    edo rm -r src/phobos/generated
+    edo rm -r src/phobos/etc/c/zlib
+    edo rm -r src/*/*.mak
+
+    # imports
+    insinto /usr/$(exhost --target)/include/druntime/
+    doins -r src/druntime/import/*
+    insinto /usr/$(exhost --target)/include/phobos2
+    doins -r src/phobos/*
+}
 
