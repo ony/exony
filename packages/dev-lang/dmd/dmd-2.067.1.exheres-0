@@ -8,16 +8,22 @@ WORK="${WORKBASE}/dmd${SLOT}"
 
 PLATFORMS="~amd64"
 
+src_prepare() {
+    default
+    # See https://github.com/D-Programming-Language/dmd/pull/4822
+    edo sed -i '/^\t/s/\<ar\>/$(AR)/' src/dmd/posix.mak
+}
+
 src_compile() {
     local model=$(dmd_exhost_model)
 
     # compiler for default target
-    emake -C src/dmd -f posix.mak MODEL=${model} HOST_CC="${CXX}"
+    emake -C src/dmd -f posix.mak MODEL=${model} HOST_CC="${CXX}" AR="${AR}"
 
     # libraries
     local library
     for library in druntime phobos; do
-        emake -C src/${library} -f posix.mak DMD=../dmd/dmd MODEL=${model} CC="${CC}"
+        emake -C src/${library} -f posix.mak DMD=../dmd/dmd MODEL=${model} CC="${CC}" CFLAGS="${CFLAGS} -fPIC"
     done
 }
 
@@ -53,7 +59,8 @@ EOF
     dobin src/dmd/dmd
 
     # docs
-    doman man/man1/{dmd.1,dmd.conf.5}
+    doman man/man*/*
+    dodoc -r html
 
     if optionq examples; then
         insinto /usr/share/doc/${PNV}/samples/
