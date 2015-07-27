@@ -1,0 +1,70 @@
+# Copyright 2015 Mykola Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PV="${PV/_/-}"
+MY_PNV="${PN}_${MY_PV}"
+SUMMARY="A new browser for our friends"
+DESCRIPTION="Vivaldi browser is made for power users in mind by people who love the Web."
+HOMEPAGE="https://vivaldi.com"
+DOWNLOADS="https://vivaldi.com/download/snapshot/${MY_PNV}_amd64.deb"
+
+LICENCES="vivaldi-eula"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    run:
+        dev-libs/atk
+        dev-libs/expat
+        dev-libs/glib:2
+        dev-libs/nspr
+        dev-libs/nss
+        gnome-platform/GConf:2
+        media-libs/fontconfig
+        media-libs/freetype:2
+        net-print/cups
+        sys-apps/dbus
+        sys-sound/alsa-lib
+        x11-libs/cairo
+        x11-libs/gdk-pixbuf:2.0
+        x11-libs/gtk+:2
+        x11-libs/libX11
+        x11-libs/libXScrnSaver
+        x11-libs/libXcomposite
+        x11-libs/libXcursor
+        x11-libs/libXdamage
+        x11-libs/libXext
+        x11-libs/libXfixes
+        x11-libs/libXi
+        x11-libs/libXrandr
+        x11-libs/libXrender
+        x11-libs/libXtst
+        x11-libs/pango
+"
+
+WORK=${WORKBASE}
+
+pkg_setup() {
+    default
+    exdirectory --allow /opt
+}
+
+src_unpack() {
+    default
+    edo tar xf data.tar.*
+}
+
+src_install() {
+    edo mv usr/share/doc/{${PN},${PNVR}}
+
+    edo mv opt "${IMAGE}/"
+    dodir /usr/share
+    edo mv usr/share "${IMAGE}/usr/"
+
+    herebin ${PN} << EOF
+#!/bin/sh
+exec /opt/${PN}/vivaldi "\$@"
+EOF
+}
+
