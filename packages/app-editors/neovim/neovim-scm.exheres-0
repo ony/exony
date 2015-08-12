@@ -26,7 +26,7 @@ DEPENDENCIES="
         sys-libs/ncurses
         dev-libs/libtermkey
         dev-libs/libuv[>=1.2.0]
-        dev-libs/msgpack[~scm]
+        dev-libs/msgpack
         dev-libs/unibilium
         dev-lang/LuaJIT
         dev-lua/LuaBitOp
