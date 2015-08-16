@@ -1,0 +1,57 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require scons
+
+export_exlib_phases src_install
+
+SUMMARY="A free racing simulator with excellent physics and graphics."
+DESCRIPTION="
+VDrift is a cross-platform, open source driving simulation made with drift racing in mind. The
+driving physics engine was recently re-written from scratch but was inspired and owes much to the
+Vamos physics engine.
+"
+HOMEPAGE="http://vdrift.net"
+
+LICENCES="GPL-3"
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config[>=0.9.0]
+    build+run:
+        media-libs/SDL:2
+        media-libs/SDL_image:2
+        media-libs/libvorbis
+        net-misc/curl
+        sci-physics/bullet
+        x11-dri/mesa
+"
+
+BUGS_TO="virkony@gmail.com"
+
+REMOTE_IDS=" sourceforge:${PN} "
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-BUILD-Make-pkg-config-configurable.patch" )
+
+SCONS_SRC_CONFIGURE_PARAMS=(
+    prefix=/usr/$(exhost --target)
+    datadir=../share/vdrift
+    localedir=../share/vdrift/locale
+    pkg_config="${PKG_CONFIG}"
+    release=1
+    force_feedback=1
+)
+
+SCONS_SRC_INSTALL_PARAMS=(
+    destdir="${IMAGE}"
+    datadir=../share/vdrift
+    localedir=../share/vdrift/locale
+)
+
+vdrift_src_install() {
+    scons_src_install
+    edo mv "${IMAGE}"/usr{/$(exhost --target),}/share/applications
+    edo rm -r "${IMAGE}"/usr/$(exhost --target)/share/appdata
+    edo rmdir "${IMAGE}"/usr/$(exhost --target)/share
+}
+
