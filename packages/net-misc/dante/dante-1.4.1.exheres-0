@@ -12,7 +12,7 @@ MY_PNV="${PN}-${PV/_/-}"
 DOWNLOADS="ftp://ftp.inet.no/pub/socks/${MY_PNV}.tar.gz"
 WORK="${WORKBASE}/${MY_PNV}"
 
-LICENCES="TODO"
+LICENCES="dante"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS="
