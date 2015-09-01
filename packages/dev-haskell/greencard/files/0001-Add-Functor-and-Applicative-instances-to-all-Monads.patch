@@ -1,0 +1,199 @@
+From f39ab40b64d9f83ec8775cdd4567aa7355b239ac Mon Sep 17 00:00:00 2001
+From: "Daniel P. Wright" <dani@dpwright.com>
+Date: Tue, 14 Apr 2015 10:34:47 +0900
+Subject: [PATCH] Add Functor and Applicative instances to all Monads
+
+These are the minimum required fixes to get greencard building under GHC
+7.10.  As noted in the comments around the existing Functor instances,
+though, this may cause compatibility issues with earlier compilers and
+indeed other, non-GHC Haskell 98 compilers.
+
+I am submitting this commit not with a view to having it accepted as is
+but as a starting-point for a conversation about how to move forward
+with supporting the latest GHC alongside earlier versions.
+---
+ src/ErrMonad.lhs      | 10 +++++-----
+ src/FillInMonad.lhs   | 14 ++++++++------
+ src/LexM.lhs          | 11 +++++++++++
+ src/MarshallMonad.lhs |  7 +++++--
+ src/NameSupply.lhs    | 11 +++++++----
+ src/Proc.lhs          |  9 +++++++++
+ 6 files changed, 45 insertions(+), 17 deletions(-)
+
+diff --git a/src/ErrMonad.lhs b/src/ErrMonad.lhs
+index 011a3c3..ee559ce 100755
+--- a/src/ErrMonad.lhs
++++ b/src/ErrMonad.lhs
+@@ -18,6 +18,7 @@ module ErrMonad
+        , mapErrM	 -- :: (a -> b) -> ErrM a -> ErrM b
+        ) where
+ 
++import Control.Monad (ap)
+ \end{code}
+ 
+ \begin{code}
+@@ -31,13 +32,12 @@ mapErrM f e =
+       Failed    err -> Failed err
+       Succeeded v   -> Succeeded (f v)
+ 
+-{- Don't define this as long as there's bound to be 
+-   significant pre-Haskell 98 systems out there in
+-   circulation.
+-
+ instance Functor (ErrM a) where
+   fmap = mapErrM
+--}
++
++instance Applicative (ErrM a) where
++  pure = return
++  (<*>) = ap
+ 
+ instance Monad (ErrM a) where
+   (>>=) m f =
+diff --git a/src/FillInMonad.lhs b/src/FillInMonad.lhs
+index 76ac334..1f733aa 100755
+--- a/src/FillInMonad.lhs
++++ b/src/FillInMonad.lhs
+@@ -20,6 +20,7 @@ module FillInMonad
+ import qualified ErrMonad as EM
+ import DIS  (DISEnv)
+ import Target (Target)
++import Control.Monad (ap)
+ \end{code}
+ 
+ \begin{code}
+@@ -77,11 +78,12 @@ instance Monad FilM where
+   (>>=)  = thenFilM
+   return = returnFilM
+ 
+-{- Try to do without this one for now - 
+-   leads to Haskell compatibility troubles.
++instance Applicative FilM where
++  pure = return
++  (<*>) = ap
++
+ instance Functor FilM where
+-  map f (FilM act) = FilM (\ env pre tgt m -> do
+-			     v <- act env pre tgt m
+-			     return (f v))
+--}
++  fmap f (FilM act) = FilM (\ env pre tgt m -> do
++        		      v <- act env pre tgt m
++        		      return (f v))
+ \end{code}
+diff --git a/src/LexM.lhs b/src/LexM.lhs
+index c3db07a..52763ba 100755
+--- a/src/LexM.lhs
++++ b/src/LexM.lhs
+@@ -34,6 +34,8 @@ import System.IO.Error ( isEOFError, ioeGetErrorString )
+ import qualified Control.Exception  ( catch )
+ import Data.List ( isSuffixOf )
+ 
++import Control.Monad (ap)
++
+ -- components threaded by the monad (apart from
+ -- the IO token.)
+ data LexState
+@@ -112,6 +114,15 @@ setLexState lState = LexM (\ (LexState l _ str) -> return ((), LexState l lState
+ 
+ -----
+ 
++instance Functor LexM where
++  fmap f (LexM m) = LexM $ \st -> do
++    (a, st') <- m st
++    return (f a, st')
++
++instance Applicative LexM where
++  pure = return
++  (<*>) = ap
++
+ instance Monad LexM where
+   (>>=)  = thenLexM
+   return = returnLexM
+diff --git a/src/MarshallMonad.lhs b/src/MarshallMonad.lhs
+index 3e70393..da30127 100755
+--- a/src/MarshallMonad.lhs
++++ b/src/MarshallMonad.lhs
+@@ -28,6 +28,7 @@ import Decl ( SrcLoc )
+ import DIS  ( DIS )
+ import ErrMonad
+ import Target (Target)
++import Control.Monad (ap)
+ 
+ \end{code}
+ 
+@@ -67,10 +68,12 @@ mapMarshallM f (MarshallM g) =
+ 	    Succeeded (v,st') -> 
+                 return (f v, st'))
+ 
+-{-
+ instance Functor MarshallM where
+    fmap = mapMarshallM
+--}
++
++instance Applicative MarshallM where
++  pure = return
++  (<*>) = ap
+ 
+ instance Monad MarshallM where
+   (MarshallM f) >>= g	= 
+diff --git a/src/NameSupply.lhs b/src/NameSupply.lhs
+index 9b7d2c4..675ab7a 100755
+--- a/src/NameSupply.lhs
++++ b/src/NameSupply.lhs
+@@ -15,6 +15,7 @@ module NameSupply
+ 	) where
+ 
+ import Name( Name )
++import Control.Monad (ap)
+ 
+ \end{code}
+ 
+@@ -30,11 +31,13 @@ type NameSupply = [Name]
+ 
+ newtype NSM a = NSM (NameSupply -> (a, NameSupply))
+ 
+-{- Try to do without this one for now - Haskell compatibility pitfall.
+ instance Functor NSM where
+-  map f (NSM g) = NSM (\ns -> let (a, ns') = g ns 
+-                              in  (f a, ns'))
+--}
++  fmap f (NSM g) = NSM (\ns -> let (a, ns') = g ns 
++                               in  (f a, ns'))
++
++instance Applicative NSM where
++  pure = return
++  (<*>)  = ap
+ 
+ instance Monad NSM where
+   (NSM f) >>= g	= 
+diff --git a/src/Proc.lhs b/src/Proc.lhs
+index bfc2ab1..9543005 100755
+--- a/src/Proc.lhs
++++ b/src/Proc.lhs
+@@ -22,6 +22,7 @@ import ListUtils ( insertIfMissing, lowerName, upperName,
+ 		 )
+ import Data.Maybe ( fromMaybe, isJust, fromJust )
+ import Data.List  ( unzip4, unzip5 )
++import Control.Monad (ap)
+ 
+ \end{code}
+ 
+@@ -777,6 +778,14 @@ data PM a = PM (PMState -> (PMState, ErrM String a))
+ 
+ type PMState = (String,String) -- current callconv and ext dll. name
+ 
++instance Functor PM where
++  fmap f (PM m) = PM $ \st ->
++    let (st', a) = m st in (st', mapErrM f a)
++
++instance Applicative PM where
++  pure = return
++  (<*>) = ap
++
+ instance Monad PM where
+   return v  = PM (\ x -> (x, return v))
+   (>>=) (PM m) f =
+-- 
+2.4.6
+
