@@ -18,12 +18,13 @@ Apache-2.0  [[ note = [ neovim changes submitted after 24-06-2014 ] ]]
 
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS=""
+MYOPTIONS="
+    jemalloc [[ description = [ Use jemalloc instead of standard implementation ] ]]
+"
 
 DEPENDENCIES="
     build:
     build+run:
-        sys-libs/ncurses
         dev-libs/libtermkey
         dev-libs/libuv[>=1.2.0]
         dev-libs/msgpack
@@ -33,14 +34,13 @@ DEPENDENCIES="
         dev-lua/lpeg
         dev-lua/MessagePack
         x11-libs/libvterm
+        jemalloc? ( dev-libs/jemalloc )
 "
 
 BUGS_TO="virkony@gmail.com"
 
-CMAKE_SRC_CONFIGURE_PARAMS+=(
-    -DLIBUNIBILIUM_USE_STATIC:BOOL=OFF
-    -DLIBTERMKEY_USE_STATIC:BOOL=OFF
-    -DLIBVTERM_USE_STATIC:BOOL=OFF
+CMAKE_SRC_CONFIGURE_OPTION_DISABLE_FINDS+=(
+    JeMalloc
 )
 
 src_install(){
