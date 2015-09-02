@@ -1,0 +1,31 @@
+From f869831b5f8c4e307a5a170866cf82b0c5508eb2 Mon Sep 17 00:00:00 2001
+From: Mykola Orliuk <virkony@gmail.com>
+Date: Wed, 2 Sep 2015 15:30:49 +0300
+Subject: [PATCH 2/2] Use copyFlags for clang install
+
+Most packaging systems use --destdir to install package to temporary
+file-system image. Let clang installation handle that flag too.
+---
+ Setup.hs | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Setup.hs b/Setup.hs
+index f7d2bfa..faf74c0 100644
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -218,9 +218,10 @@ libClangCopyHook pkg lbi hooks flags = do
+   curDir <- getCurrentDirectory
+   let llvmLibDir = curDir </> "build" </> "out" </> "lib"
+       verbosity = fromFlag (copyVerbosity flags)
+-      libCopyDir = libdir $ absoluteInstallDirs pkg lbi NoCopyDest
++      destdir = fromFlagOrDefault NoCopyDest $ copyDest flags
++      libCopyDir = libdir $ absoluteInstallDirs pkg lbi destdir
+ 
+-  notice verbosity "Installing libclang shared libraries..."
++  notice verbosity $ "Installing libclang shared libraries (" ++ show libCopyDir ++ ")..."
+   copyFiles verbosity libCopyDir $ map ((llvmLibDir,) . mkSharedLib) libclangSharedLibraries
+ 
+ libClangCleanHook :: PackageDescription -> () -> UserHooks -> CleanFlags -> IO ()
+-- 
+2.4.6
+
