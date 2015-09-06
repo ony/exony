@@ -1,9 +1,7 @@
 # Copyright 2012 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-MY_PNV="notion-3-${PV}-src"
-WORK="${WORKBASE}/notion-3-${PV}"
-
+MY_PV=3-${PV}
 require notion
 
 SLOT="0"

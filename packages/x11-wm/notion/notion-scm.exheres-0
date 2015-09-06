@@ -3,10 +3,6 @@
 
 require notion
 
-SCM_REPOSITORY="git://git.code.sf.net/p/notion/notion"
-
-require scm-git
-
 SLOT="0"
 PLATFORMS="~amd64"
 

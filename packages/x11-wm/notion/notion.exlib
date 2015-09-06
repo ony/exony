@@ -1,7 +1,7 @@
 # Copyright 2012 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-require sourceforge [ project=${PN} ]
+require github [ user=raboof ]
 require lua [ multibuild=false whitelist="5.2 5.1 5.0" ]
 
 export_exlib_phases src_prepare src_compile src_install
@@ -26,15 +26,12 @@ RESTRICT="test"
 
 UPSTREAM_DOCUMENTATION="http://notion.sourceforge.net/#documentation"
 
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-Enhance-Lua-autoconfiguration.patch" )
-
 DEFAULT_SRC_INSTALL_PARAMS=(
-    "PREFIX=/usr/$(exhost --target)"
+    "PREFIX=/usr"
+    "BINDIR=/usr/$(exhost --target)/bin"
     "LIBDIR=/usr/$(exhost --target)/lib"
-    "SHAREDIR=/usr/share/notion"
-    "DOCDIR=/usr/share/doc/notion"
-    "LOCALEDIR=/usr/share/locale"
-    "ETCDIR=/etc/notion"
+    "INCDIR=/usr/$(exhost --target)/include"
+    "DOCDIR=/usr/share/doc/${PNVR}"
     "X11_PREFIX=/usr/$(exhost --target)"
     )
 
