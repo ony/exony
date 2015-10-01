@@ -27,7 +27,7 @@ DEPENDENCIES="
     build:
         dev-lang/dmd:2 [[ description = [ Bootstrap from release ] ]]
     build+run:
-        net-misc/curl[multibuild_c:*(-)?]
+        net-misc/curl
 "
 
 WORK="${WORKBASE}"
