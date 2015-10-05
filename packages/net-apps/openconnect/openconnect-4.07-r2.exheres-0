@@ -1,6 +1,8 @@
 # Copyright 2013 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
+require option-renames [ renames=[ 'gnutls providers:gnutls' ] ]
+
 SUMMARY="A client for Cisco's AnyConnect SSL VPN"
 DESCRIPTION="
 OpenConnect is a client for Cisco's AnyConnect SSL VPN, which is supported by the ASA5500 Series, by
@@ -14,9 +16,7 @@ LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS="
-openssl [[ description = [ Use dev-libs/openssl ] ]]
-gnutls [[ description = [ Use dev-libs/gnutls instead of dev-libs/openssl (experimental) ] ]]
-( openssl gnutls ) [[ number-selected = exactly-one ]]
+( providers: gnutls libressl openssl ) [[ number-selected = exactly-one ]]
 "
 
 DEPENDENCIES="
@@ -25,13 +25,25 @@ DEPENDENCIES="
         dev-libs/libxml2
         virtual/pkg-config
         net-apps/vpnc
-        openssl? ( virtual/libssl )
-        gnutls? ( dev-libs/gnutls )
+        providers:gnutls? ( dev-libs/gnutls )
+        providers:libressl? ( dev-libs/libressl:= )
+        providers:openssl? ( dev-libs/openssl )
     run:
         sys-apps/iproute2
 "
 
 BUGS_TO="virkony@gmail.com"
 
-DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( openssl gnutls )
+src_configure() {
+    local myconf=()
+
+    myconf+=( $(option_with providers:gnutls gnutls) )
+    if option providers:libressl || option providers:openssl ; then
+        myconf+=( --with-openssl )
+    else
+        myconf+=( --without-openssl )
+    fi
+
+    econf "${myconf[@]}"
+}
 
