@@ -1,0 +1,53 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage [ has_bin=true ]
+
+SUMMARY="Write Haskell source files including C code inline. No FFI required."
+DESCRIPTION="
+inline-c lets you seamlessly call C libraries and embed high-performance inline C code in Haskell
+modules. Haskell and C can be freely intermixed in the same source file, and data passed to and from
+code in either language with minimal overhead. No FFI required.
+"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/QuickCheck
+        dev-haskell/ansi-wl-pprint
+        dev-haskell/binary
+        dev-haskell/bytestring
+        dev-haskell/containers
+        dev-haskell/cryptohash
+        dev-haskell/directory
+        dev-haskell/filepath
+        dev-haskell/hashable
+        dev-haskell/mtl
+        dev-haskell/parsec[>=3]
+        dev-haskell/parsers
+        dev-haskell/template-haskell[>=2.9]
+        dev-haskell/transformers[>=0.1.3.0]
+        dev-haskell/unordered-containers
+        dev-haskell/vector
+    ")
+    $(haskell_test_dependencies "
+        dev-haskell/QuickCheck
+        dev-haskell/ansi-wl-pprint
+        dev-haskell/containers
+        dev-haskell/hashable
+        dev-haskell/hspec[>=2]
+        dev-haskell/parsers
+        dev-haskell/raw-strings-qq
+        dev-haskell/regex-posix
+        dev-haskell/template-haskell
+        dev-haskell/transformers
+        dev-haskell/unordered-containers
+        dev-haskell/vector
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
