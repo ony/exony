@@ -1,6 +1,14 @@
 # Copyright 2014 Nikolay Orliuk
 # Distributed under the terms of the GNU General Public License v2
 
+if ever is_scm ; then
+    SCM_SECONDARY_REPOSITORIES="boost_predef boost_preprocessor"
+    SCM_EXTERNAL_REFS="external/boost/predef:boost_predef external/boost/preprocessor:boost_preprocessor"
+
+    SCM_boost_predef_REPOSITORY='https://github.com/boostorg/predef.git'
+    SCM_boost_preprocessor_REPOSITORY='https://github.com/boostorg/preprocessor.git'
+fi
+
 require github [ user=msgpack pn="msgpack-c" tag=cpp-${PV} ] cmake [ api=2 ]
 
 SUMMARY="MessagePack implementation for C and C++"
@@ -21,5 +29,5 @@ DEPENDENCIES="
 BUGS_TO="virkony@gmail.com"
 
 CMAKE_SRC_CONFIGURE_TESTS=( "-DMSGPACK_BUILD_TESTS:BOOL=ON -DMSGPACK_BUILD_TESTS:BOOL=OFF" )
-CMAKE_SRC_CONFIGURE_PARAMS=( -DMSGPACK_CXX11:BOOL=ON )
+CMAKE_SRC_CONFIGURE_PARAMS=( -DMSGPACK_CXX11:BOOL=ON -DMSGPACK_BOOST:BOOL=OFF )
 
