@@ -20,11 +20,12 @@ BUGS_TO="virkony@gmail.com"
 src_compile() {
     local var
     myflags=(
-        HOST_CC=$(exhost --build)-gcc
+        HOST_CC=$(exhost --build)-cc
         CROSS=$(exhost --tool-prefix)
-        PREFIX=/usr/$(exhost --target)
+        PREFIX=/usr
+        INSTALL_BIN=${IMAGE}/usr/$(exhost --target)/bin
         INSTALL_LIB=${IMAGE}/usr/$(exhost --target)/lib
-        INSTALL_SHARE=${IMAGE}/usr/share
+        INSTALL_INC=${IMAGE}/usr/$(exhost --target)/include/luajit-$(ever range 1-2)
         TARGET_CFLAGS="${CFLAGS}"
         TARGET_LDFLAGS="${LDFLAGS}"
     )
@@ -42,3 +43,4 @@ src_install() {
     keepdir /usr/share/lua/5.1
     keepdir /usr/$(exhost --target)/lib/lua/5.1
 }
+
