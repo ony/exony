@@ -1,0 +1,33 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PN=simupak64
+MY_PV=${PV//./-}
+require sourceforge [ project=simutrans suffix=zip ]
+
+SUMMARY="The main and a base game data set for Simutrans"
+DESCRIPTION="
+Pak64 is the main and a base set for Simutrans developed along with Simutrans executable. It always
+contains the most recent features. It is neatly painted pixel by pixel with motherly care. On the
+other hand it might look too tiny on high resolution displays. Many artists contributed to this
+pakset since the 8 bit age.
+"
+WORK="${WORKBASE}"
+
+LICENCES="Artistic"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    run:
+        games-simulation/simutrans
+"
+
+BUGS_TO="virkony@gmail.com"
+
+src_install() {
+    dodir /usr/share
+    edo mv simutrans ${IMAGE}/usr/share/
+}
+
