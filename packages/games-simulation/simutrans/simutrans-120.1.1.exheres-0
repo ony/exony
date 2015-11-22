@@ -1,0 +1,53 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PV="${PV//./-}"
+require sourceforge [ pnv=${PN}-src-${MY_PV} suffix=zip ]
+
+SUMMARY="A simulation game engine where player strives to run a successful transport system"
+DESCRIPTION="
+Simutrans is an open-source transportation simulation game available for Windows, Mac, Linux and
+BeOS. Your goal is to establish a successful transport company and build the necessary
+infrastructure to transport passengers, mail and goods between cities, factories and touristic
+attractions by land, air and water.
+"
+HOMEPAGE="http://www.simutrans.com/en/ ${HOMEPAGE}"
+WORK=${WORKBASE}
+
+LICENCES="Artistic"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        media-libs/SDL:2
+        media-libs/libpng:=
+    suggestion:
+        games-simulation/simutrans-pak64 [[ description = [ The main game data set ] ]]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_COMPILE_PARAMS=(
+    PNG_CONFIG="$(exhost --tool-prefix)pkg-config libpng"
+    SDL_CONFIG=
+    SDL2_CONFIG=sdl2-config
+)
+
+src_configure() {
+    edo bash configure.sh
+}
+
+src_install() {
+    dodir /usr/share
+    edo mv simutrans ${IMAGE}/usr/share/
+    dodir /usr/$(exhost --target)/libexec
+    edo mv sim ${IMAGE}/usr/$(exhost --target)/libexec/${PNV}
+    herebin ${PN} <<EOF
+#!/bin/bash
+cd /usr/share/${PN}
+exec /usr/$(exhost --target)/libexec/${PNV} -use_workdir "$@"
+EOF
+}
+
