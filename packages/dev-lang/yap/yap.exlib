@@ -57,7 +57,7 @@ MYOPTIONS="
 
 DEPENDENCIES="
     build+run:
-        dev-libs/gmp
+        dev-libs/gmp:=
         R? ( sci-lang/R )
         minisat? ( sci-libs/minisat )
         cudd? ( sci-libs/cudd )
