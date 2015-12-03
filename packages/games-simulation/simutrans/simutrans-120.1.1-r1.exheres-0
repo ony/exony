@@ -47,7 +47,7 @@ src_install() {
     herebin ${PN} <<EOF
 #!/bin/bash
 cd /usr/share/${PN}
-exec /usr/$(exhost --target)/libexec/${PNV} -use_workdir "$@"
+exec /usr/$(exhost --target)/libexec/${PNV} -use_workdir "\$@"
 EOF
 }
 
