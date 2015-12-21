@@ -1,0 +1,56 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PN=${PN%-bin}
+MY_PNV=${MY_PN}-${PV}
+
+SUMMARY="Multi-paradigm programming language"
+HOMEPAGE="http://www.scala-lang.org"
+DOWNLOADS="http://downloads.typesafe.com/${MY_PN}/${PV}/${MY_PNV}.tgz"
+WORK=${WORKBASE}
+
+LICENCES="
+    BSD-3 [[ note = [ Scala itself, ASM and JLine libraries ] ]]
+    Apache-2.0 [[ note = [ Jansi library ] ]]
+    MIT [[ note = [ jQuery, Sizzle and Tools Tooltip libraries ] ]]
+"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    run:
+        virtual/jre:*[>=1.6]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+pkg_setup() {
+    exdirectory --allow /opt
+}
+
+src_install() {
+    local _file
+
+    dodir /opt
+    dodir "/usr/$(exhost --target)/bin"
+
+    edo mv "${MY_PNV}" "${IMAGE}/opt/"
+    edo cd "${IMAGE}/opt/${MY_PNV}"
+    for _file in bin/*; do
+        case ${_file} in
+        *.bat|*.cmd)
+            # drop .bat and .cmd files (useful only for MS Windows distro)
+            edo rm "${_file}"
+            ;;
+        *)
+            dosym "/opt/${MY_PNV}/${_file}" "/usr/$(exhost --target)/${_file}"
+            ;;
+        esac
+    done
+    for _file in man/man*/*; do
+        doman "${_file}"
+    done
+    dodoc -r doc/*
+    edo rm -r man/ doc/
+}
