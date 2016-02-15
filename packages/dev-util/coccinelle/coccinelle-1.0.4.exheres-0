@@ -39,8 +39,6 @@ BUGS_TO="virkony@gmail.com"
 
 UPSTREAM_RELEASE_NOTES="${HOMEPAGE}/distrib/changes.html [[ lang = en ]]"
 
-DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/0001-autotools-use-libdir-instead-of-datadir.patch" )
-
 # Note: To use boundled pcre ocaml module we pass --disable-pcre
 DEFAULT_SRC_CONFIGURE_PARAMS=(
     --enable-release --enable-opt
