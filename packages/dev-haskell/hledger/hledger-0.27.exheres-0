@@ -1,0 +1,109 @@
+# Copyright 2016 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage [ has_bin=true ]
+
+SUMMARY="Command-line interface for the hledger accounting tool"
+DESCRIPTION="
+hledger is a cross-platform program for tracking money, time, or any other commodity, using
+double-entry accounting and a simple, editable file format. It is inspired by and largely compatible
+with ledger(1). hledger provides command-line, curses and web interfaces, and aims to be a reliable,
+practical tool for daily use.
+"
+HOMEPAGE="http://hledger.org"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/HUnit
+        dev-haskell/base-compat[>=0.8.1]
+        dev-haskell/cmdargs[=0.10*]
+        dev-haskell/containers
+        dev-haskell/csv
+        dev-haskell/directory
+        dev-haskell/filepath
+        dev-haskell/haskeline[>=0.6&<=0.8]
+        dev-haskell/hledger-lib[=0.27]
+        dev-haskell/mtl
+        dev-haskell/mtl-compat
+        dev-haskell/old-time
+        dev-haskell/parsec[>=3]
+        dev-haskell/pretty-show[>=1.6.4]
+        dev-haskell/process
+        dev-haskell/regex-tdfa
+        dev-haskell/safe[>=0.2]
+        dev-haskell/shakespeare[>=2.0.2.2&<2.1]
+        dev-haskell/split[>=0.1&<0.3]
+        dev-haskell/tabular[=0.2*]
+        dev-haskell/terminfo
+        dev-haskell/text[>=0.11]
+        dev-haskell/time[>=1.5]
+        dev-haskell/unordered-containers
+        dev-haskell/utf8-string[>=0.3.5&<1.1]
+        dev-haskell/wizards[=1.0*]
+    ")
+    $(haskell_test_dependencies "
+        dev-haskell/HUnit
+        dev-haskell/base-compat[>=0.8.1]
+        dev-haskell/cmdargs[=0.10*]
+        dev-haskell/containers
+        dev-haskell/csv
+        dev-haskell/directory
+        dev-haskell/filepath
+        dev-haskell/haskeline[>=0.6&<=0.8]
+        dev-haskell/hledger-lib[=0.27]
+        dev-haskell/mtl
+        dev-haskell/mtl-compat
+        dev-haskell/old-time
+        dev-haskell/parsec[>=3]
+        dev-haskell/pretty-show[>=1.6.4]
+        dev-haskell/process
+        dev-haskell/regex-tdfa
+        dev-haskell/safe[>=0.2]
+        dev-haskell/shakespeare[>=2.0.2.2&<2.1]
+        dev-haskell/split[>=0.1&<0.3]
+        dev-haskell/tabular[=0.2*]
+        dev-haskell/terminfo
+        dev-haskell/test-framework
+        dev-haskell/test-framework-hunit
+        dev-haskell/text[>=0.11]
+        dev-haskell/time[>=1.5]
+        dev-haskell/unordered-containers
+        dev-haskell/utf8-string[>=0.3.5&<1.1]
+        dev-haskell/wizards[=1.0*]
+    ")
+    $(haskell_bin_dependencies "
+        dev-haskell/HUnit
+        dev-haskell/base-compat[>=0.8.1]
+        dev-haskell/cmdargs[=0.10*]
+        dev-haskell/containers
+        dev-haskell/csv
+        dev-haskell/directory
+        dev-haskell/filepath
+        dev-haskell/haskeline[>=0.6&<=0.8]
+        dev-haskell/hledger-lib[=0.27]
+        dev-haskell/mtl
+        dev-haskell/mtl-compat
+        dev-haskell/old-time
+        dev-haskell/parsec[>=3]
+        dev-haskell/pretty-show[>=1.6.4]
+        dev-haskell/process
+        dev-haskell/regex-tdfa
+        dev-haskell/safe[>=0.2]
+        dev-haskell/shakespeare[>=2.0.2.2&<2.1]
+        dev-haskell/split[>=0.1&<0.3]
+        dev-haskell/tabular[=0.2*]
+        dev-haskell/terminfo
+        dev-haskell/text[>=0.11]
+        dev-haskell/time[>=1.5]
+        dev-haskell/unordered-containers
+        dev-haskell/utf8-string[>=0.3.5&<1.1]
+        dev-haskell/wizards[=1.0*]
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
