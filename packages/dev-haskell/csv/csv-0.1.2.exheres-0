@@ -1,0 +1,24 @@
+# Copyright 2016 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="CSV loader and dumper"
+DESCRIPTION="
+This library parses and dumps documents that are formatted according to RFC 4180, \"The common
+Format and MIME Type for Comma-Separated Values (CSV) Files\". This format is used, among many other
+things, as a lingua franca for spreadsheets, and for certain web services.
+"
+
+LICENCES="MIT"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/filepath
+        dev-haskell/parsec
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
