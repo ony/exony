@@ -1,0 +1,27 @@
+# Copyright 2016 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="High level, generic library for interrogative user interfaces"
+DESCRIPTION="
+wizards is a package designed for the quick and painless development of interrogative programs,
+which revolve around a \"dialogue\" with the user, who is asked a series of questions in a sequence
+much like an installation wizard.
+"
+
+LICENCES="BSD-3"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/containers[>=0.4&<0.6]
+        dev-haskell/control-monad-free[>=0.5&<0.7]
+        dev-haskell/haskeline[>=0.6&<0.8]
+        dev-haskell/mtl[>=2.0&<2.3]
+        dev-haskell/transformers[>=0.1&<0.5]
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
