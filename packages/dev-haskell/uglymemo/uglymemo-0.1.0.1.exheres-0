@@ -1,0 +1,18 @@
+# Copyright 2016 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="A simple (but internally ugly) memoization function."
+
+LICENCES="public-domain"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/containers
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
