@@ -1,0 +1,31 @@
+# Copyright 2016 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="Decimal numbers with variable precision"
+DESCRIPTION="
+A decimal number has an integer mantissa and a negative exponent. The exponent can be interpreted as
+the number of decimal places in the value.
+"
+HOMEPAGE="https://github.com/PaulJohnson/Haskell-Decimal"
+
+LICENCES="BSD-3"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    $(haskell_lib_dependencies "
+        dev-haskell/deepseq
+    ")
+    $(haskell_test_dependencies "
+        dev-haskell/HUnit[~>1.2]
+        dev-haskell/QuickCheck[>=2.4]
+        dev-haskell/deepseq
+        dev-haskell/test-framework[>=0.4.1]
+        dev-haskell/test-framework-hunit
+        dev-haskell/test-framework-quickcheck2
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
