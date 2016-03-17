@@ -1,4 +1,6 @@
-From 9b0291338695860e3c1f4a538c4ff048f6193fc5 Mon Sep 17 00:00:00 2001
+Upstream: https://github.com/GrayHatter/uTox/pull/247
+
+From d392bcbff140576fa8bb13ef456fd7c84146ec20 Mon Sep 17 00:00:00 2001
 From: Mykola Orliuk <virkony@gmail.com>
 Date: Tue, 14 Jul 2015 09:17:24 +0300
 Subject: [PATCH 2/2] Install platform-indep. files under DATAROOTDIR
@@ -8,18 +10,18 @@ Subject: [PATCH 2/2] Install platform-indep. files under DATAROOTDIR
  1 file changed, 36 insertions(+), 35 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index f8fbb21..8f6b4d2 100644
+index 831fb90..cfb2d96 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -54,6 +54,7 @@ endif
+@@ -75,6 +75,7 @@ endif
  
  DESTDIR ?=
  PREFIX ?= /usr/local
 +DATAROOTDIR ?= $(PREFIX)/share
  
- SRC = $(wildcard *.c png/png.c)
- OBJ = $(SRC:.c=.o)
-@@ -69,43 +70,43 @@ install: utox
+ SRC = $(wildcard src/*.c)
+ HEADERS = $(wildcard src/*.h src/*/*.h langs/*.h)
+@@ -91,43 +92,43 @@ install: utox
  	mkdir -p $(DESTDIR)$(PREFIX)/bin
  	install -m 0755 utox $(DESTDIR)$(PREFIX)/bin/utox
  
@@ -85,19 +87,19 @@ index f8fbb21..8f6b4d2 100644
 +	install -m 644 icons/utox.svg $(DESTDIR)$(DATAROOTDIR)/icons/hicolor/scalable/apps/utox.svg
  
 -	mkdir -p $(DESTDIR)$(PREFIX)/share/applications
--	install -m 644 utox.desktop $(DESTDIR)$(PREFIX)/share/applications/utox.desktop
+-	install -m 644 src/utox.desktop $(DESTDIR)$(PREFIX)/share/applications/utox.desktop
 -	if [ "$(UNITY)" -eq "1" ]; then echo "X-MessagingMenu-UsesChatSection=true" >> $(DESTDIR)$(PREFIX)/share/applications/utox.desktop; fi
 +	mkdir -p $(DESTDIR)$(DATAROOTDIR)/applications
-+	install -m 644 utox.desktop $(DESTDIR)$(DATAROOTDIR)/applications/utox.desktop
++	install -m 644 src/utox.desktop $(DESTDIR)$(DATAROOTDIR)/applications/utox.desktop
 +	if [ "$(UNITY)" -eq "1" ]; then echo "X-MessagingMenu-UsesChatSection=true" >> $(DESTDIR)$(DATAROOTDIR)/applications/utox.desktop; fi
  
 -	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man1
--	install -m 644 utox.1 $(DESTDIR)$(PREFIX)/share/man/man1/utox.1
+-	install -m 644 src/utox.1 $(DESTDIR)$(PREFIX)/share/man/man1/utox.1
 +	mkdir -p $(DESTDIR)$(DATAROOTDIR)/man/man1
-+	install -m 644 utox.1 $(DESTDIR)$(DATAROOTDIR)/man/man1/utox.1
++	install -m 644 src/utox.1 $(DESTDIR)$(DATAROOTDIR)/man/man1/utox.1
  
- main.o: xlib/main.c xlib/keysym2ucs.c
- 
+ $(OBJ): %.o: %.c $(HEADERS)
+ 	@echo "  CC    $@"
 -- 
-2.3.3
+2.7.3
 

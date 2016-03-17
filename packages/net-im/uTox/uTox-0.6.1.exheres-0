@@ -1,10 +1,10 @@
 # Copyright 2015 Mykola Orliuk
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=notsecure tag=v${PV} ]
+require github [ user=GrayHatter tag=v${PV} ]
 
 SUMMARY="Lightweight Tox client"
-HOMEPAGE+=" http://utox.org/"
+HOMEPAGE+=" http://utox.org/ https://tox.chat/"
 
 LICENCES="GPL-3"
 SLOT="0"
