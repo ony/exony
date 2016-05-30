@@ -1,0 +1,32 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require hackage
+
+SUMMARY="Binding to GIO"
+DESCRIPTION="
+GIO is striving to provide a modern, easy-to-use VFS API that sits at the right level in the library
+stack. The goal is to overcome the shortcomings of GnomeVFS and provide an API that is so good that
+developers prefer it over raw POSIX calls.
+"
+HOMEPAGE="http://projects.haskell.org/gtk2hs/"
+
+LICENCES="LGPL-2.1"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build:
+        dev-haskell/gtk2hs-buildtools
+    build+run:
+        dev-libs/glib:2
+    $(haskell_lib_dependencies "
+        dev-haskell/array
+        dev-haskell/bytestring
+        dev-haskell/containers
+        dev-haskell/glib[>=0.13.0.0&<0.14]
+        dev-haskell/mtl
+    ")
+"
+
+BUGS_TO="virkony@gmail.com"
+
