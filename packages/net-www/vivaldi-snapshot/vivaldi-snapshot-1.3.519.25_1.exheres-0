@@ -6,7 +6,7 @@ MY_PNV="${PN}_${MY_PV}"
 SUMMARY="A new browser for our friends"
 DESCRIPTION="Vivaldi browser is made for power users in mind by people who love the Web."
 HOMEPAGE="https://vivaldi.com"
-DOWNLOADS="https://vivaldi.com/download/snapshot/${MY_PNV}_amd64.deb"
+DOWNLOADS="https://downloads.vivaldi.com/snapshot/${MY_PNV}_amd64.deb"
 
 LICENCES="vivaldi-eula"
 SLOT="0"
@@ -67,4 +67,3 @@ src_install() {
 exec /opt/${PN}/vivaldi "\$@"
 EOF
 }
-
