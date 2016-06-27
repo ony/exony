@@ -68,6 +68,5 @@ src_install() {
     herebin ${PN} << EOF
 #!/bin/sh
 exec /opt/${PN}/vivaldi "\$@"
-chmod 4755 /opt/vivaldi/vivaldi-sandbox
 EOF
 }
