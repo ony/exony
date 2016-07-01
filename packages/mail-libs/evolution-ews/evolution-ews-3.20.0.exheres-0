@@ -1,7 +1,7 @@
 # Copyright 2014 Nikolay Orliuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require gnome.org [ suffix=".tar.xz" ]
+require gnome.org [ suffix="tar.xz" ]
 
 SUMMARY="Evolution support for the Exchange Web Services"
 DESCRIPTION="

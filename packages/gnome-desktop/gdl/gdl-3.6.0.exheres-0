@@ -1,7 +1,7 @@
 # Copyright 2011 Brett Witherspoon <spoonb@exherbo.org>
 # Distributed under the terms of the GNU General Public License v2
 
-require gnome.org [ suffix=.tar.xz ]
+require gnome.org [ suffix=tar.xz ]
 
 SUMMARY="GNOME docking library for GTK+"
 HOMEPAGE="http://www.gnome.org/"

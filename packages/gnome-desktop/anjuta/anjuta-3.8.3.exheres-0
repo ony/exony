@@ -1,7 +1,7 @@
 # Copyright 2011 Brett WItherspoon <spoonb@exherbo.org>
 # Distributed under the terms of the GNU General Public License v2
 
-require gnome.org [ suffix=.tar.xz ] gsettings gtk-icon-cache freedesktop-desktop freedesktop-mime
+require gnome.org [ suffix=tar.xz ] gsettings gtk-icon-cache freedesktop-desktop freedesktop-mime
 
 SUMMARY="An intergrated development environment (IDE) for the GNOME desktop"
 DESCRIPTION="

@@ -1,7 +1,7 @@
 # Copyright 2013 Nikolay Orlyuk
 # Distributed under the terms of the GNU General Public License v2
 
-require gnome.org [ suffix=.tar.xz ]
+require gnome.org [ suffix=tar.xz ]
 
 SUMMARY="NetworkManager OpenConnect plugin"
 DESCRIPTION="
