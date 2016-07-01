@@ -28,6 +28,7 @@ src_compile() {
         INSTALL_INC=${IMAGE}/usr/$(exhost --target)/include/luajit-$(ever range 1-2)
         TARGET_CFLAGS="${CFLAGS}"
         TARGET_LDFLAGS="${LDFLAGS}"
+        Q= # be verbose
     )
 
     var=${CHOST//-/_}_CFLAGS; myflags+=( HOST_CFLAGS="${!var}" )
