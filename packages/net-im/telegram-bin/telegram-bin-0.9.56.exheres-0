@@ -1,0 +1,27 @@
+# Copyright 2016 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Telegram instant messaging (pre-built)"
+HOMEPAGE=""
+DOWNLOADS="https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        dev-libs/glib:2
+        sys-apps/dbus
+        x11-libs/libX11
+        x11-libs/libxcb
+"
+
+BUGS_TO="virkony@gmail.com"
+
+WORK="${WORKBASE}/Telegram"
+
+src_install() {
+    dobin Telegram
+}
+
