@@ -10,7 +10,7 @@ developed for use by Node.js, but it's also used by Mozilla's Rust language, Luv
 others.
 "
 
-LICENCES="MIT"
+LICENCES="BSD-2 BSD-3 ISC MIT"
 SLOT="0"
 PLATFORMS="~amd64"
 
@@ -21,7 +21,7 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
-RESTRICT=test
+RESTRICT="test" # needs inet connection, violates sydbox
 
 DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/libuv-automake-1.13.patch" )
 DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-static )
