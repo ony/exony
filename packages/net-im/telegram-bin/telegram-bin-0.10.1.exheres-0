@@ -1,0 +1,37 @@
+# Copyright 2016 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Telegram Desktop messaging app (binary)"
+DESCRIPTION="
+Telegram is a messaging app with a focus on speed and security, it’s super-fast, simple and free. You can use Telegram on all your devices at the same time — your messages sync seamlessly 
+across any number of your phones, tablets or computers.
+"
+HOMEPAGE="https://telegram.org"
+DOWNLOADS="https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz"
+
+UPSTREAM_CHANGELOG="${HOMEPAGE}/blog [[ lang = en ]]"
+UPSTREAM_DOCUMENTATION="
+    ${HOMEPAGE}/faq [[ lang = en description = [ Telegram FAQ ] ]]
+    https://core.telegram.org/techfaq [[ lang = en description = [ FAQ for the Technically Inclined ] ]]
+    https://core.telegram.org/api [[ lang = en description = [ Telegram APIs ] ]]
+"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    run:
+        dev-libs/glib:2
+        sys-apps/dbus
+        x11-libs/libX11
+        x11-libs/libxcb
+"
+
+BUGS_TO="virkony@gmail.com"
+
+WORK="${WORKBASE}/Telegram"
+
+src_install() {
+    dobin Telegram
+}
