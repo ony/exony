@@ -1,9 +1,7 @@
 # Copyright 2015 Nikolay Orliuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-MY_PNV="${PN/_/-}-${PV}"
-
-require setup-py [ import=setuptools work="${MY_PNV}" ] pypi [ pnv="${MY_PNV}"  suffix=tar.gz ]
+require setup-py [ import=setuptools ] pypi
 
 SUMMARY="the blessed package to manage your versions by scm tags"
 DESCRIPTION="
