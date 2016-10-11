@@ -1,0 +1,24 @@
+From 064bfefc2098e6d4be0a0c5b27245a0ca6003bb5 Mon Sep 17 00:00:00 2001
+From: Thomas Witt <pyromaniac@exherbo.org>
+Date: Fri, 14 Oct 2016 18:42:56 +0200
+Subject: [PATCH] configure.in: Link minizip when using system zlib
+
+---
+ configure.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.in b/configure.in
+index 616557f..849c657 100644
+--- a/configure.in
++++ b/configure.in
+@@ -132,6 +132,7 @@ AC_ARG_WITH(zlib, [  --with-zlib=[(included)|system|no]])
+   case $with_zlib in 
+     "system") 
+ 	AC_CHECK_LIB([z], [gzopen])
++	AC_CHECK_LIB([minizip], [zipOpen64])
+ 	;;
+     "no") 
+         AC_DEFINE(ZLIB_INHIBITED, 1, [1 to inhibit our use of zlib.])
+-- 
+2.10.1
+
