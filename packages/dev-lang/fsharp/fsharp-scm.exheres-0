@@ -20,5 +20,34 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
-DEFAULT_SRC_CONFIGURE_PARAMS=( --with-gacdir=/usr/${LIBDIR:-lib}/mono/gac )
+DEFAULT_SRC_CONFIGURE_PARAMS=( --with-gacdir="/usr/$(exhost --target)/lib/mono/gac" )
+
+DEFAULT_SRC_COMPILE_PARAMS=( -j1 )
+
+src_prepare() {
+    # ssl with NuGet seems broken
+    # https://github.com/fsharp/fsharp/issues/617
+    edo sed -i \
+            -e 's#https://www.nuget.org/api/v2/#http://www.nuget.org/api/v2/#' \
+            .nuget/NuGet.Config
+
+    autotools_src_prepare
+}
+
+src_compile() {
+    # uses NuGet to build, no easy way around,
+    # unless you like the alternative in e.g. games-strategy/openra
+    esandbox disable_net
+    default
+    esandbox enable_net
+}
+
+src_install() {
+    esandbox disable_net
+    default
+    esandbox enable_net
+
+    # delete empty directories
+    edo find "${IMAGE}" -type d -empty -delete
+}
 
