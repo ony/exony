@@ -8,9 +8,18 @@ MY_PNV="${PN}_${MY_PV}"
 
 export_exlib_phases pkg_setup src_unpack src_install
 
-SUMMARY="A new browser for our friends"
-DESCRIPTION="Vivaldi browser is made for power users in mind by people who love the Web."
+SUMMARY="A browser for our friends created by former Opera developers."
+DESCRIPTION="
+The web browser you will love! Powerful, customizable, secure, and free web browser from Vivaldi
+technologies.
+"
 HOMEPAGE="https://vivaldi.com"
+
+UPSTREAM_CHANGELOG="https://vivaldi.net/en-US [[ lang = en ]]"
+UPSTREAM_DOCUMENTATION="
+    https://vivaldi.net/forum [[ lang = en description = [ Vivaldi Community ] ]]
+    https://help.vivaldi.com [[ lang = en description = [ Vivaldi Help ] ]]
+"
 DOWNLOADS="https://downloads.vivaldi.com/${VIVALDI_CHANNEL}/${MY_PNV}_amd64.deb"
 
 LICENCES="vivaldi-eula"
