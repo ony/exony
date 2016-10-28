@@ -13,7 +13,3 @@ DEPENDENCIES="
         !net-www/vivaldi-snapshot [[ resolution = uninstall-blocked-before ]]
 "
 
-src_install() {
-    edo rmdir usr/share/doc/vivaldi
-    vivaldi_src_install
-}
