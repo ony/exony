@@ -9,4 +9,8 @@ PLATFORMS="~amd64"
 DEPENDENCIES="
     build+run:
         !net-www/vivaldi-stable [[ resolution = uninstall-blocked-before ]]
+    run:
+        x11-dri/mesa [[ description = [ for included libEGL.so ] ]]
 "
+# TODO: consider removing $HERE/*.so because they are not included in LD_LIBRARY_PATH
+

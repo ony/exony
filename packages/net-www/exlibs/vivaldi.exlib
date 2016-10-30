@@ -23,9 +23,6 @@ UPSTREAM_DOCUMENTATION="
 DOWNLOADS="https://downloads.vivaldi.com/${VIVALDI_CHANNEL}/${MY_PNV}_amd64.deb"
 
 LICENCES="vivaldi-eula"
-MYOPTIONS="
-    ( providers: libressl openssl ) [[ number-selected = exactly-one ]]
-"
 
 DEPENDENCIES="
     run:
@@ -38,11 +35,8 @@ DEPENDENCIES="
         media-libs/fontconfig
         media-libs/freetype:2
         net-print/cups
-        net-misc/curl
         sys-apps/dbus
-        sys-libs/libcap
         sys-sound/alsa-lib
-        x11-dri/mesa
         x11-libs/cairo
         x11-libs/gdk-pixbuf:2.0
         x11-libs/gtk+:2
@@ -58,8 +52,6 @@ DEPENDENCIES="
         x11-libs/libXrender
         x11-libs/libXtst
         x11-libs/pango
-        providers:libressl? ( dev-libs/libressl:= )
-        providers:openssl? ( dev-libs/openssl )
 "
 
 WORK=${WORKBASE}
