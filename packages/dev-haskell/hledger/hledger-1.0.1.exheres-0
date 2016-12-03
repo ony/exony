@@ -20,17 +20,21 @@ DEPENDENCIES="
     $(haskell_lib_dependencies "
         dev-haskell/HUnit
         dev-haskell/base-compat[>=0.8.1]
+        dev-haskell/bytestring
         dev-haskell/cmdargs[=0.10*]
         dev-haskell/containers
         dev-haskell/csv
+        dev-haskell/data-default[>=0.5]
         dev-haskell/directory
+        dev-haskell/file-embed[~>0.0.10]
         dev-haskell/filepath
+        dev-haskell/hashable[>=1.2.4]
         dev-haskell/haskeline[>=0.6&<=0.8]
-        dev-haskell/hledger-lib[=0.27]
+        dev-haskell/hledger-lib[=1.0.1]
+        dev-haskell/megaparsec[>=5.0&<5.2]
         dev-haskell/mtl
         dev-haskell/mtl-compat
         dev-haskell/old-time
-        dev-haskell/parsec[>=3]
         dev-haskell/pretty-show[>=1.6.4]
         dev-haskell/process
         dev-haskell/regex-tdfa
@@ -38,9 +42,11 @@ DEPENDENCIES="
         dev-haskell/shakespeare[>=2.0.2.2&<2.1]
         dev-haskell/split[>=0.1&<0.3]
         dev-haskell/tabular[=0.2*]
+        dev-haskell/temporary
         dev-haskell/terminfo
         dev-haskell/text[>=0.11]
         dev-haskell/time[>=1.5]
+        dev-haskell/transformers
         dev-haskell/unordered-containers
         dev-haskell/utf8-string[>=0.3.5&<1.1]
         dev-haskell/wizards[=1.0*]
@@ -48,13 +54,16 @@ DEPENDENCIES="
     $(haskell_test_dependencies "
         dev-haskell/HUnit
         dev-haskell/base-compat[>=0.8.1]
+        dev-haskell/bytestring
         dev-haskell/cmdargs[=0.10*]
         dev-haskell/containers
         dev-haskell/csv
+        dev-haskell/data-default[>=0.5]
         dev-haskell/directory
+        dev-haskell/file-embed[~>0.0.10]
         dev-haskell/filepath
         dev-haskell/haskeline[>=0.6&<=0.8]
-        dev-haskell/hledger-lib[=0.27]
+        dev-haskell/hledger-lib[=1.0.1]
         dev-haskell/mtl
         dev-haskell/mtl-compat
         dev-haskell/old-time
@@ -66,6 +75,7 @@ DEPENDENCIES="
         dev-haskell/shakespeare[>=2.0.2.2&<2.1]
         dev-haskell/split[>=0.1&<0.3]
         dev-haskell/tabular[=0.2*]
+        dev-haskell/temporary
         dev-haskell/terminfo
         dev-haskell/test-framework
         dev-haskell/test-framework-hunit
@@ -78,13 +88,16 @@ DEPENDENCIES="
     $(haskell_bin_dependencies "
         dev-haskell/HUnit
         dev-haskell/base-compat[>=0.8.1]
+        dev-haskell/bytestring
         dev-haskell/cmdargs[=0.10*]
         dev-haskell/containers
         dev-haskell/csv
+        dev-haskell/data-default[>=0.5]
         dev-haskell/directory
+        dev-haskell/file-embed[~>0.0.10]
         dev-haskell/filepath
         dev-haskell/haskeline[>=0.6&<=0.8]
-        dev-haskell/hledger-lib[=0.27]
+        dev-haskell/hledger-lib[>=1.0.1]
         dev-haskell/mtl
         dev-haskell/mtl-compat
         dev-haskell/old-time
@@ -96,6 +109,7 @@ DEPENDENCIES="
         dev-haskell/shakespeare[>=2.0.2.2&<2.1]
         dev-haskell/split[>=0.1&<0.3]
         dev-haskell/tabular[=0.2*]
+        dev-haskell/temporary
         dev-haskell/terminfo
         dev-haskell/text[>=0.11]
         dev-haskell/time[>=1.5]
@@ -106,4 +120,23 @@ DEPENDENCIES="
 "
 
 BUGS_TO="virkony@gmail.com"
+
+src_compile() {
+    haskell_ghc_setup_paths
+
+    local charmap LANG
+    eval "$(locale --keyword-name LC_CTYPE | grep '^charmap=')"
+
+    # only if locale not set in paludis/bashrc
+    if [[ "$charmap" != "UTF-8" ]]; then
+        local candidate
+        if candidate=$(locale -a | egrep -m1 -i '\.utf-?8$'); then
+            export LC_ALL="$candidate"
+            einfo "Injecting locale $candidate"
+        else
+            die "Compilation requires UTF-8 compatible locale"
+        fi
+    fi
+    cabal_src_compile
+}
 
