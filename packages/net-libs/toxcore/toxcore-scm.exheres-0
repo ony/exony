@@ -1,0 +1,37 @@
+# Copyright 2014-2016 Ray Griffin <rorgoroth-dev@outlook.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=irungentoo ] \
+        autotools [ supported_automake=[ 1.13 1.12 1.11 1.10 ] supported_autoconf=[ 2.5 ] ]
+
+SUMMARY="Core for tox clients, skype without the botnet."
+HOMEPAGE="https://tox.chat/"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    daemon  [[ description = [ Build DHT bootstrap daemon   ] ]]
+    logging [[ description = [ Log network actions          ] ]]
+    ntox    [[ description = [ Ncurses based client         ] ]]
+"
+
+BUGS_TO="rorgoroth-dev@outlook.com"
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+    build+run:
+        dev-libs/libsodium[>=1.0.0]
+        media-libs/libvpx
+        media-libs/opus
+        daemon? ( dev-libs/libconfig )
+        ntox? ( sys-libs/ncurses )
+"
+
+# All network.
+RESTRICT="test"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-av )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( daemon logging ntox )
+
