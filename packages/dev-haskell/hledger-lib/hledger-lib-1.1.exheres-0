@@ -31,19 +31,23 @@ DEPENDENCIES="
         dev-haskell/deepseq
         dev-haskell/directory
         dev-haskell/filepath
+        dev-haskell/hashtables[>=1.2]
         dev-haskell/megaparsec[>=5.0&<5.2]
         dev-haskell/mtl
         dev-haskell/mtl-compat
         dev-haskell/old-time
         dev-haskell/parsec
+        dev-haskell/parsers[>=0.5]
         dev-haskell/pretty-show[>=1.6.4]
         dev-haskell/regex-tdfa
         dev-haskell/safe[>=0.2]
         dev-haskell/semigroups
         dev-haskell/split[>=0.1&<0.3]
+        dev-haskell/system-filepath
         dev-haskell/text[=1.2*]
         dev-haskell/time[>=1.5]
         dev-haskell/transformers[>=0.2&<0.6]
+        dev-haskell/trifecta[>=0.91]
         dev-haskell/uglymemo
         dev-haskell/utf8-string[>=0.3.5&<1.1]
     ")
@@ -63,19 +67,24 @@ DEPENDENCIES="
         dev-haskell/directory
         dev-haskell/doctest[>=0.8]
         dev-haskell/filepath
+        dev-haskell/hashtables[>=1.2]
         dev-haskell/megaparsec[>=5.0&<5.2]
         dev-haskell/mtl
         dev-haskell/mtl-compat
         dev-haskell/old-time
+        dev-haskell/parsec
+        dev-haskell/parsers[>=0.5]
         dev-haskell/pretty-show[>=1.6.4]
         dev-haskell/regex-tdfa
         dev-haskell/safe[>=0.2]
         dev-haskell/split[>=0.1&<0.3]
+        dev-haskell/system-filepath
         dev-haskell/test-framework
         dev-haskell/test-framework-hunit
         dev-haskell/text[=1.2*]
         dev-haskell/time[>=1.5]
         dev-haskell/transformers[>=0.2&<0.6]
+        dev-haskell/trifecta[>=0.91]
         dev-haskell/uglymemo
         dev-haskell/utf8-string[>=0.3.5&<1.1]
     ")
