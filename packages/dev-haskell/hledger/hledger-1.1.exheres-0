@@ -30,7 +30,7 @@ DEPENDENCIES="
         dev-haskell/filepath
         dev-haskell/hashable[>=1.2.4]
         dev-haskell/haskeline[>=0.6&<=0.8]
-        dev-haskell/hledger-lib[=1.0.1]
+        dev-haskell/hledger-lib[=1.1*]
         dev-haskell/megaparsec[>=5.0&<5.2]
         dev-haskell/mtl
         dev-haskell/mtl-compat
@@ -63,7 +63,7 @@ DEPENDENCIES="
         dev-haskell/file-embed[~>0.0.10]
         dev-haskell/filepath
         dev-haskell/haskeline[>=0.6&<=0.8]
-        dev-haskell/hledger-lib[=1.0.1]
+        dev-haskell/hledger-lib[=1.1*]
         dev-haskell/mtl
         dev-haskell/mtl-compat
         dev-haskell/old-time
@@ -97,7 +97,7 @@ DEPENDENCIES="
         dev-haskell/file-embed[~>0.0.10]
         dev-haskell/filepath
         dev-haskell/haskeline[>=0.6&<=0.8]
-        dev-haskell/hledger-lib[>=1.0.1]
+        dev-haskell/hledger-lib[=1.1*]
         dev-haskell/mtl
         dev-haskell/mtl-compat
         dev-haskell/old-time
