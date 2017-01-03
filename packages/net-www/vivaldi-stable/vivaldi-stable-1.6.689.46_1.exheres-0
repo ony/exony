@@ -11,5 +11,7 @@ PLATFORMS="~amd64"
 DEPENDENCIES="
     build+run:
         !net-www/vivaldi-snapshot [[ resolution = uninstall-blocked-before ]]
+    run:
+        x11-libs/libxcb
 "
 
