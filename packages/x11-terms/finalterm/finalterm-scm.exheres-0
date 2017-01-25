@@ -1,7 +1,7 @@
 # Copyright 2013 Nikolay Orliuk
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user="p-e-w" ] cmake gsettings
+require github [ user="p-e-w" ] cmake [ api=2 ] gsettings
 
 SUMMARY="At last – a modern terminal emulator"
 DESCRIPTION="
