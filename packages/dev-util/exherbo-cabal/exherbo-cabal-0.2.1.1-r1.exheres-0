@@ -32,12 +32,17 @@ DEPENDENCIES="
         dev-haskell/deepseq[<1.5]
         dev-haskell/directory[<1.4]
         dev-haskell/filepath[<1.5]
-        dev-haskell/http-client[=0.4*]
+        dev-haskell/http-client[=0.5*]
         dev-haskell/http-types[<1]
-        dev-haskell/optparse-applicative[=0.12*]
+        dev-haskell/optparse-applicative[>=0.12&<0.14]
         dev-haskell/pcre-light[<0.5]
     ")
 "
 
 BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}/0001-Migrate-to-http-client-0.5.patch"
+    "${FILES}/0002-Compat-with-optparse-applicative-0.13.patch"
+)
 
