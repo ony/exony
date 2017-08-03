@@ -19,7 +19,7 @@ MYOPTIONS=""
 
 DEPENDENCIES="
     build+run:
-        sys-fs/fuse[>=2.4.0]
+        sys-fs/fuse:0[>=2.4.0]
 "
 
 BUGS_TO="virkony@gmail.com"
