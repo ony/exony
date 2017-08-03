@@ -19,7 +19,7 @@ MYOPTIONS="xattr"
 DEPENDENCIES="
     build:
     build+run:
-        sys-fs/fuse
+        sys-fs/fuse:0
 "
 
 BUGS_TO="virkony@gmail.com"
