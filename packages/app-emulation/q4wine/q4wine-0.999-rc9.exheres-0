@@ -33,7 +33,7 @@ DEPENDENCIES="
         app-admin/sudo
         sys-apps/which[>=2.19]
     suggestion:
-        kde/kde-runtime [[ description = [ sudo fronted ] ]]
+        kde/kde-cli-tools:4 [[ description = [ sudo fronted ] ]]
 "
 
 BUGS_TO="virkony@gmail.com"

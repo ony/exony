@@ -33,7 +33,7 @@ DEPENDENCIES="
         app-emulation/wine
         app-admin/sudo
     suggestion:
-        kde/kde-runtime [[ description = [ sudo fronted ] ]]
+        kde/kde-cli-tools:4 [[ description = [ sudo fronted ] ]]
 "
 
 WORK="${WORKBASE}/${MY_PNV}"
