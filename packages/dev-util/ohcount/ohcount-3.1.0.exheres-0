@@ -1,7 +1,7 @@
 # Copyright 2015 Mykola Orliuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require github [ user=blackducksw ]
+require github [ user=blackducksw tag=v${PV} ]
 
 SUMMARY="The Ohloh source code line counter"
 DESCRIPTION="
@@ -17,10 +17,12 @@ MYOPTIONS=""
 
 DEPENDENCIES="
     build:
+        dev-util/gperf
         dev-util/ragel
         dev-lang/swig
     build+run:
         dev-libs/pcre
+        sys-apps/file [[ note = [ libmagic ] ]]
 "
 
 # tests fails
@@ -28,7 +30,12 @@ RESTRICT=test
 
 BUGS_TO="virkony@gmail.com"
 
+DEFAULT_SRC_PREPARE_PATCHES+=(
+    "${FILES}"/${PN}-Some-fixes-for-building-on-Fedora.patch
+)
+
 src_prepare() {
+    default
     edo sed -i "/^cc=/s/\"gcc/\"$(exhost --tool-prefix)gcc/" build
 }
 

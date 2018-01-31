@@ -1,0 +1,42 @@
+Upstream: under review,
+          https://github.com/blackducksoftware/ohcount/pull/54.patch
+Reason: Fix build with gcc-7
+
+From bd82087fc08b7a2dba52ecf0e06f0fd8058ce81d Mon Sep 17 00:00:00 2001
+From: Adrian Cornish <acornish@spotxchange.com>
+Date: Tue, 5 Sep 2017 15:04:53 -0600
+Subject: [PATCH] Some fixes for building on Fedora
+
+---
+ src/languages.h | 2 +-
+ src/parser.c    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/languages.h b/src/languages.h
+index e5355b9..2b5da5f 100755
+--- a/src/languages.h
++++ b/src/languages.h
+@@ -121,6 +121,6 @@
+ 
+ // For gperf.
+ struct LanguageMap { const char *key; const char *name; const char *nice_name; int category; };
+-struct LanguageMap *ohcount_hash_language_from_name(register const char *str, register unsigned int len);
++struct LanguageMap *ohcount_hash_language_from_name(register const char *str, register size_t len);
+ 
+ #endif
+diff --git a/src/parser.c b/src/parser.c
+index d362acf..358113e 100644
+--- a/src/parser.c
++++ b/src/parser.c
+@@ -7,7 +7,7 @@
+ #include "log.h"
+ #include "hash/parser_hash.h"
+ 
+-struct ParserMap * ohcount_hash_parser_from_language (register const char *str, register unsigned int len);
++struct ParserMap * ohcount_hash_parser_from_language (register const char *str, register size_t len);
+ 
+ int ohcount_parse(SourceFile *sourcefile, int count,
+                   void (*callback) (const char *, const char *, int, int,
+-- 
+2.17.0
+
