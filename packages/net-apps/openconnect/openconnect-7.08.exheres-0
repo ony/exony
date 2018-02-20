@@ -14,7 +14,7 @@ DOWNLOADS="ftp://ftp.infradead.org/pub/${PN}/${PNV}.tar.gz"
 
 LICENCES="LGPL-2.1"
 SLOT="0"
-PLATFORMS="~amd64"
+PLATFORMS="~amd64 ~armv7"
 MYOPTIONS="
 ( providers: gnutls libressl openssl ) [[ number-selected = exactly-one ]]
 "
