@@ -16,7 +16,7 @@ LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64 ~armv7"
 MYOPTIONS="
-( providers: gnutls libressl openssl ) [[ number-selected = exactly-one ]]
+( providers: gnutls openssl ) [[ number-selected = exactly-one ]]
 "
 
 DEPENDENCIES="
