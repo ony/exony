@@ -21,9 +21,3 @@ nant_src_compile() {
 
     enant "${NANT_SRC_COMPILE_PARAMS[@]}"
 }
-
-nant_src_install() {
-    illegal_in_global_scope
-
-    die "TODO"
-}
