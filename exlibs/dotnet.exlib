@@ -11,7 +11,8 @@ DEPENDENCIES="
 egacutil() {
     illegal_in_global_scope
 
-    edo gacutil /package "${PNV}" /gacdir /usr/${LIBDIR:-lib} /root "${IMAGE}/usr/${LIBDIR:-lib}" "${@}"
+    local libdir="/usr/$(exhost --target)/lib"
+    edo gacutil /package "${PNV}" /gacdir "${libdir}" /root "${IMAGE}/${libdir}" "${@}"
 }
 
 eautogac() {

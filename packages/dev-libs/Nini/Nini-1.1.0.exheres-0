@@ -46,7 +46,7 @@ src_compile() {
         -keyfile:${PN}.snk
         AssemblyInfo.cs Config/*.cs Ini/*.cs Util/*.cs
     )
-    edo gmcs "${args[@]}"
+    edo mcs "${args[@]}"
 }
 
 src_install() {
@@ -58,7 +58,7 @@ src_install() {
 
     # from Gentoo ebuild
     local pv_major="$(ever range 1-2 ${PV})"
-    local pkgdir=/usr/${LIBDIR:-lib}/pkgconfig
+    local pkgdir=/usr/$(exhost --target)/pkgconfig
     dodir ${pkgdir}
     edo sed -e "s:@VERSION@:${PV}:" \
         -e "s:@NET_VERSION@:2.0:" \
