@@ -26,7 +26,6 @@ DEPENDENCIES="
         virtual/pkg-config
         net-apps/vpnc
         providers:gnutls? ( dev-libs/gnutls )
-        providers:libressl? ( dev-libs/libressl:= )
         providers:openssl? ( dev-libs/openssl )
     run:
         sys-apps/iproute2
@@ -34,16 +33,8 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
-src_configure() {
-    local myconf=()
-
-    myconf+=( $(option_with providers:gnutls gnutls) )
-    if option providers:libressl || option providers:openssl ; then
-        myconf+=( --with-openssl )
-    else
-        myconf+=( --without-openssl )
-    fi
-
-    econf "${myconf[@]}"
-}
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=(
+    "providers:gnutls gnutls"
+    "providers:openssl openssl"
+)
 
