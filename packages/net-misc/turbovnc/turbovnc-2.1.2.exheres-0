@@ -1,0 +1,41 @@
+# Copyright 2018 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=TurboVNC ] cmake
+
+SUMMARY="VNC with VirtualGL support"
+DESCRIPTION="
+TurboVNC is an offshoot of TightVNC that accelerates the Tight and JPEG encoding paths of the
+latter, in part by taking advantage of libjpeg-turbo, a SIMD-accelerated version of libjpeg.
+"
+HOMEPAGE="https://turbovnc.org"
+
+LICENCES="GPL-2.0"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+    build+run:
+        media-libs/libjpeg-turbo
+        sys-libs/pam
+        x11-libs/libX11
+        x11-libs/libXext
+    run:
+        !net-misc/realvnc
+"
+
+BUGS_TO="virkony@gmail.com"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DTVNC_BUILDJAVA:BOOL=FALSE
+    -DTVNC_SYSTEMX11:BOOL=TRUE
+    -DTVNC_SYSTEMLIBS:BOOL=TRUE
+    -DTVNC_BUILDNATIVE:BOOL=TRUE
+)
+
+src_install() {
+    cmake_src_install
+    edo rm "${IMAGE}usr/share/man/man1/Xserver.1"
+}
