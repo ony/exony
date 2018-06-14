@@ -29,6 +29,7 @@ src_compile() {
         TARGET_CFLAGS="${CFLAGS}"
         TARGET_LDFLAGS="${LDFLAGS}"
         Q= # be verbose
+        XCFLAGS="-DLUAJIT_ENABLE_LUA52COMPAT" # Enable lua52 compat
     )
 
     var=${CHOST//-/_}_CFLAGS; myflags+=( HOST_CFLAGS="${!var}" )
