@@ -31,7 +31,7 @@ MYOPTIONS="
 DEPENDENCIES="
     build+run:
         dev-libs/glib:2[>=2.32.0]
-        net-utils/gmime:2.6[>=2.5.2] [[ description = [ automagic (optional for non-telepathy) ] ]]
+        net-utils/gmime:2.6[>=2.6.0] [[ description = [ automagic (optional for non-telepathy) ] ]]
         !openssl? (
             dev-libs/nspr [[ description = [ NSS pulls in ] ]]
             dev-libs/nss
@@ -46,8 +46,7 @@ DEPENDENCIES="
         )
         vv? (
             net-im/libnice[>=0.1.0]
-            !purple3? ( media-libs/gstreamer:0.10 )
-            purple3? ( media-libs/gstreamer:1.0 )
+            purple? ( media-libs/gstreamer:1.0 )
         )
         telepathy? (
             net-im/telepathy-glib[>=0.18.0]
