@@ -1,0 +1,33 @@
+# Copyright 2018 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=tmate-io ]
+
+SUMMARY="Instant Terminal Sharing"
+HOMEPAGE="https://tmate.io"
+
+LICENCES="BSD-0 ISC"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="debug"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/libevent:=
+        dev-libs/msgpack[>=1.1.0]
+        net-libs/libssh[>=0.6.0]
+        sys-libs/ncurses
+        x11-libs/libutempter
+"
+
+BUGS_TO="virkony@gmail.com"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-dependency-tracking --disable-coverage --disable-static )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug )
+
+src_prepare() {
+    default
+    ./autogen.sh
+}
+
