@@ -1,0 +1,6 @@
+#!/bin/execlineb -P
+
+exec -c
+
+s6-log /var/log/s6/thermald
+
