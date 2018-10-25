@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 require github [ pn=thermal_daemon user=01org tag=v${PV} ]
-require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.13 1.12 1.11 ] ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
 require systemd-service
 
 SUMMARY="The \"Linux Thermal Daemon\" program from 01.org"
