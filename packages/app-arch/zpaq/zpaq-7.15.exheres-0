@@ -23,28 +23,16 @@ LICENCES="
 
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS="openmp [[ description = [ support for OpenMP ] ]]"
 
 DEPENDENCIES="
     build:
         app-arch/unzip
-        sys-devel/gcc:*[openmp?]
 "
 
 BUGS_TO="virkony@gmail.com"
 
 WORK="${WORKBASE}"
 
-src_compile() {
-    local mycflags=(
-        ${CFLAGS} ${LDFLAGS} -Wall -DNDEBUG -Dunix
-        $(option openmp -fopenmp -pthread)
-    )
-    edo ${CXX} "${mycflags[@]}" -o ${PN} zpaq.cpp libzpaq.cpp divsufsort.c
-}
-
-src_install() {
-    dobin ${PN}
-    dodoc readme.txt
-}
+DEFAULT_SRC_COMPILE_PARAMS=( CXX="$CXX" )
+DEFAULT_SRC_INSTALL_PARAMS=( BINDIR="/usr/$(exhost --target)/bin" PREFIX=/usr )
 
