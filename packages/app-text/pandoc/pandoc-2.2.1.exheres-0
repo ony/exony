@@ -25,15 +25,22 @@ src_fetch_extra() {
     # Ensure we have GHC for latest LTS
     estack setup  # TODO: move to src_compile phase of separete pre-requisite package
 
-    estack build --dry-run --prefetch "${PNV}"
+    estack-build --dry-run --prefetch "${PNV}"
 }
 
 src_compile() {
-    estack build --interleaved-output "${PNV}"
+    estack-build --only-dependencies "${PNV}"
+    # TODO: install outside of snapshot
+    estack-build "${PNV}"
 }
 
 src_install() {
     estack install --local-bin-path "$IMAGE/usr/$(exhost --target)/bin" "${PNV}"
+    doman $(estack path --snapshot-install-root)/share/man/man*/${PN}.*
+}
+
+estack-build() {
+    estack build --no-strip --interleaved-output "$@"
 }
 
 estack() {
