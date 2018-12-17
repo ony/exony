@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 MY_PN=${PN%-bin}
-MY_PNV=${MY_PN}-${PV}
+MY_PV=${PV}-1
+MY_PNV=${MY_PN}-${MY_PV}
 
 SUMMARY="The Crystal Programming Language"
 DESCRIPTION="
@@ -10,7 +11,7 @@ Crystal is a programming language with syntax similar to Ruby, statically type-c
 interoperability, compile-time evaluation and generation of code, compile to native code.
 "
 HOMEPAGE="http://crystal-lang.org"
-DOWNLOADS="https://github.com/${MY_PN}-lang/${MY_PN}/releases/download/${PV}/${MY_PNV}-1-linux-x86_64.tar.gz"
+DOWNLOADS="https://github.com/${MY_PN}-lang/${MY_PN}/releases/download/${PV}/${MY_PNV}-linux-x86_64.tar.gz"
 
 LICENCES="Apache-2.0"
 SLOT="0"
