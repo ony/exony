@@ -9,23 +9,32 @@ OpenConnect is a client for Cisco's AnyConnect SSL VPN, which is supported by th
 IOS 12.4(9)T or later on Cisco SR500, 870, 880, 1800, 2800, 3800, 7200 Series and Cisco 7301
 Routers, and probably others.
 "
-HOMEPAGE="http://www.infradead.org/openconnect/"
+HOMEPAGE="https://www.infradead.org/openconnect/"
 DOWNLOADS="ftp://ftp.infradead.org/pub/${PN}/${PNV}.tar.gz"
 
 LICENCES="LGPL-2.1"
 SLOT="0"
 PLATFORMS="~amd64 ~armv7"
 MYOPTIONS="
-( providers: gnutls openssl ) [[ number-selected = exactly-one ]]
+    lz4
+    ( providers: gnutls openssl ) [[ number-selected = exactly-one ]]
+    ( providers: heimdal krb5 ) [[
+        *description = [ GSS-API provider ]
+        number-selected = exactly-one
+    ]]
 "
 
 DEPENDENCIES="
-    build+run:
-        sys-libs/zlib
-        dev-libs/libxml2
+    build:
         virtual/pkg-config
+    build+run:
+        dev-libs/libxml2:2.0
         net-apps/vpnc
-        providers:gnutls? ( dev-libs/gnutls )
+        sys-libs/zlib
+        lz4? ( app-arch/lz4 )
+        providers:gnutls? ( dev-libs/gnutls[>=3.2.10] )
+        providers:heimdal? ( app-crypt/heimdal )
+        providers:krb5? ( app-crypt/krb5 )
         providers:openssl? ( dev-libs/openssl )
     run:
         sys-apps/iproute2
@@ -33,7 +42,16 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    # Disable auto dependencies
+    --without-libpcsclite
+    --without-libproxy
+    --without-libpskc
+    --without-stoken
+)
+
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=(
+    "lz4"
     "providers:gnutls gnutls"
     "providers:openssl openssl"
 )
