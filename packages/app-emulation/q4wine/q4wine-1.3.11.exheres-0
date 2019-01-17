@@ -1,0 +1,56 @@
+# Copyright 2012 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=brezerk tag=v${PV} ] cmake [ api=2 ]
+
+SUMMARY="Qt GUI for Wine"
+DESCRIPTION="
+Q4Wine is a Qt (https://www.qt.io/) GUI for W.I.N.E. (https://winehq.org/) It will help you
+manage wine prefixes and installed applications.
+"
+HOMEPAGE="https://q4wine.brezblock.org.ua/ ${HOMEPAGE}"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    debug [[ description = [ send debug messages to stdout during run ] ]]
+    icoutils [[ description = [ icoutils support ] ]]
+"
+
+DEPENDENCIES="
+    build:
+        x11-libs/qttools:5[>=5.2.1] [[ note = [ lupdate/lrelease ] ]]
+    build+run:
+        x11-libs/qtbase:5[>=5.2.1][sql]
+        x11-libs/qtsvg:5[>=5.2.1]
+        icoutils? ( media-gfx/icoutils[>=0.26.0] )
+    run:
+        app-admin/sudo
+        app-emulation/wine
+        net-misc/wget
+        sys-fs/fuseiso
+        x11-libs/qtbase:5[sqlite]
+    suggestion:
+        kde/kde-cli-tools:4 [[ description = [ sudo fronted ] ]]
+"
+
+BUGS_TO="virkony@gmail.com"
+
+# TODO: fix wineappdb build
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DDATA_ENTRY_PATH=/usr/share/${PN}/icons
+    -DDESKTOP_ENTRY_PATH=/usr/share/applications
+    -DL10N_ENTRY_PATH=/usr/share/${PN}/l10n
+    -DLIBS_ENTRY_PATH="/usr/$(exhost --target)/lib"
+    -DMANPAGE_ENTRY_PATH=/usr/share/man
+    -DPIXMAPS_ENTRY_PATH=/usr/share/icons/hicolor
+    -DPIXMAPS_UNITY_ENTRY_PATH=/usr/share/icons/hicolor/scalable/apps
+    -DTHEMES_ENTRY_PATH=/usr/share/${PN}
+    -DUSE_BZIP2:BOOL=FALSE -DUSE_GZIP:BOOL=FALSE
+    -DWITH_DBUS=ON
+    -DWITH_WINEAPPDB:BOOL=FALSE
+    )
+CMAKE_SRC_CONFIGURE_OPTIONS=( DEBUG )
+CMAKE_SRC_CONFIGURE_OPTION_WITHS=( ICOUTILS )
+
