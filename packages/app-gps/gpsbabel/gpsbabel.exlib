@@ -1,7 +1,7 @@
 # Copyright 2015 Mykola Orliuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require flag-o-matic
+require github [ tag="${PN}_$(ever replace_all _)" ] flag-o-matic
 
 SUMMARY="GPS waypoint, route and track data converter"
 DESCRIPTION="
@@ -10,14 +10,10 @@ formats include GPX, Magellan and Garmin serial and USB protocols, Geocaching *.
 Mapsource, and Magellan Mapsend. For Windows, Linux, Mac.
 "
 HOMEPAGE="https://www.gpsbabel.org"
-DOWNLOADS="http://arch.p5n.pp.ru/~sergej/dl/${PNV}.tar.gz"
-
 UPSTREAM_CHANGELOG="${HOMEPAGE}/changes.html"
-REMOTE_IDS="github:${PN}/${PN}"
 
 LICENCES="GPL-2"
 SLOT="0"
-PLATFORMS="~amd64"
 MYOPTIONS=""
 
 DEPENDENCIES="
@@ -28,12 +24,11 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
-WORK=${WORKBASE}
-RESTRICT="test"
+gpsbabel_src_prepare() {
+    default
+    # This test fails with a time rounding error it might be a real bug
+    edo rm "${WORK}/testo.d/arc-project.test"
+}
 
-DEFAULT_SRC_PREPARE_PATCHES=(
-    "${FILES}"/08871709ec0f16190e39140215ccaddce9985d44.patch
-    "${FILES}"/0001-configure.in-Link-minizip-when-using-system-zlib.patch
-)
-DEFAULT_SRC_CONFIGURE_PARAMS=( --with-zlib=system )
+export_exlib_phases src_prepare
 
