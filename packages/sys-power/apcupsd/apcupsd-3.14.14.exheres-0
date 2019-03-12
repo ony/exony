@@ -40,6 +40,7 @@ src_configure() {
         --with-pid-dir=/run \
         --with-lock-dir=/run/lock \
         --with-log-dir=/var/log \
+        --enable-modbus \
         --enable-net \
         --enable-snmp \
         --enable-pcnet \
