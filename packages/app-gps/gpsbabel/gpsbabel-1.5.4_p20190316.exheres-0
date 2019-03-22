@@ -1,6 +1,7 @@
 # Copyright 2015 Mykola Orliuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
+GITHUB_REVISION=8e5b4fe1223796b91e40cb0c7d025603b8b937d4
 require gpsbabel
 
 PLATFORMS="~amd64"

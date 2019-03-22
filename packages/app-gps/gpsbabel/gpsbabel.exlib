@@ -24,6 +24,8 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
+DEFAULT_SRC_CONFIGURE_PARAMS=( --with-zlib=system )
+
 gpsbabel_src_prepare() {
     default
     # This test fails with a time rounding error it might be a real bug
