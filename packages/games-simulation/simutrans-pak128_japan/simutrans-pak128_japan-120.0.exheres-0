@@ -1,0 +1,33 @@
+# Copyright 2015 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="pakset for Simutrans with the Japanese transportation and scenary."
+DESCRIPTION="
+PAK128.Japan is a pakset for Simutrans with lots of newly made objects, letting you enjoy the
+Japanese transportation and scenary. It's an independent pakset and all the necessary files except
+for executable are included in the main package.
+"
+HOMEPAGE="http://pak128.jpn.org/"
+DOWNLOADS="http://pak128.jpn.org/souko/pak128.japan.120.0.cab"
+WORK="${WORKBASE}"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        app-arch/cabextract
+    run:
+        games-simulation/simutrans
+"
+
+BUGS_TO="virkony@gmail.com"
+
+src_install() {
+    dodir /usr/share/simutrans
+    cd "${FETCHEDDIR}"
+    edo cabextract -d ${IMAGE}/usr/share/simutrans ${ARCHIVES}
+}
+
