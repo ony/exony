@@ -17,12 +17,20 @@ WORK=${WORKBASE}
 LICENCES="Artistic"
 SLOT="0"
 PLATFORMS="~amd64"
-MYOPTIONS=""
+MYOPTIONS="
+    freetype [[ description = [ Use freetype for TrueType font support ] ]]
+    upnp [[ description = [ Use UPnP for easy server hosting behind routers ] ]]
+"
 
 DEPENDENCIES="
     build+run:
+        app-arch/bzip2
         media-libs/SDL:2
+        media-libs/SDL_mixer:2
         media-libs/libpng:=
+        sys-libs/zlib
+        freetype? ( media-libs/freetype:2 )
+        upnp? ( net-libs/miniupnpc )
     suggestion:
         games-simulation/simutrans-pak64 [[ description = [ The main game data set ] ]]
 "
@@ -31,12 +39,25 @@ BUGS_TO="virkony@gmail.com"
 
 DEFAULT_SRC_COMPILE_PARAMS=(
     PNG_CONFIG="$(exhost --tool-prefix)pkg-config libpng"
-    SDL_CONFIG=
-    SDL2_CONFIG=sdl2-config
 )
 
 src_configure() {
-    edo bash configure.sh
+    edo cp config.default.in config.default
+
+    edo sed -i -e "
+    s/@os_type@/linux/;
+    s/@svn@/1234/;
+    s/@multithread@/1/;
+    s/@bundlepthread@/0/;
+    s/@upnp@/$(option upnp 1 0)/;
+    s/@freetype@/$(option freetype 1 0)/;
+    s/@color@/16/;
+    s/@backend@/mixer_sdl2/;
+    s/@flags@//;
+    s/@endian@//;
+    " config.default
+
+    egrep '@.*@' config.default && eerror "Incomplete configuration"
 }
 
 src_install() {
