@@ -1,0 +1,22 @@
+# Copyright 2019 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=ony ] cargo [ rust_minimum_version=1.30.0 ]
+
+SUMMARY="Tools to work with NDBAM database which is used by Paludis"
+DESCRIPTION="
+This set of tools intended to replace some functionality of Paludis related to package content
+management and registration. It might be useful as a recovery tool as well.
+"
+
+LICENCES="LGPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/openssl [[ description = [ Required by crypto-hash ] ]]
+"
+
+BUGS_TO="virkony@gmail.com"
+
