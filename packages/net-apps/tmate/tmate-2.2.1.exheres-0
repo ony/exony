@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 require github [ user=tmate-io ]
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 1.15 ] ]
 
 SUMMARY="Instant Terminal Sharing"
 HOMEPAGE="https://tmate.io"
@@ -22,12 +23,11 @@ DEPENDENCIES="
 
 BUGS_TO="virkony@gmail.com"
 
+DEFAULT_SRC_PREPARE_PATCHES=(
+    "${FILES}"/0001-Fix-building-with-or-without-backtrace-3.patch
+)
+
 DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-dependency-tracking --disable-coverage --disable-static )
 DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( debug )
-
-src_prepare() {
-    default
-    ./autogen.sh
-}
 
