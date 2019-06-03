@@ -1,0 +1,15 @@
+[main]
+@type = longrun
+@name = thermald
+@description = "Run the thermald daemon"
+@user = ( root )
+@options = ( log env )
+
+[start]
+@build = auto
+@execute = (
+    execl-cmdline -s { thermald --no-daemon ${CMD_ARGS} }
+)
+
+[environment]
+!CMD_ARGS=--dbus-enable
