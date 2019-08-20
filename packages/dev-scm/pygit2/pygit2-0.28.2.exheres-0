@@ -14,7 +14,9 @@ PLATFORMS="~amd64"
 
 DEPENDENCIES="
     build+run:
-        dev-python/cffi
+        dev-python/cffi[python_abis:*(-)?]
+        dev-python/six[python_abis:*(-)?]
+        dev-scm/libgit2[>=0.28.0]
         net-libs/libssh2
 "
 
