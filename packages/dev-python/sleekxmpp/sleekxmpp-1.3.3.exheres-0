@@ -1,0 +1,35 @@
+# Copyright 2013 Nikolay Orlyuk
+# Distributed under the terms of the GNU General Public License v2
+
+# pypi tarball missing some files: https://github.com/fritzy/SleekXMPP/issues/505
+# incompatible with 3.7 syntax: https://github.com/fritzy/SleekXMPP/issues/491
+# provided test wrapper is broken - does not return with error when some tests failed
+
+MY_PN=SleekXMPP
+MY_PV=sleek-${PV}
+require github [ user=fritzy ]
+require setup-py [ blacklist="3.7" import=setuptools work=${MY_PN}-${MY_PV} ]
+
+SUMMARY="Flexible XMPP client/component/server library for Python 2.7/3+"
+DESCRIPTION="
+SleekXMPP is a flexible XMPP client/component/server library for Python 2.6+ and 3+ focused on
+flexibility, ease of use, and every XMPP extension (XEP) as a plugin.
+"
+HOMEPAGE="http://sleekxmpp.com"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-python/dnspython[python_abis:*(-)?]
+        dev-python/pyasn1[python_abis:*(-)?]
+        dev-python/pyasn1-modules[python_abis:*(-)?]
+"
+
+PYTHON_BYTECOMPILE_EXCLUDES=( plugins/xep_0009/remote.py )
+
+BUGS_TO="virkony@gmail.com"
+
