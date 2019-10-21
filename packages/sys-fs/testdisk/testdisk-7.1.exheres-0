@@ -2,12 +2,7 @@
 # Copyright 2012 Nikolay Orlyuk <virkony@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-MY_PV="${PV}"
-MY_PVM="$(ever range 1-2 ${PV})"
-MY_PNV="${PNV}"
-
 require testdisk
 
-SLOT="0"
-PLATFORMS="~amd64"
+PLATFORMS="~x86 ~amd64"
 
