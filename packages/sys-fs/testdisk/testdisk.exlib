@@ -1,5 +1,6 @@
 # Copyright 2010, 2011 Jonathan Dahan <jedahan@gmail.com>
 # Copyright 2012 Nikolay Orlyuk <virkony@gmail.com>
+# Copyright 2019 Danilo Spinella <danyspin97@protonmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Checks and undeletes partitions + PhotoRec, signature based recovery tool"
@@ -16,23 +17,41 @@ work even if your media's file system has been severely damaged or reformatted.
 
 HOMEPAGE="http://www.cgsecurity.org/wiki/TestDisk"
 if ! ever is_scm; then
-    DOWNLOADS="http://www.cgsecurity.org/${MY_PNV}.tar.bz2"
-    UPSTREAM_CHANGELOG="http://www.cgsecurity.org/wiki/TestDisk_${MY_PVM}_Release"
+    DOWNLOADS="http://www.cgsecurity.org/${PNV}.tar.bz2"
+    UPSTREAM_CHANGELOG="http://www.cgsecurity.org/wiki/TestDisk_${PV}_Release"
     UPSTREAM_DOCUMENTATION="${HOMEPAGE}#Documentation"
 fi
 
+SLOT="0"
 LICENCES="GPL-2"
-MYOPTIONS="ntfs jpeg"
+MYOPTIONS="
+    jpeg
+    ntfs
+    reiserfs
+    ( providers: ijg-jpeg jpeg-turbo ) [[ number-selected = exactly-one ]]
+"
 
 DEPENDENCIES="
     sys-libs/ncurses[>=5.2]
-    jpeg? ( media-libs/jpeg:0 )
     ntfs? ( sys-fs/ntfs-3g_ntfsprogs )
+    reiserfs? ( sys-fs/reiserfsprogs )
     sys-fs/e2fsprogs[>=1.35]
     sys-libs/zlib
+    providers:jpeg-turbo? ( media-libs/libjpeg-turbo )
+    providers:ijg-jpeg? ( media-libs/jpeg:= )
 "
 
-DEFAULT_SRC_CONFIGURE_PARAMS=( --without-ewf --enable-sudo )
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --disable-assert
+    --disable-qt
+    --enable-sudo
+    --without-ewf
+    --without-ntfs
+)
 
-DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( ntfs jpeg )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=(
+    jpeg
+    'ntfs ntfs3g'
+    reiserfs
+)
 

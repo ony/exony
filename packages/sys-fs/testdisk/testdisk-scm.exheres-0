@@ -3,8 +3,7 @@
 
 SCM_REPOSITORY="http://git.cgsecurity.org/${PN}.git"
 
-require testdisk scm-git autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.12 ] ]
+require testdisk scm-git autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.16 ] ]
 
-SLOT="0"
 PLATFORMS="~amd64"
 
