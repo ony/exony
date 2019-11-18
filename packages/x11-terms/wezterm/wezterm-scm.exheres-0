@@ -1,0 +1,48 @@
+# Copyright 2019 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_NO_AUTOMATIC_FINALISE=1
+require github [ user=wez ] cargo
+
+SCM_SECONDARY_REPOSITORIES="harfbuzz freetype2 libpng zlib"
+SCM_EXTERNAL_REFS="
+    deps/harfbuzz/harfbuzz:harfbuzz
+    deps/freetype/freetype2:freetype2
+    deps/freetype/libpng:libpng
+    deps/freetype/zlib:zlib
+"
+
+SCM_harfbuzz_REPOSITORY="https://github.com/harfbuzz/harfbuzz.git"
+SCM_freetype2_REPOSITORY="https://git.savannah.gnu.org/git/freetype/freetype2.git"
+SCM_libpng_REPOSITORY="https://github.com/glennrp/libpng.git"
+SCM_zlib_REPOSITORY="https://github.com/madler/zlib.git"
+
+scm_finalise
+
+SUMMARY="GPU-accelerated terminal emulator/multiplexer by @wez"
+DESCRIPTION="
+A GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented
+in Rust
+"
+HOMEPAGE="https://wezfurlong.org/wezterm/"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+    build+run:
+        dev-libs/openssl
+        media-libs/fontconfig
+        x11-dri/mesa
+        x11-libs/libxcb
+        x11-libs/libxkbcommon[X]
+        x11-utils/xcb-util-keysyms
+        x11-utils/xcb-util-wm
+"
+
+BUGS_TO="virkony@gmail.com"
+
+
