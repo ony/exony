@@ -1,0 +1,44 @@
+# Copyright 2019 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PNV="RETRO$(ever major)-$(ever remainder)"
+
+SUMMARY="a Modern, Pragmatic Forth"
+DESCRIPTION="
+RETRO is a modern, pragmatic Forth drawing influences from many sources. It's clean, elegant, tiny,
+easy to grasp, and adaptable to many tasks.
+"
+HOMEPAGE="http://www.retroforth.org/"
+DOWNLOADS="http://forthworks.com/retro/r/${MY_PNV}.tar.gz"
+
+LICENCES="ISC"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+    build+run:
+"
+
+BUGS_TO="virkony@gmail.com"
+
+WORK="${WORKBASE}/${MY_PNV}"
+
+DEFAULT_SRC_INSTALL_PARAMS=(
+    PREFIX=/usr/$(exhost --target)
+    DATADIR=/usr/share
+    DOCSDIR=/usr/share/doc/${PNV}
+    EXAMPLESDIR=/usr/share/doc/${PNV}/examples
+    MANDIR=${IMAGE}/usr/share/man/man1  # yep flaw in makefile
+)
+DEFAULT_SRC_COMPILE_PARAMS=(all optional ${DEFAULT_SRC_INSTALL_PARAMS[@]})
+
+src_install() {
+    dodir /usr/share/man/man1  # another flaw in makefile
+
+    default
+
+    dobin bin/retro-repl
+}
+
