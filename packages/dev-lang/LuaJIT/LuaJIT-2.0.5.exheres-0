@@ -20,6 +20,7 @@ BUGS_TO="virkony@gmail.com"
 src_compile() {
     local var
     myflags=(
+        CC=cc
         HOST_CC=$(exhost --build)-cc
         CROSS=$(exhost --tool-prefix)
         PREFIX=/usr
