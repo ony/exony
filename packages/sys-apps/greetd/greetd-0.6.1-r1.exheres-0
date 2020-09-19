@@ -49,6 +49,7 @@ src_install() {
     dodir /etc/greetd
     insinto /etc/greetd
     doins config.toml
+    doins "${FILES}"/seat-setup.sh
     edo chown -R greeter:greeter "${IMAGE}"/etc/greetd
 
     doman "$WORK"/target-man/*
