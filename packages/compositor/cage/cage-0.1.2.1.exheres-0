@@ -1,0 +1,34 @@
+# Copyright 2020 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=Hjdskes release=v${PV} suffix=tar.gz ] meson
+
+SUMMARY="a Wayland kiosk"
+DESCRIPTION="
+This is Cage, a Wayland kiosk. A kiosk runs a single, maximized application.
+"
+HOMEPAGE="https://www.hjdskes.nl/projects/cage/"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    man-pages [[ description = [ Generate and install man pages ] ]]
+    xwayland [[ description = [ Enable support for X11 applications ] ]]
+"
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+        man-pages? ( app-doc/scdoc )
+
+    build+run:
+        sys-libs/wayland-protocols[>=1.14]
+        sys-libs/wayland
+        sys-libs/wlroots[>=0.11.0][xwayland?]
+        x11-libs/libxkbcommon
+        x11-libs/pixman:1
+"
+
+MESON_SRC_CONFIGURE_OPTION_FEATURES=( man-pages )
+
