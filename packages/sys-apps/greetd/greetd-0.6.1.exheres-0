@@ -1,0 +1,53 @@
+# Copyright 2020 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require cargo systemd-service [ systemd_files=[ greetd.service ] ]
+
+SUMMARY="minimal, agnostic and flexible login manager daemon"
+DESCRIPTION="
+greetd is a minimal and flexible login manager daemon that makes no assumptions about what you want
+to launch.
+"
+HOMEPAGE="https://git.sr.ht/~kennylevinsen/${PN}"
+DOWNLOADS="https://git.sr.ht/~kennylevinsen/${PN}/archive/${PV}.tar.gz"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+        app-doc/scdoc
+
+    build+run:
+        sys-libs/pam
+        group/greeter
+        user/greeter
+"
+
+src_compile() {
+    cargo_src_compile
+
+    # Build man-pages
+    edo mkdir "$WORK"/target-man
+    local mansrc mandst
+    for mansrc in man/*.scd; do
+        mandst="$(sed 's@-\([0-9]\).scd@.\1@' <<< "${mansrc##*/}")"
+        edo scdoc < "$mansrc" > "$WORK/target-man/$mandst"
+    done
+}
+
+src_install() {
+    dobin target/release/{greetd,agreety}
+
+    install_systemd_files
+
+    dodir /etc/greetd
+    insinto /etc/greetd
+    doins config.toml
+    edo chown -R greeter:greeter "${IMAGE}"/etc/greetd
+
+    doman "$WORK"/target-man/*
+    emagicdocs
+}
