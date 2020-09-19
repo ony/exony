@@ -24,6 +24,9 @@ DEPENDENCIES="
         sys-libs/pam
         group/greeter
         user/greeter
+
+    suggestion:
+        sys-apps/greetd-gtkgreet [[ description = [ The flagship graphical greeter ] ]]
 "
 
 src_compile() {

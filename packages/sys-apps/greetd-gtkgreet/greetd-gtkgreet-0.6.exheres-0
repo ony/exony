@@ -1,0 +1,38 @@
+# Copyright 2020 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_PN=${PN#greetd-}
+
+require meson
+
+SUMMARY="GTK based greeter for greetd, to be run under cage or similar"
+HOMEPAGE="https://git.sr.ht/~kennylevinsen/${MY_PN}"
+DOWNLOADS="https://git.sr.ht/~kennylevinsen/${MY_PN}/archive/${PV}.tar.gz"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    man-pages [[ description = [ Generate and install man pages ] ]]
+    layershell [[ description = [ Build with wlr-layer-shell to display a window on every output ] ]]
+"
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+        man-pages? ( app-doc/scdoc )
+
+    build+run:
+        dev-libs/json-c:=
+        x11-libs/gtk+:3
+        layershell? ( wayland-libs/gtk-layer-shell )
+
+    run:
+        sys-apps/greetd
+"
+
+MESON_SOURCE="${WORKBASE}/${MY_PN}-${PV}"
+
+MESON_SRC_CONFIGURE_OPTION_FEATURES=( man-pages )
+MESON_SRC_CONFIGURE_OPTION_SWITCHES=( layershell )
+
