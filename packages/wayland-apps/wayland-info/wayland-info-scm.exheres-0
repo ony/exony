@@ -1,0 +1,22 @@
+# Copyright 2020 Mykola Orliuk <virkony@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+HOMEPAGE="https://gitlab.freedesktop.org/ofourdan/${PN}"
+
+SCM_REPOSITORY="${HOMEPAGE}.git"
+
+require scm-git meson [ meson_minimum_version=0.47 ]
+
+SUMMARY="Utility for displaying information about Wayland compositor"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        sys-libs/wayland-protocols[>=1.18]
+        sys-libs/wayland[>=1.17.0]
+"
+
