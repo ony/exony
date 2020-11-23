@@ -1,0 +1,35 @@
+# Copyright 2020 Mykola Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=any1 tag="v${PV}" ] meson
+
+SUMMARY="VNC server for wlroots based Wayland compositors"
+DESCRIPTION="
+This is a VNC server for wlroots based Wayland compositors. It attaches to a running Wayland
+session, creates virtual input devices and exposes a single display via the RFB protocol. The
+Wayland session may be a headless one, so it is also possible to run wayvnc without a physical
+display attached.
+"
+
+LICENCES="ISC"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="
+    man-pages [[ description = [ Generate and install man pages ] ]]
+"
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+        man-pages? ( app-doc/scdoc )
+    build+run:
+        dev-libs/aml
+        net-libs/neatvnc[>=0.3.0]
+        sys-libs/wayland
+        x11-dri/libdrm
+        x11-libs/libxkbcommon
+        x11-libs/pixman:1
+"
+
+MESON_SRC_CONFIGURE_OPTION_FEATURES=( "man-pages" )
+
