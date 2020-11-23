@@ -1,0 +1,33 @@
+# Copyright 2020 Mykola Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=any1 tag="v${PV}" ] meson
+
+
+SUMMARY="Neat VNC"
+DESCRIPTION="
+A liberally licensed VNC server library that's intended to be fast and neat.
+"
+
+LICENCES="ISC"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="gnutls jpeg"
+
+DEPENDENCIES="
+    build:
+        virtual/pkg-config
+    build+run:
+        dev-libs/aml
+        sys-libs/zlib
+        x11-libs/pixman
+        gnutls? ( dev-libs/gnutls )
+        jpeg? ( media-libs/libjpeg-turbo )
+        
+"
+
+MESON_SRC_CONFIGURE_OPTION_FEATURES=(
+    "gnutls tls"
+    "jpeg"
+)
+
