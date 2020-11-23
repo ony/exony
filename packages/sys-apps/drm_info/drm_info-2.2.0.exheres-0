@@ -1,0 +1,23 @@
+# Copyright 2020 Mykola Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=ascent12 tag="v${PV}" ] meson [ meson_minimum_version=0.49.0 ]
+
+SUMMARY="Small utility to dump info about DRM devices"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="libpci [[ description = [ Print PCI device names via libpci ] ]]"
+
+DEPENDENCIES="
+    build:
+        dev-lang/python:*[>=3&<4]
+    build+run:
+        dev-libs/json-c[>=0.13]
+        x11-dri/libdrm[>=2.4.99]
+        libpci? ( sys-apps/pciutils )
+"
+
+MESON_SRC_CONFIGURE_OPTION_FEATURES=( libpci )
+
