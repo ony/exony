@@ -1,0 +1,11 @@
+# Copyright 2020 Mykola Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=any1 tag="v${PV}" ] meson
+
+SUMMARY="Andri's Main Loop"
+
+LICENCES="ISC"
+SLOT="0"
+PLATFORMS="~amd64"
+
