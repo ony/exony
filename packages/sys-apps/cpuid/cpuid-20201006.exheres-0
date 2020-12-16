@@ -17,12 +17,17 @@ MYOPTIONS="parts: binaries documentation"
 
 DEPENDENCIES=""
 
-BUGS_TO="virkony@gmail.com cpuid@etallen.com"
+DEFAULT_SRC_COMPILE_PARAMS=(
+    ${PN} cpuinfo2cpuid.man
+)
 
 src_install() {
-    dobin ${PN}
-    edo mv ${PN}.man ${PN}.1
-    doman ${PN}.1
+    progs=( ${PN} cpuinfo2cpuid )
+    dobin ${progs[@]}
+
+    for p in ${progs[@]}; do
+        newman ${p}.{man,1}
+    done
 
     emagicdocs
 
