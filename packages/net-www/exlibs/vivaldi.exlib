@@ -73,6 +73,7 @@ vivaldi_src_install() {
     edo mv opt "${IMAGE}/"
     dodir /usr/share
     edo mv usr/share "${IMAGE}/usr/"
+    edo rm -rf "${IMAGE}usr/share/gnome-control-center/"
 
     herebin ${PN%-*} << EOF
 #!/bin/sh
