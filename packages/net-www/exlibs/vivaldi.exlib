@@ -75,5 +75,7 @@ vivaldi_src_install() {
     edo mv usr/share "${IMAGE}/usr/"
     edo rm -rf "${IMAGE}usr/share/gnome-control-center/"
     dodir /usr/$(exhost --target)/bin
+    dodir /usr/share/pixmaps
+    dosym /opt/${PN%-stable}/product_logo_256.png /usr/share/pixmaps/${PN}.png
     dosym /opt/${PN%-stable}/${PN%-stable} /usr/$(exhost --target)/bin/${PN}
 }
