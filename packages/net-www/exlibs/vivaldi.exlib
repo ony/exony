@@ -74,15 +74,6 @@ vivaldi_src_install() {
     dodir /usr/share
     edo mv usr/share "${IMAGE}/usr/"
     edo rm -rf "${IMAGE}usr/share/gnome-control-center/"
-
-    herebin ${PN%-*} << EOF
-#!/bin/sh
-exec /opt/${PN%-stable}/vivaldi "\$@"
-EOF
-
-    einfo "You may experience issues with running ${PN} on some linux configurations (kernel lower"
-    einfo "than 3.17 or disabled \"user namespaces\") without suid bit on vivaldi-sandbox."
-    einfo "See next link:"
-    einfo "https://vivaldi.net/teamblog/79-sandbox-issues-when-installing-to-non-standard-locations-on-linux"
-EOF
+    dodir /usr/$(exhost --target)/bin
+    dosym /opt/${PN%-stable}/${PN%-stable} /usr/$(exhost --target)/bin/${PN}
 }
