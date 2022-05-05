@@ -1,0 +1,25 @@
+# Copyright 2020 Mykola Orliuk
+# Distributed under the terms of the GNU General Public License v2
+
+require github [ user=any1 tag="v${PV}" ] meson
+
+SUMMARY="Andri's Main Loop"
+
+LICENCES="ISC"
+SLOT="0"
+MYOPTIONS="examples [[ description = [ Install 3 C files: nested-ticker.c, reader.c, and ticker.c ] ]]"
+PLATFORMS="~amd64"
+
+MESON_SRC_CONFIGURE_OPTION_SWITCHES=(
+    examples
+)
+
+src_install() {
+    meson_src_install
+
+    # Install example code user specified
+    if $(option examples); then
+	edo dodoc examples/{nested-ticker.c,reader.c,ticker.c}
+    fi
+}
+
