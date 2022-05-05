@@ -8,7 +8,7 @@ SUMMARY="Andri's Main Loop"
 LICENCES="ISC"
 SLOT="0"
 MYOPTIONS="examples [[ description = [ Install 3 C files: nested-ticker.c, reader.c, and ticker.c ] ]]"
-PLATFORMS="~amd64"
+PLATFORMS="~amd64 ~x86"
 
 MESON_SRC_CONFIGURE_OPTION_SWITCHES=(
     examples
